@@ -1,0 +1,1067 @@
+{
+    "question": "Which country was the most cooperative economically?",
+    "rowIndex": 17,
+    "params": {
+        "codes": "('061)",
+        "relation": "Actor1CountryCode"
+    },
+    "sql": "\nSELECT\n  codes.country,\n  SUM(CASE WHEN events.EventCode IN ('061) THEN 1 ELSE 0 END) / COUNT(*) per\nFROM\n  [gdelt-bq:full.events] events\nJOIN\n  [gdelt-bq:extra.countryinfo] codes\nON\n  events.Actor1CountryCode = codes.iso3\nGROUP BY\n  codes.country\nORDER BY\n  per DESC\n",
+    "inputSQL": "\nSELECT\n  codes.country,\n  SUM(CASE WHEN events.EventCode IN ('061) THEN 1 ELSE 0 END) / COUNT(*) per\nFROM\n  [gdelt-bq:full.events] events\nJOIN\n  [gdelt-bq:extra.countryinfo] codes\nON\n  events.Actor1CountryCode = codes.iso3\nWHERE\n  codes.country = 'userInput'\nGROUP BY\n  codes.country\nORDER BY\n  per DESC\n",
+    "databases": "GDELT",
+    "units": "% of Events",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Encountered \"\" at line 4, column 37.\n",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Encountered \"\" at line 4, column 37.\n"
+    }
+}{
+    "question": "Last month, which male had the most popular page?",
+    "rowIndex": 112,
+    "params": {
+        "freebase_tag": "men"
+    },
+    "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.men]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.men]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name = 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "databases": "Wikipedia",
+    "units": "Views",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "notFound",
+                "message": "Not found: Table sodium-primer-120219:freebase_tags.men"
+            }
+        ],
+        "code": 404,
+        "message": "Not found: Table sodium-primer-120219:freebase_tags.men"
+    }
+}{
+    "question": "Which country was mentioned the most in/r/science last month?",
+    "rowIndex": 101,
+    "params": {
+        "freebase_tag": "countries",
+        "subreddit": "science"
+    },
+    "sql": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.countries]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201510] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      undefined)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    LOWER(subreddit) = 'science') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.countries]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid\n    WHERE\n      topic.name = 'userInput') topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201510] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      undefined)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    LOWER(subreddit) = 'science') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Encountered \"\" at line 55, column 20.\n",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Encountered \"\" at line 55, column 20.\n"
+    }
+}{
+    "question": "Which state was the most mentioned in/r/AskReddit last month?",
+    "rowIndex": 91,
+    "params": {
+        "freebase_tag": "states",
+        "subreddit": "askreddit"
+    },
+    "sql": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM\n  [freebase_tags.states] topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    [freebase_tags.states]\n  WHERE\n    name = 'userInput') topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins"
+    }
+}{
+    "question": "Which country was most mentioned in /r/AskReddit last month?",
+    "rowIndex": 161,
+    "params": {
+        "freebase_tag": "countries",
+        "subreddit": "askreddit"
+    },
+    "sql": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM\n  [freebase_tags.countries] topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    [freebase_tags.countries]\n  WHERE\n    name = 'userInput') topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins"
+    }
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "sql": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(lol)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(lol)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language = 'userInput'\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "GitHub",
+    "units": "Comments per 1000",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Field 'undefined' not found.",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Field 'undefined' not found."
+    }
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "sql": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(typo|typos)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(typo|typos)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language = 'userInput'\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "GitHub",
+    "units": "Comments per 1000",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Field 'undefined' not found.",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Field 'undefined' not found."
+    }
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "sql": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(👍)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(👍)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language = 'userInput'\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "GitHub",
+    "units": "Comments per 1000",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Field 'undefined' not found.",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Field 'undefined' not found."
+    }
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "sql": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(😉)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(😉)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language = 'userInput'\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "Github",
+    "units": "Comments per 1000",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Field 'undefined' not found.",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Field 'undefined' not found."
+    }
+}{
+    "question": "What was the most popular cheese on Wikipedia last month?",
+    "rowIndex": 282,
+    "params": {
+        "freebase_tag": "cheese"
+    },
+    "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.cheese]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.cheese]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name = 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "databases": "Wikipedia",
+    "units": "Views",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "notFound",
+                "message": "Not found: Table sodium-primer-120219:freebase_tags.cheese"
+            }
+        ],
+        "code": 404,
+        "message": "Not found: Table sodium-primer-120219:freebase_tags.cheese"
+    }
+}
+{
+    "question": "Which country was the most cooperative economically?",
+    "rowIndex": 17,
+    "params": {
+        "codes": "('061)",
+        "relation": "Actor1CountryCode"
+    },
+    "sql": "\nSELECT\n  codes.country,\n  SUM(CASE WHEN events.EventCode IN ('061) THEN 1 ELSE 0 END) / COUNT(*) per\nFROM\n  [gdelt-bq:full.events] events\nJOIN\n  [gdelt-bq:extra.countryinfo] codes\nON\n  events.Actor1CountryCode = codes.iso3\nGROUP BY\n  codes.country\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  codes.country,\n  SUM(CASE WHEN events.EventCode IN ('061) THEN 1 ELSE 0 END) / COUNT(*) per\nFROM\n  [gdelt-bq:full.events] events\nJOIN\n  [gdelt-bq:extra.countryinfo] codes\nON\n  events.Actor1CountryCode = codes.iso3\nWHERE\n  codes.country = 'userInput'\nGROUP BY\n  codes.country\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "GDELT",
+    "units": "% of Events",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Encountered \"\" at line 4, column 37.\n",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Encountered \"\" at line 4, column 37.\n"
+    }
+}{
+    "question": "Which country was mentioned the most in/r/science last month?",
+    "rowIndex": 101,
+    "params": {
+        "freebase_tag": "countries",
+        "subreddit": "science"
+    },
+    "sql": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.countries]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201510] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      undefined)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    LOWER(subreddit) = 'science') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.countries]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid\n    WHERE\n      topic.name = 'userInput') topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201510] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      undefined)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    LOWER(subreddit) = 'science') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Encountered \"\" at line 55, column 20.\n",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Encountered \"\" at line 55, column 20.\n"
+    }
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "sql": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(typo|typos)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(typo|typos)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language = 'userInput'\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "GitHub",
+    "units": "Comments per 1000",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Field 'undefined' not found.",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Field 'undefined' not found."
+    }
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "sql": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(lol)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(lol)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language = 'userInput'\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "GitHub",
+    "units": "Comments per 1000",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Field 'undefined' not found.",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Field 'undefined' not found."
+    }
+}{
+    "question": "Last month, which male had the most popular page?",
+    "rowIndex": 112,
+    "params": {
+        "freebase_tag": "men"
+    },
+    "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.men]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.men]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name = 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "databases": "Wikipedia",
+    "units": "Views",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "notFound",
+                "message": "Not found: Table sodium-primer-120219:freebase_tags.men"
+            }
+        ],
+        "code": 404,
+        "message": "Not found: Table sodium-primer-120219:freebase_tags.men"
+    }
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "sql": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(😉)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(😉)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language = 'userInput'\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "Github",
+    "units": "Comments per 1000",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Field 'undefined' not found.",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Field 'undefined' not found."
+    }
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "sql": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(👍)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(👍)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language = 'userInput'\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "GitHub",
+    "units": "Comments per 1000",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Field 'undefined' not found.",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Field 'undefined' not found."
+    }
+}{
+    "question": "Which country was most mentioned in /r/AskReddit last month?",
+    "rowIndex": 161,
+    "params": {
+        "freebase_tag": "countries",
+        "subreddit": "askreddit"
+    },
+    "sql": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM\n  [freebase_tags.countries] topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    [freebase_tags.countries]\n  WHERE\n    name = 'userInput') topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins"
+    }
+}{
+    "question": "Which state was the most mentioned in/r/AskReddit last month?",
+    "rowIndex": 91,
+    "params": {
+        "freebase_tag": "states",
+        "subreddit": "askreddit"
+    },
+    "sql": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM\n  [freebase_tags.states] topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    [freebase_tags.states]\n  WHERE\n    name = 'userInput') topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins"
+    }
+}{
+    "question": "Which country was the most cooperative economically?",
+    "rowIndex": 17,
+    "params": {
+        "codes": "('061)",
+        "relation": "Actor1CountryCode"
+    },
+    "sql": "\nSELECT\n  codes.country,\n  SUM(CASE WHEN events.EventCode IN ('061) THEN 1 ELSE 0 END) / COUNT(*) per\nFROM\n  [gdelt-bq:full.events] events\nJOIN\n  [gdelt-bq:extra.countryinfo] codes\nON\n  events.Actor1CountryCode = codes.iso3\nGROUP BY\n  codes.country\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  codes.country,\n  SUM(CASE WHEN events.EventCode IN ('061) THEN 1 ELSE 0 END) / COUNT(*) per\nFROM\n  [gdelt-bq:full.events] events\nJOIN\n  [gdelt-bq:extra.countryinfo] codes\nON\n  events.Actor1CountryCode = codes.iso3\nWHERE\n  codes.country = 'userInput'\nGROUP BY\n  codes.country\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "GDELT",
+    "units": "% of Events",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Encountered \"\" at line 4, column 37.\n",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Encountered \"\" at line 4, column 37.\n"
+    }
+}{
+    "question": "Last month, which male had the most popular page?",
+    "rowIndex": 112,
+    "params": {
+        "freebase_tag": "men"
+    },
+    "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.men]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.men]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name = 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "databases": "Wikipedia",
+    "units": "Views",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "notFound",
+                "message": "Not found: Table sodium-primer-120219:freebase_tags.men"
+            }
+        ],
+        "code": 404,
+        "message": "Not found: Table sodium-primer-120219:freebase_tags.men"
+    }
+}{
+    "question": "Which country was mentioned the most in/r/science last month?",
+    "rowIndex": 101,
+    "params": {
+        "freebase_tag": "countries",
+        "subreddit": "science"
+    },
+    "sql": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.countries]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201510] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      undefined)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    LOWER(subreddit) = 'science') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.countries]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid\n    WHERE\n      topic.name = 'userInput') topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201510] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      undefined)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    LOWER(subreddit) = 'science') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Encountered \"\" at line 55, column 20.\n",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Encountered \"\" at line 55, column 20.\n"
+    }
+}{
+    "question": "Which state was the most mentioned in/r/AskReddit last month?",
+    "rowIndex": 91,
+    "params": {
+        "freebase_tag": "states",
+        "subreddit": "askreddit"
+    },
+    "sql": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM\n  [freebase_tags.states] topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    [freebase_tags.states]\n  WHERE\n    name = 'userInput') topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins"
+    }
+}{
+    "question": "Which country was most mentioned in /r/AskReddit last month?",
+    "rowIndex": 161,
+    "params": {
+        "freebase_tag": "countries",
+        "subreddit": "askreddit"
+    },
+    "sql": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM\n  [freebase_tags.countries] topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    [freebase_tags.countries]\n  WHERE\n    name = 'userInput') topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins"
+    }
+}{
+    "question": "What was the most popular cheese on Wikipedia last month?",
+    "rowIndex": 282,
+    "params": {
+        "freebase_tag": "cheese"
+    },
+    "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.cheese]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.cheese]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name = 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "databases": "Wikipedia",
+    "units": "Views",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "notFound",
+                "message": "Not found: Table sodium-primer-120219:freebase_tags.cheese"
+            }
+        ],
+        "code": 404,
+        "message": "Not found: Table sodium-primer-120219:freebase_tags.cheese"
+    }
+}{
+    "question": "Which country has been the most cooperative economically?",
+    "rowIndex": 17,
+    "params": {
+        "codes": "('061)",
+        "relation": "Actor1CountryCode"
+    },
+    "sql": "\nSELECT\n  codes.country,\n  SUM(CASE WHEN events.EventCode IN ('061) THEN 1 ELSE 0 END) / COUNT(*) per\nFROM\n  [gdelt-bq:full.events] events\nJOIN\n  [gdelt-bq:extra.countryinfo] codes\nON\n  events.Actor1CountryCode = codes.iso3\nGROUP BY\n  codes.country\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  codes.country,\n  SUM(CASE WHEN events.EventCode IN ('061) THEN 1 ELSE 0 END) / COUNT(*) per\nFROM\n  [gdelt-bq:full.events] events\nJOIN\n  [gdelt-bq:extra.countryinfo] codes\nON\n  events.Actor1CountryCode = codes.iso3\nWHERE\n  codes.country = 'userInput'\nGROUP BY\n  codes.country\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "GDELT",
+    "units": "% of Events",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Encountered \"\" at line 4, column 37.\n",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Encountered \"\" at line 4, column 37.\n"
+    }
+}{
+    "question": "Last month, which male had the most popular page?",
+    "rowIndex": 112,
+    "params": {
+        "freebase_tag": "men"
+    },
+    "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.men]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.men]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name = 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "databases": "Wikipedia",
+    "units": "Views",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "notFound",
+                "message": "Not found: Table sodium-primer-120219:freebase_tags.men"
+            }
+        ],
+        "code": 404,
+        "message": "Not found: Table sodium-primer-120219:freebase_tags.men"
+    }
+}{
+    "question": "Last month, which country was mentioned the most in/r/science?",
+    "rowIndex": 101,
+    "params": {
+        "freebase_tag": "countries",
+        "subreddit": "science"
+    },
+    "sql": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.countries]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201510] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      undefined)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'science') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.countries]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201510] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias,\n    CASE WHEN obj = 'userInput' THEN 1 ELSE 0 END AS input,\n    SUM(input) OVER (PARTITION BY sub) AS input_alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      undefined)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'science') comments\nWHERE\n  aliases.input_alias > 0\n  AND comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Encountered \"\" at line 55, column 20.\n",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Encountered \"\" at line 55, column 20.\n"
+    }
+}{
+    "question": "Last month, which state was mentioned the most in/r/AskReddit?",
+    "rowIndex": 91,
+    "params": {
+        "freebase_tag": "states",
+        "subreddit": "askreddit"
+    },
+    "sql": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM\n  [freebase_tags.states] topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    [freebase_tags.states]\n  WHERE\n    name = 'userInput') topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins"
+    }
+}{
+    "question": "Which country was mentioned the most in /r/AskReddit in the past month?",
+    "rowIndex": 161,
+    "params": {
+        "freebase_tag": "countries",
+        "subreddit": "askreddit"
+    },
+    "sql": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM\n  [freebase_tags.countries] topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    [freebase_tags.countries]\n  WHERE\n    name = 'userInput') topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins"
+    }
+}{
+    "question": "Which programming language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "sql": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(fuck)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(fuck)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language = 'userInput'\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "GitHub",
+    "units": "Comments per 1000",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Field 'undefined' not found.",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Field 'undefined' not found."
+    }
+}{
+    "question": "Which country has been the most cooperative economically?",
+    "rowIndex": 17,
+    "params": {
+        "codes": "('061)",
+        "relation": "Actor1CountryCode",
+        "year": 2015
+    },
+    "sql": "\nSELECT\n  codes.country,\n  SUM(CASE WHEN events.EventCode IN ('061) THEN 1 ELSE 0 END) / COUNT(*) per\nFROM\n  [gdelt-bq:full.events] events\nJOIN\n  [gdelt-bq:extra.countryinfo] codes\nON\n  events.Actor1CountryCode = codes.iso3\nWHERE\n  Year = 2015\nGROUP BY\n  codes.country\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  codes.country,\n  SUM(CASE WHEN events.EventCode IN ('061) THEN 1 ELSE 0 END) / COUNT(*) per\nFROM\n  [gdelt-bq:full.events] events\nJOIN\n  [gdelt-bq:extra.countryinfo] codes\nON\n  events.Actor1CountryCode = codes.iso3\nWHERE\n  codes.country = 'userInput'\n  AND Year = 2015\nGROUP BY\n  codes.country\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "GDELT",
+    "units": "% of Events",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Encountered \"\" at line 4, column 37.\n",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Encountered \"\" at line 4, column 37.\n"
+    }
+}{
+    "question": "Last month, which country was mentioned the most in/r/science?",
+    "rowIndex": 101,
+    "params": {
+        "freebase_tag": "countries",
+        "subreddit": "science"
+    },
+    "sql": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.countries]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201510] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      undefined)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'science') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.countries]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201510] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias,\n    CASE WHEN obj = 'userInput' THEN 1 ELSE 0 END AS input,\n    SUM(input) OVER (PARTITION BY sub) AS input_alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      undefined)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'science') comments\nWHERE\n  aliases.input_alias > 0\n  AND comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Encountered \"\" at line 55, column 20.\n",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Encountered \"\" at line 55, column 20.\n"
+    }
+}{
+    "question": "Last month, which male had the most popular page?",
+    "rowIndex": 112,
+    "params": {
+        "freebase_tag": "men"
+    },
+    "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.men]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.men]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name = 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "databases": "Wikipedia",
+    "units": "Views",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "notFound",
+                "message": "Not found: Table sodium-primer-120219:freebase_tags.men"
+            }
+        ],
+        "code": 404,
+        "message": "Not found: Table sodium-primer-120219:freebase_tags.men"
+    }
+}{
+    "question": "Last month, which state was mentioned the most in/r/AskReddit?",
+    "rowIndex": 91,
+    "params": {
+        "freebase_tag": "states",
+        "subreddit": "askreddit"
+    },
+    "sql": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM\n  [freebase_tags.states] topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    [freebase_tags.states]\n  WHERE\n    name = 'userInput') topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins"
+    }
+}{
+    "question": "Which country was mentioned the most in /r/AskReddit in the past month?",
+    "rowIndex": 161,
+    "params": {
+        "freebase_tag": "countries",
+        "subreddit": "askreddit"
+    },
+    "sql": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM\n  [freebase_tags.countries] topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    [freebase_tags.countries]\n  WHERE\n    name = 'userInput') topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins"
+    }
+}{
+    "question": "Which programming language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "sql": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(fuck)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(fuck)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language = 'userInput'\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "GitHub",
+    "units": "Comments per 1000",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Field 'undefined' not found.",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Field 'undefined' not found."
+    }
+}{
+    "question": "Which country has been the most cooperative economically?",
+    "rowIndex": 17,
+    "params": {
+        "codes": "('061)",
+        "relation": "Actor1CountryCode",
+        "year": 2015,
+        "per": 100
+    },
+    "sql": "\nSELECT\n  codes.country,\n  SUM(CASE WHEN events.EventCode IN ('061) THEN 1 ELSE 0 END) * 100 / COUNT(*) per\nFROM\n  [gdelt-bq:full.events] events\nJOIN\n  [gdelt-bq:extra.countryinfo] codes\nON\n  events.Actor1CountryCode = codes.iso3\nWHERE\n  Year = 2015\nGROUP BY\n  codes.country\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  codes.country,\n  SUM(CASE WHEN events.EventCode IN ('061) THEN 1 ELSE 0 END) * 100 / COUNT(*) per\nFROM\n  [gdelt-bq:full.events] events\nJOIN\n  [gdelt-bq:extra.countryinfo] codes\nON\n  events.Actor1CountryCode = codes.iso3\nWHERE\n  codes.country = 'userInput'\n  AND Year = 2015\nGROUP BY\n  codes.country\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "GDELT",
+    "units": "% of Events",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Encountered \"\" at line 4, column 37.\n",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Encountered \"\" at line 4, column 37.\n"
+    }
+}{
+    "question": "Which country was mentioned the most in/r/science in the past month?",
+    "rowIndex": 101,
+    "params": {
+        "freebase_tag": "countries",
+        "subreddit": "science"
+    },
+    "sql": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.countries]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201510] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      undefined)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'science') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.countries]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201510] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias,\n    CASE WHEN obj = 'userInput' THEN 1 ELSE 0 END AS input,\n    SUM(input) OVER (PARTITION BY sub) AS input_alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      undefined)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'science') comments\nWHERE\n  aliases.input_alias > 0\n  AND comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Encountered \"\" at line 55, column 20.\n",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Encountered \"\" at line 55, column 20.\n"
+    }
+}{
+    "question": "Last month, which male had the most popular page?",
+    "rowIndex": 112,
+    "params": {
+        "freebase_tag": "men"
+    },
+    "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.men]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.men]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name = 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201602] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+    "databases": "Wikipedia",
+    "units": "Views",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "notFound",
+                "message": "Not found: Table sodium-primer-120219:freebase_tags.men"
+            }
+        ],
+        "code": 404,
+        "message": "Not found: Table sodium-primer-120219:freebase_tags.men"
+    }
+}{
+    "question": "Which state was mentioned the most in/r/AskReddit in the past month?",
+    "rowIndex": 91,
+    "params": {
+        "freebase_tag": "states",
+        "subreddit": "askreddit"
+    },
+    "sql": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM\n  [freebase_tags.states] topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    [freebase_tags.states]\n  WHERE\n    name = 'userInput') topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins"
+    }
+}{
+    "question": "Which country was mentioned the most in /r/AskReddit in the past month?",
+    "rowIndex": 161,
+    "params": {
+        "freebase_tag": "countries",
+        "subreddit": "askreddit"
+    },
+    "sql": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM\n  [freebase_tags.countries] topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    [freebase_tags.countries]\n  WHERE\n    name = 'userInput') topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'askreddit') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+    "databases": "Reddit",
+    "units": "Mentions",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Table too large for JOIN. Consider using JOIN EACH. For more details, please see https://developers.google.com/bigquery/docs/query-reference#joins"
+    }
+}{
+    "question": "Which programming language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "sql": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(fuck)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
+    "inputSQL": "\nSELECT\n  repos.repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(fuck)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    CONCAT(repository_owner, '/', repository_name) AS repository_name,\n    repository_language\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language = 'userInput'\n  GROUP BY\n    repository_language,\n    repository_name) repos\nON\n  repos.repository_name = comments.repo_name\nGROUP BY\n  repos.repository_language\nHAVING\n  total > undefined\nORDER BY\n  per DESC\nIGNORE CASE\n",
+    "databases": "GitHub",
+    "units": "Comments per 1000",
+    "hasPassingInputQuery": false,
+    "sql_error": {
+        "errors": [
+            {
+                "domain": "global",
+                "reason": "invalidQuery",
+                "message": "Field 'undefined' not found.",
+                "locationType": "other",
+                "location": "query"
+            }
+        ],
+        "code": 400,
+        "message": "Field 'undefined' not found."
+    }
+}

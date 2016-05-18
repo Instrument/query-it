@@ -1,0 +1,52 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:700,400,300,200,100);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,700);
+@import 'mixins';
+@import 'variables';
+@import 'canvas';
+@import 'header';
+@import 'timer';
+@import 'panel';
+@import 'category';
+@import 'input';
+@import 'sequel';
+@import 'intro';
+@import 'instructions';
+@import 'player';
+@import 'player-scores';
+@import 'player-results';
+@import 'player-winner';
+@import 'question-subsection';
+@import 'results';
+@import 'session';
+@import 'animation';
+@import 'highlight';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: #222d33;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  // cursor: none;
+
+}
+
+.bg {
+  background-color: rgba(0,0,0,0.7);
+  left: 0;
+  height: $height;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: opacity 800ms linear;
+  width: $width;
+  z-index: 2;
+  &.is-active {
+    opacity: 1;
+  }
+}

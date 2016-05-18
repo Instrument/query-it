@@ -1,0 +1,64 @@
+.player-results {
+    &__container {
+      bottom: $padding;
+      overflow: hidden;
+      position: absolute;
+      text-align: left;
+      width: 25%;
+      &--team-one {
+        left: $padding;
+        &.is-active {
+          top: 0;
+        }
+        .player-results__divide {
+          left: -50px;
+        }
+      }
+
+      &--team-two {
+        right: $padding;
+        text-align: right;
+        .player-results__divide {
+          right: -50px;
+        }
+      }
+
+    }
+
+    &__final {
+      display: none;
+      position: relative;
+    }
+
+    &__label {
+      @include small-heading($margin: 20px 0);
+      color: white;
+      display: block;
+    }
+
+    &__answer {
+      overflow: hidden;
+    }
+
+    &__top {
+      border-bottom: 7px solid white;
+      padding: 20px 0;
+    }
+
+    &__divide {
+      position: absolute;
+    }
+
+    &__score {
+      padding-top: 20px;
+    }
+
+    &__result {
+      border-bottom: .3vw solid white;
+      color: white;
+      padding-bottom: 20px;
+      @include medium-heading;
+      font-size: 2.5vw;
+      min-height: 65px;
+    }
+}

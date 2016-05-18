@@ -1,0 +1,54 @@
+.player {
+  color: white;
+
+  &__copy {
+    animation: pulse 2s infinite;
+    display: block;
+    transition: padding 200ms ease;
+  }
+
+  &__press {
+    bottom: $padding;
+    font-size: 2vw;
+    font-weight: 200;
+    left: $padding;
+    position: absolute;
+    &.is-active .player__copy {
+      animation: none;
+      padding-left: $padding + 0.5vw;
+    }
+    &.is-active:after {
+      background-image: url(../images/check.png);
+      transform: scale(1);
+    }
+    &:after {
+      background-size: cover;
+      content: ' ';
+      height: 4vw;
+      left: 0;
+      line-height: 4vw;
+      margin-top: -2vw;
+      position: absolute;
+      top: 50%;
+      transform: scale(0);
+      width: 4vw;
+      transition: transform 200ms linear;
+    }
+  }
+  &__highlight {
+    color: $banana;
+    font-weight: 400;
+  }
+  &__press--two {
+    left: auto;
+    right: $padding;
+    &.is-active .player__copy {
+      padding-left: 0;
+      padding-right: $padding + 0.5vw;
+    }
+    &:after {
+      left: auto;
+      right: 0;
+    }
+  }
+}

@@ -1,0 +1,194 @@
+{
+	"colors": [
+		{
+			"label": "default",
+			"colors": [
+				{
+					"label": "blue",
+					"colors": [
+						"#673AB7",
+						"#3F51B5",
+						"#4285F4",
+						"#03A9F4",
+						"#00BCD4"
+					]
+				},
+				{
+					"label": "red",
+					"colors":  [
+						"#DB4437",
+						"#E91E63",
+						"#9C27B0"
+					]
+				},
+				{
+					"label": "yellow",
+					"colors":  [
+						"#FFEB3B",
+						"#F48400",
+						"#FF9800",
+						"#FF5722"
+					]
+				},
+				{
+					"label": "green",
+					"colors":  [
+						"#009688",
+						"#0F9D58",
+						"#8BC34A",
+						"#CDDC39"
+					]
+				}
+			]
+		},
+		{
+			"label": "red",
+			"colors": [
+				{
+					"label": "red",
+					"colors":  [
+						"#e57373",
+						"#f44336",
+						"#d32f2f"
+					]
+				},
+				{
+					"label": "green",
+					"colors":  [
+						"#f06292",
+						"#e91e63",
+						"#c2185b"
+					]
+				},
+				{
+					"label": "blue",
+					"colors": [
+						"#ba68c8",
+						"#9c27b0",
+						"#7b1fa2"
+					]
+				},
+				{
+					"label": "yellow",
+					"colors":  [
+						"#9575cd",
+						"#673ab7",
+						"#512da8"
+					]
+				}
+			]
+		},
+		{
+			"label": "green",
+			"colors": [
+				{
+					"label": "red",
+					"colors":  [
+						"#4cb6ac",
+						"#009688",
+						"#00796b"
+					]
+				},
+				{
+					"label": "green",
+					"colors":  [
+						"#81c784",
+						"#4caf50",
+						"#388e3c"
+					]
+				},
+				{
+					"label": "blue",
+					"colors": [
+						"#aed581",
+						"#8bc34a",
+						"#689f38"
+					]
+				},
+				{
+					"label": "yellow",
+					"colors":  [
+						"#dce775",
+						"#cddc39",
+						"#c0ca33"
+					]
+				}
+			]
+		},
+		{
+			"label": "blue",
+			"colors": [
+				{
+					"label": "red",
+					"colors":  [
+						"#9575cd",
+						"#673ab7",
+						"#512da8"
+					]
+				},
+				{
+					"label": "green",
+					"colors":  [
+						"#64b5f6",
+						"#2196f3",
+						"#1976d2"
+					]
+				},
+				{
+					"label": "blue",
+					"colors": [
+						"#4fc3f7",
+						"#03a9f4",
+						"#0288d1"
+					]
+				},
+				{
+					"label": "yellow",
+					"colors":  [
+						"#4dd0e1",
+						"#00bcd4",
+						"#0097a7"
+					]
+				}
+			]
+		},
+		{
+			"label": "yellow",
+			"colors": [
+				{
+					"label": "red",
+					"colors":  [
+						"#dce775",
+						"#cddc39",
+						"#c0ca33"
+					]
+				},
+				{
+					"label": "green",
+					"colors":  [
+						"#fff176",
+						"#ffeb3b",
+						"#fbc02d"
+					]
+				},
+				{
+					"label": "blue",
+					"colors": [
+						"#ffd54f",
+						"#ffc107",
+						"#ffa000"
+					]
+				},
+				{
+					"label": "yellow",
+					"colors":  [
+						"#ffb74d",
+						"#ff9800",
+						"#f57c00"
+					]
+				}
+			]
+		}
+	]
+
+}

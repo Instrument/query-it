@@ -1,0 +1,51 @@
+.header {
+  position: absolute;
+  top: $padding;
+  transition: opacity 200ms linear;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  &--primary {
+    color: $mako;
+  }
+  &--secondary {
+    color: $governor-bay;
+  }
+  &--white {
+    color: white;
+  }
+  &__label {
+    @include small-heading;
+  }
+
+  &--question {
+    .header__label {
+      width: 60%;
+      text-transform: none;
+      font-weight: 200;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+
+  &--opaque {
+    opacity: 0.5;
+  }
+
+  .is-visible {
+    opacity: 1;
+  }
+
+  &__label--no-caps {
+    text-transform: none;
+  }
+
+  &__heading--category {
+    font-size: 1.25vw;
+  }
+
+  &.is-hidden {
+    opacity: 0;
+  }
+
+}

@@ -1,0 +1,62 @@
+.instructions {
+  color: white;
+  letter-spacing: 0.08em;
+
+  &__heading {
+    @include large-heading($margin: 16px);
+    line-height: 10vw;
+  }
+
+  &__copy-container {
+    font-weight: 200;
+    @include vertically-center;
+  }
+
+  &__description {
+    font-weight: 100;
+    font-size: 2.5vw;
+    left: 0;
+    line-height: 3.5vw;
+    padding: 0 $padding;
+    text-align: center;
+    width: 100%;
+    @include vertically-center;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__item {
+    margin-bottom: 20px;
+    position: relative;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__instruction {
+    display: block;
+  }
+
+  &__number {
+    color: $mountain-mist;
+    position: absolute;
+    left: -20px;
+    top: 0;
+    width: 40px;
+  }
+
+  &__press--two {
+    padding-left: 0;
+    padding-right: 70px;
+    left: auto;
+    right: $padding;
+    &:before {
+      left: auto;
+      right: -20px;
+    }
+  }
+}

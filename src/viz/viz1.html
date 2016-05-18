@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Next - Big Query - Viz 1</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<style>
+		body {
+			color: #ffffff;
+			font-family: Monospace;
+			font-size: 13px;
+			text-align: center;
+			font-weight: bold;
+			background-color: #000000;
+			margin: 0px;
+			overflow: hidden;
+		}
+
+		#info {
+			position: absolute;
+			top: 0px;
+			width: 100%;
+			padding: 5px;
+		}
+
+		a {
+			color: #ffffff;
+		}
+
+		#oldie a {
+			color: #da0;
+		}
+
+		#notSupported {
+			width: 50%;
+			margin: auto;
+			border: 2px red solid;
+			margin-top: 20px;
+			padding: 10px;
+		}
+		.controls {
+			position: absolute;
+			bottom: 20px;
+			right: 20px;
+		}
+		.js-trigger1 {
+			display: inline-block;
+		}
+		.js-trigger2 {
+			display: inline-block;
+		}
+
+	</style>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/easing/EasePack.min.js"></script>
+</head>
+<body>
+	<div class="controls">
+		<button class="js-trigger1">Trigger 1</button>
+		<button class="js-trigger2">Trigger 2</button>
+	</div>
+
+	<script src="build/three.min.js"></script>
+	<script src="js/Detector.js"></script>
+	<script src="js/libs/stats.min.js"></script>
+	<script src="js/cameras/CombinedCamera.js"></script>
+
+
+	<script id="vshader" type="x-shader/x-vertex">
+		precision highp float;
+		uniform mat4 modelViewMatrix;
+		uniform mat4 projectionMatrix;
+
+		//attribute uint mode;
+
+		attribute vec3 position;
+		attribute vec3 target;
+		attribute vec2 uv;
+		attribute vec3 normal;
+
+		attribute vec3 translate;
+		attribute vec3 velocity;
+		attribute float scale;
+		attribute vec3 color;
+
+		uniform float mode;
+		uniform float time;
+
+		varying vec2 vUv;
+		varying vec3 vColor;
+
+
+		vec4 calcMode1(vec3 origin, vec3 target, float percent) {
+			vec4 rtPosition = mix(vec4(origin, 1.0), vec4( target, 1.0), percent);
+			return rtPosition;
+		}
+
+		void main() {
+			vec4 mvPosition;
+
+			if (mode == 1.0){ //lerp to target
+
+				mvPosition = modelViewMatrix * calcMode1 (translate, target, time);
+			} else {
+				mvPosition = modelViewMatrix * vec4( translate, 1.0 );
+			}
+
+			mvPosition.xyz += position * scale;
+
+			vUv = uv;
+			vColor = color;
+
+			gl_Position = projectionMatrix * mvPosition;
+
+		}
+
+	</script>
+	<script id="fshader" type="x-shader/x-fragment">
+		precision highp float;
+
+		uniform sampler2D map;
+
+		varying vec2 vUv;
+		varying vec3 vColor;
+
+		void main() {
+
+			vec4 diffuseColor = texture2D( map, vUv );
+			gl_FragColor = vec4( diffuseColor.xyz * vColor, diffuseColor.w );
+
+			if ( diffuseColor.w < 0.5 ) discard;
+
+			//gl_FragColor = texture2D( map, vUv );
+
+		}
+	</script>
+
+	<script>
+
+		var container, stats;
+
+		var camera, scene, renderer;
+		var geometry, material, mesh, linesMesh;
+
+		var time = 0;
+		var tweenContainer = {};
+
+		var colors = [
+			[	//red
+				[219,	68,	55],
+				//[255,	23,	68],
+				//[255,	82,	82],
+				[233,	30,	99],
+				//[255,	64,	129],
+				//[245,	0,	87],
+				[156,	39,	176]//,
+				//[224,	64,	251],
+				//[213,	0,	249]
+			],
+			[	//green
+				[0,	150,	136],
+				//[100,	255,	218],
+				//[29,	233,	182],
+				[15,	157,	88],
+				//[105,	240,	174],
+				//[0,	230,	118],
+				[139,	195,	74],
+				//[178,	255,	89],
+				//[118,	255,	3],
+				[205,	220,	57]//,
+				//[238,	255,	65],
+				//[198,	255,	0]
+			],
+			[ 	//blue
+				[103,	58,	183],
+				//[124,	77,	255],
+				//[101,	31,	255],
+				[63,	81,	181],
+				//[83,	109,	254],
+				//[61,	90,	254],
+				[66,	133,	244],
+				//[68,	138,	255],
+				//[41,	121,	255],
+				[3,	169,	244],
+				//[64,	196,	255],
+				//[0,	176,	255],
+				[0,	188,	212]//,
+				//[24,	255,	255],
+				//[0,	229,	255]
+			],
+			[	//"yellow" : 
+				[255,	235,	59],
+				//[255,	255,	0],
+				//[255,	234,	0],
+				[244,	180,	0],
+				//[255,	205,	64],
+				//[255,	188,	0],
+				[255,	152,	0],
+				//[255,	171,	64],
+				//[255,	145,	0],
+				[255,	87,	34]//,
+				//[255,	110,	64],
+				//[255,	61,	0]
+			]
+		];
+
+		var aspect = window.innerWidth / window.innerHeight;
+
+		var scaleMult = 4;
+
+		var parX = 24;
+		var parY = 30;
+		var parZ = 40;
+		var space = 1/16 * scaleMult;
+
+		var particleCount = ((parX * parY) * parZ) * 4;
+
+		var translateArray = new Float32Array( particleCount * 3 );
+		
+		var velocityArray = new Float32Array (particleCount * 3 );
+
+		var targetArray = new Float32Array (particleCount * 3 );
+		
+		var modesArray = new Float32Array ( particleCount );
+
+		var scaleArray = new Float32Array( particleCount );
+		var colorsArray = new Float32Array( particleCount * 3 );
+		var stackArray = new Float32Array ( particleCount * 3 );
+
+		var a = 0, //These variables are generic and used by the positioning loops as needed
+			b = 0, 
+			c = 0, 
+			d = 0, 
+			e = 0,
+			i = 0, 
+			p = 0;
+
+		var perGroup = 0;
+
+		var xs, //temporary x value used for assignment in loops
+			yy, //temporary y value used for assignment in loops
+			zz, //temporary z value used for assignment in loops
+			ti; //counter for sub groups of particles
+
+		var scales, modes;
+
+
+		function init() {
+			
+
+
+			console.log("particleCound = " + particleCount);
+
+			if ( !Detector.webgl ) {
+
+				Detector.addGetWebGLMessage();
+				return false;
+
+			}
+
+			renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+			renderer.setClearColor( 0x000000, 0 );
+
+			if ( renderer.extensions.get( 'ANGLE_instanced_arrays' ) === false ) {
+				document.getElementById( "notSupported" ).style.display = "";
+				return false;
+			}
+
+			container = document.createElement( 'div' );
+			document.body.appendChild( container );
+
+			
+			camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 60000 );
+			// debug camera
+			// camera = new THREE.CombinedCamera( window.innerWidth / 2, window.innerHeight / 2, 20, 1, 60000, - 1250, 500);
+			//camera.toOrthographic();
+			camera.position.z = 1000;
+
+			scene = new THREE.Scene();
+
+			geometry = new THREE.InstancedBufferGeometry();
+			geometry.copy( new THREE.CircleBufferGeometry( 1, 6 ) );
+
+			geometry.addAttribute( "scale", new THREE.InstancedBufferAttribute( scaleArray, 1, 1 ).setDynamic( true ) );
+			geometry.addAttribute( "mode", new THREE.InstancedBufferAttribute( modesArray, 1, 1 ).setDynamic( true ));
+
+			scales = geometry.getAttribute( 'scale' );
+			scalesArray = scales.array;
+
+			modes = geometry.getAttribute ( 'mode' );
+			modesArray = modes.array; 
+
+			/*
+			 *	This loop created 4 groups of particles aranched into irregular cubes based on the parX, parY and parZ values 
+			 *	using space as the distance between each other.
+			 */
+			var yinc = 0;
+			var zinc = 0;
+			for ( i = 0, i3 = 0, l = particleCount; i < l; i ++, i3 += 3 ) {
+				scalesArray[ i ] = 10; //set initial scale
+				targetArray[i3 + 0] = 0;//Math.random() * 10 - 5;	//debug setting target to 0,0,0
+				targetArray[i3 + 1] = 0;//Math.random() * 10 - 5;
+				targetArray[i3 + 2] = 0;//Math.random() * 10 - 5;// - 400;
+				modesArray[ i ] = 1;
+
+				if( i / l < 0.25 ) {  //reds
+					if(i / l == 0){
+						yinc = 0;
+						zinc = 0;
+					}
+
+					a = Math.floor(Math.random() * colors[0].length);
+					colorsArray[ i3 + 0 ] = colors[0][a][0];
+					colorsArray[ i3 + 1 ] = colors[0][a][1];
+					colorsArray[ i3 + 2 ] = colors[0][a][2];
+					
+					xx = i%(parX);
+					yy = yinc;
+					if(xx === parX-1){
+						yinc++;
+					}
+					zz = zinc;
+					if(yy === parY-1 && xx == parX-1){
+						zinc++;
+					}
+					if(i % (parX*parY) === 0){
+						yinc = 0;
+					}
+					
+					translateArray[ i3 + 0 ] = (-1 * space 	* parX*2) + xx * space;// - ((space * parX));
+					translateArray[ i3 + 1 ] = (space * yy) - (space*parY)*0.5;// - ((space * parY));
+					translateArray[ i3 + 2 ] = (space * zz) - (space*parZ)*0.5;// - ((space * parZ) * 0.5);
+					
+				} else if ( i / l < 0.5 ) {	//greens
+					if(i / l === 0.25){
+						yinc = 0;
+						zinc = 0;
+					}
+					a = Math.floor(Math.random() * colors[1].length);
+					colorsArray[ i3 + 0 ] = colors[1][a][0];
+					colorsArray[ i3 + 1 ] = colors[1][a][1];
+					colorsArray[ i3 + 2 ] = colors[1][a][2];
+
+					ti = i - (l * 0.25);
+
+					xx = ti%(parX);
+					yy = yinc;
+					if(xx === parX-1){
+						yinc++;
+					}
+					zz = zinc;
+					if(yy === parY-1 && xx == parX-1){
+						zinc++;
+					}
+					if(ti % (parX*parY) === 0){
+						yinc = 0;
+					}
+
+					translateArray[ i3 + 0 ] = (-1 * space * parX) + (xx) * space;
+					translateArray[ i3 + 1 ] = (space * yy) - (space*parY)*0.5;
+					translateArray[ i3 + 2 ] = (space * zz) - (space*parZ)*0.5;
+
+				} else if (i / l < 0.75 ) {	//blue
+					if(i / l === 0.5){
+						yinc = 0;
+						zinc = 0;
+					}
+					a = Math.floor(Math.random() * colors[2].length);
+					colorsArray[ i3 + 0 ] = colors[2][a][0];
+					colorsArray[ i3 + 1 ] = colors[2][a][1];
+					colorsArray[ i3 + 2 ] = colors[2][a][2];
+
+					ti = i - (l * 0.5);
+
+					xx = ti%(parX);
+					yy = yinc;
+					if(xx === parX-1){
+						yinc++;
+					}
+					zz = zinc;
+					if(yy === parY-1 && xx == parX-1){
+						zinc++;
+					}
+					if(ti % (parX*parY) === 0){
+						yinc = 0;
+					}
+					translateArray[ i3 + 0 ] = (xx) * space;
+					translateArray[ i3 + 1 ] = (space * yy) - (space*parY)*0.5;
+					translateArray[ i3 + 2 ] = (space * zz) - (space*parZ)*0.5;
+
+				} else {	//yellow
+					if(i / l === 0.75){
+						yinc = 0;
+						zinc = 0;
+					}
+					a = Math.floor(Math.random() * colors[3].length);
+					colorsArray[ i3 + 0 ] = colors[3][a][0];
+					colorsArray[ i3 + 1 ] = colors[3][a][1];
+					colorsArray[ i3 + 2 ] = colors[3][a][2];
+
+					ti = i - (l * 0.75);
+
+					xx = ti%(parX);
+					yy = yinc;
+					if(xx === parX-1){
+						yinc++;
+					}
+					zz = zinc;
+					if(yy === parY-1 && xx == parX-1){
+						zinc++;
+					}
+					if(ti % (parX*parY) === 0){
+						yinc = 0;
+					}
+					translateArray[ i3 + 0 ] = (space * parX) + (xx) * space;
+					translateArray[ i3 + 1 ] = (space * yy) - (space*parY)*0.5;
+					translateArray[ i3 + 2 ] = (space * zz) - (space*parZ)*0.5;
+				}
+				stackArray [ i3 + 0 ] = translateArray[ i3 + 0 ];
+				stackArray [ i3 + 1 ] = translateArray[ i3 + 1 ];
+				stackArray [ i3 + 2 ] = translateArray[ i3 + 2 ];
+			}
+			//push positioning from above to buffer memroy with label 'stack'
+			geometry.addAttribute( "stack", new THREE.InstancedBufferAttribute( stackArray, 3, 1 ) );
+			geometry.addAttribute( "target", new THREE.InstancedBufferAttribute( targetArray, 3, 1 ).setDynamic( true ) );
+
+			geometry.addAttribute( "translate", new THREE.InstancedBufferAttribute( translateArray, 3, 1 ).setDynamic( true ) );
+			geometry.addAttribute( "velocity", new THREE.InstancedBufferAttribute( velocityArray, 3, 1 ));
+			geometry.addAttribute( "color", new THREE.InstancedBufferAttribute( colorsArray, 3, 1 ).setDynamic( true ) );
+
+
+
+			material = new THREE.RawShaderMaterial( {
+				uniforms: {
+					map: { type: "t", value: THREE.ImageUtils.loadTexture( "textures/sprites/smallCircle.png" ) },
+					time: { type: "f", value: 0.0},
+					mode: { type: "f", value: 0.0}
+				},
+				vertexShader: document.getElementById( 'vshader' ).textContent,
+				fragmentShader: document.getElementById( 'fshader' ).textContent,
+				depthTest: true,
+				depthWrite: true
+			} );
+
+						
+			mesh = new THREE.Mesh( geometry, material );
+			mesh.scale.set( 500, 500, 500 );
+			scene.add( mesh );
+
+			
+			renderer.setPixelRatio( window.devicePixelRatio );
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			container.appendChild( renderer.domElement );
+
+			//
+
+			stats = new Stats();
+			stats.domElement.style.position = 'absolute';
+			stats.domElement.style.top = '0px';
+			container.appendChild( stats.domElement );
+
+			window.addEventListener( 'resize', onWindowResize, false );
+
+			return true;
+
+		}
+
+		function onWindowResize( event ) {
+
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectionMatrix();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+
+		}
+
+
+		function animate() {
+
+			requestAnimationFrame( animate );
+
+			render();
+			stats.update();
+
+		}
+
+		function render() {
+
+			time = performance.now() * 0.0005;
+
+			//material.uniforms[ 'time' ].value = time;//.00025 * ( Date.now() - start );
+			//debug camera rotations
+			//mesh.rotation.x = Math.PI * 0.5;//time * 0.2;
+			//mesh.rotation.x = time * 0.2;//0.2;
+			//mesh.rotation.y = Math.PI * 0.5// + time * 0.1;
+			mesh.rotation.y = time * 0.2;//0.4;
+
+			var translates = geometry.getAttribute( 'translate' );
+			var translatesArray = translates.array;
+
+			var scales = geometry.getAttribute( 'scale' );
+			var scalesArray = scales.array;
+
+			var colors = geometry.getAttribute( 'color' );
+			var colorsArray = colors.array;
+
+			var color = new THREE.Color( 0xffffff );
+
+			
+			for ( var i = 0, i3 = 0, l = scalesArray.length; i < l; i ++, i3 += 3 ) {
+
+				//var x = translatesArray[ i3 + 0 ] = translatesArray[ i3 + 0 ];// + Math.random()*2 - 1;// + time;
+				//var y = translatesArray[ i3 + 1 ] = translatesArray[ i3 + 1 ];// + Math.random()*2 - 1;// + time;
+				//var z = translatesArray[ i3 + 2 ] = translatesArray[ i3 + 2 ];// + Math.random()*2 - 1;// + time;
+
+
+				//var scale = Math.sin( x * 2.1 ) + Math.sin( y * 3.2 ) + Math.sin( z * 4.3 );
+
+				//scalesArray[ i ] = 5;//scale * 10 + 4;
+				//color.setHSL( scale / 5, 1, 0.5 );
+			}
+			
+			scales.needsUpdate = true;
+			colors.needsUpdate = true;
+
+			renderer.render( scene, camera );
+
+		}
+
+		function initInteractions() {
+			var bt1 = document.body.querySelector('.js-trigger1');
+			bt1.addEventListener('click', trigger1);
+
+			var bt2 = document.body.querySelector('.js-trigger2');
+			bt2.addEventListener('click', trigger2);
+
+		}
+
+		function trigger1(event) {
+			var targets = geometry.getAttribute( 'target' );
+			
+			for (var i = 0, i3 = 0, l = particleCount; i < l; i ++, i3 += 3 ) {
+				targetArray[i3 + 0] = Math.random() * 10 - 5;
+				targetArray[i3 + 1] = Math.random() * 10 - 5;
+				targetArray[i3 + 2] = Math.random() * 25 - 12.5;
+			}
+			
+			targets.needsUpdate = true;
+			tweenContainer.time = 0;
+			TweenMax.to(tweenContainer, 10, {time: 1, onUpdate: updateTime, onComplete: updateTranslates, ease: Power2.easeOut});
+			material.uniforms[ 'mode' ].value = 1.0;
+		}
+
+		function trigger2(event) {
+			console.log("trigger2");
+			var targets = geometry.getAttribute( 'target' );
+			var stack = geometry.getAttribute( 'stack' );
+			stackArray = stack.array;
+			
+			for (var i = 0, i3 = 0, l = particleCount; i < l; i ++, i3 += 3 ) {
+				targetArray[i3 + 0] = stackArray[i3 + 0];
+				targetArray[i3 + 1] = stackArray[i3 + 1];
+				targetArray[i3 + 2] = stackArray[i3 + 2];
+			}
+			
+			targets.needsUpdate = true;
+			tweenContainer.time = 0;
+			TweenMax.to(tweenContainer, 10, {time: 1, onUpdate: updateTime, onComplete: updateTranslates, ease: Power2.easeOut});
+			material.uniforms[ 'mode' ].value = 1.0;
+		}
+
+		function updateTime(event) {
+			//time = tweenContainer.time;
+			material.uniforms[ 'time' ].value = tweenContainer.time;
+			//console.log("time : " + material.uniforms[ 'time' ].value);
+		}
+
+		function updateTranslates(event) {
+			
+			
+			for (i = 0, i3 = 0, l = particleCount; i < l; i ++, i3 += 3 ) {
+				translateArray[ i3 + 0 ] = targetArray[ i3 + 0 ];
+				translateArray[ i3 + 1 ] = targetArray[ i3 + 1 ];
+				translateArray[ i3 + 2 ] = targetArray[ i3 + 2 ];
+				//console.log("transArray: " + transArray[i3 + 0] + ", "  + transArray[i3 + 1] + ", "  + transArray[i3 + 2])
+			}
+			//console.log(transArray);
+			var translates = geometry.getAttribute( 'translate' );
+			//trans.array = transArray;
+			translates.needsUpdate = true;
+
+			material.uniforms[ 'mode' ].value = 0.0;
+		}
+
+		function processColors() {
+			colors.forEach(function(color) {
+				color.forEach(function(col) {
+					col.forEach(function(er, index) {
+						col[index] = er/255;
+					});
+				});	
+			});
+		}
+
+		processColors();
+		initInteractions();
+
+		if ( init() ) {
+
+			animate();
+
+		}
+	</script>
+
+
+</body>
+</html>

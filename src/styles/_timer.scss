@@ -1,0 +1,86 @@
+@keyframes fadeInScale {
+  0% {
+    opacity: 1;
+    margin-left: -5vw;
+    margin-top: -5vw;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.1;
+    margin-left: -5vw;
+    margin-top: -5vw;
+    transform: scale(0.6);
+  }
+}
+
+
+.timer {
+  animation: none;
+  border-radius: 100%;
+  box-shadow: 0 0 0 13px $true_blue;
+  height: 10vw;
+  opacity: 0;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  bottom: 100px;
+  width: 10vw;
+  transform: translateX(-50%);
+  transition: box-shadow 1s ease, opacity 1s ease;
+  z-index: 3;
+  &.is-almost-out {
+    box-shadow: 0 0 0 13px $bright-sun;
+  }
+
+  &__number {
+    color: white;
+    font-size: 5vw;
+    font-weight: 100;
+    left: 0;
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+    text-align: center;
+    top: 50%;
+    width: 100%;
+  }
+
+  &.is-counter {
+    animation: none;
+    box-shadow: none;
+    bottom: auto;
+    left: 50%;
+    top: $padding;
+    transform: translateX(-50%);
+    font-size: 1.5vw;
+    height: auto;
+    width: 100%;
+    text-align: center;
+    &:after {
+      color: white;
+      content: 's';
+      margin-left: -8px;
+    }
+    .timer__digit {
+      font-weight: 400;
+    }
+    .timer__number {
+      font-size: 1.5vw;
+      position: static;
+    }
+    &.active {
+      animation: none;
+    }
+  }
+
+  &.active {
+    animation: fadeInScale 1s infinite;
+    opacity: 1;
+  }
+
+  &.hidden {
+    animation: none;
+    opacity: 0;
+  }
+
+}

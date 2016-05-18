@@ -1,0 +1,30 @@
+.player-scores {
+  color: white;
+  &__container {
+    bottom: $padding;
+    font-size: 3vw;
+    font-weight: 200;
+    left: $padding;
+    position: absolute;
+    width: 40%;
+  }
+  &__container--two {
+    left: auto;
+    right: $padding;
+    text-align: right;
+    &:before {
+      left: auto;
+      right: -20px;
+    }
+  }
+  &__heading {
+    @include small-heading($margin: 0 0 20px 0);
+    font-weight: 400;
+    color: white;
+  }
+  &__score {
+    color: white;
+    font-size: 2.5vw;
+    font-weight: 200;
+  }
+}

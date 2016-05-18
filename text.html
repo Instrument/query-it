@@ -1,0 +1,164 @@
+<html>
+  <head>
+      <meta charset="utf-8">
+  </head>
+  <body>
+
+  	<script>
+  		function handleWorkerMessage(event) {
+  			console.log("message");
+  		}
+  		var SIZE = 24 * 30 * 40 * 3;
+  		var arrayBuffer = new ArrayBuffer(SIZE);
+	  	var uInt8View = new Float32Array(arrayBuffer);
+	  	var ctr = 0;
+	  	for(var i = 0, i3=0; i<uInt8View.length; i++, i3++){
+	  		uInt8View[i3 + 0] = i3 + 0;
+	  		uInt8View[i3 + 1] = i3 + 1;
+	  		uInt8View[i3 + 2] = i3 + 2;
+	  	}
+
+  		function init() {
+  			var worker = new Worker("src/scripts/visuals-worker-test.js");
+
+	  		worker.onmessage = function(e) {
+				ctr++
+				//console.log(ctr);
+				if(ctr < 10){
+					var data = e.data;
+				    console.dir(e.data);
+				    console.log("data.type : " + data.buff);
+				    console.log("going to post the buffer");
+
+				    var temp = new Float32Array(data.buff);
+				    //console.log("temp : ");
+				    console.dir(temp);
+				    /*
+				    if (data.type && data.type == 'debug') {
+				      log(data.msg);
+				    } else {
+				      var rate = Math.round(toMB(data.byteLength) / elapsed);
+				      log(source() + 'postMessage roundtrip took: ' + (elapsed * 1000) + ' ms');
+				      log(source() + 'postMessage roundtrip rate: ' + rate + ' MB/s');
+				    }
+				    */	
+				}
+			    
+			  };
+
+	      	//w.addEventListener('message', this.handleWorkerMessage);
+
+	      	worker.postMessage({trans: uInt8View.buffer}, [uInt8View.buffer]);
+			
+			//setInterval(test, 100);
+
+  		}
+
+  		
+
+      	window.addEventListener('load', function(e) {
+		  init();
+		}, false);
+
+		function test(e) {
+			//	worker.postMessage({trans: uInt8View.buffer}, [uInt8View.buffer]);
+			//console.log(uInt8View);
+		}
+  	</script>
+  </body>
+</html>
+
+
+
+<!--
+	
+var worker = null;
+var startTime = 0;
+var supported = false;
+
+// Move output panel down further if <details> isn't supported (collapsible).
+var details = document.querySelector('details');
+if (!('open' in details)) {
+  document.querySelector('section').classList.add('down');
+}
+
+function log(str) {
+  var elem = document.getElementById('result');
+  var log = function(s) {
+   elem.innerHTML += ''.concat(time(), ' ', s, '\n');
+  };
+  log(str);
+}
+
+function init() {
+  worker = new Worker('transferrable.js');
+
+  worker.onmessage = function(e) {
+    console.timeEnd('actual postMessage round trip was');
+    // capture elapsed time since the original postMessage();
+    if (!e.data.type) {
+      var elapsed = seconds(startTime);
+    }
+
+    var data = e.data;
+
+    if (data.type && data.type == 'debug') {
+      log(data.msg);
+    } else {
+      var rate = Math.round(toMB(data.byteLength) / elapsed);
+      log(source() + 'postMessage roundtrip took: ' + (elapsed * 1000) + ' ms');
+      log(source() + 'postMessage roundtrip rate: ' + rate + ' MB/s');
+    }
+  };
+
+  // To feature detect: send a small ArrayBuffer. If transferable objects are
+  // supported, the ArrayBuffer will be neutered (cleared out) after sent.
+  if (USE_TRANSFERRABLE) {
+    var ab = new ArrayBuffer(1);
+    try {
+      worker.postMessage(ab, [ab]);
+      if (ab.byteLength) {
+        alert('Transferables are not supported in your browser!');
+        log(source() + 'USING STRUCTURED CLONE (copy) :(');
+      } else {
+        log(source() + 'USING TRANSFERABLE OBJECTS :)');
+        supported = true;
+      }
+    } catch(e) {
+      alert('Transferables are not supported in your browser!');
+    }
+  } else {
+    worker.postMessage(ab); // send anyway to init worker.
+    log(source() + 'USING STRUCTURED CLONE (copy) :(');
+  }
+
+  log(source() + 'READY!');
+}
+
+function test() {
+
+  setupArray(); // Need to do this on every run for the repeated runs with transferable arrays. They're cleared out after they're transferred.
+
+  startTime = new Date();
+  console.time('actual postMessage round trip was');
+
+  if (USE_TRANSFERRABLE && supported) {
+    // Note: clears the uInt8View and it's underlying ArrayBuffer, transfering it
+    // out of this view, to the worker.
+    // Passing multiple transferables:
+    //   worker.postMessage({view1: int8View, buffer2: anotherBuffer}, [int8View.buffer, anotherBuffer]);
+    //   window.postMessage(arrayBuffer, targetOrigin, [arrayBuffer]);
+    worker.postMessage(uInt8View.buffer, [uInt8View.buffer]);
+  } else {
+    worker.postMessage(uInt8View.buffer);
+  }
+}
+
+window.addEventListener('load', function(e) {
+  init();
+}, false);
+
+
+
+
+-->

@@ -1,0 +1,8 @@
+.DS_Store
+node_modules
+dist
+npm-debug.log
+serve
+cert
+deploy/.vagrant
+.*.swp

@@ -1,0 +1,57 @@
+.sequel {
+  color: $platinum;
+  font-size: 1vw;
+  position: absolute;
+  left: 0;
+  padding: 0 $padding;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  &__sql {
+    font-family: 'Roboto Mono';
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  &__header {
+    animation: pulse 1.5s infinite;
+    color: white;
+    font-size: 1.5vw;
+    font-weight: 100;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: $padding;
+    width: 100%;
+  }
+  &__container {
+    float: left;
+    max-height: 70vh;
+    opacity: 0;
+    overflow: hidden;
+    overflow-y: hidden;
+    padding: 0 2%;
+    width: 30%;
+    word-wrap: break-word;
+    font-family: 'Roboto Mono';
+    white-space: pre;
+    transition: opacity 400ms linear 600ms;
+    &.is-visible {
+      opacity: 1;
+    }
+  }
+  &__container--one {
+    padding-left: 0;
+  }
+  &__container--two {
+    float: right;
+    padding-right: 0;
+  }
+  &__user-input {
+    color: $crayola;
+    .hljs-string,
+    .hljs-keyword {
+      color: $crayola;
+      font-weight: normal;
+    }
+  }
+}

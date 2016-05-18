@@ -1,0 +1,953 @@
+{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language has the most +1's in their commits?",
+    "rowIndex": 236,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which country received the most attention for its humanitarian aid?",
+    "rowIndex": 12,
+    "params": {
+        "codes": "('070', '071', '072', '073')"
+    },
+    "errors": {}
+}{
+    "question": "Which country was mentioned in news media the most with the United States?",
+    "rowIndex": 20,
+    "params": {
+        "country": "United States",
+        "year": 2015
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which country received the most attention for its humanitarian aid?",
+    "rowIndex": 12,
+    "params": {
+        "codes": "('070', '071', '072', '073')"
+    },
+    "errors": {}
+}{
+    "question": "Which country was mentioned in news media the most with the United States?",
+    "rowIndex": 20,
+    "params": {
+        "country": "United States",
+        "year": 2015
+    },
+    "errors": {}
+}{
+    "question": "Which language laughs out loud the most?",
+    "rowIndex": 220,
+    "params": {
+        "regex": "(?i)\\b(lol)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language drops the f bomb the most?",
+    "rowIndex": 229,
+    "params": {
+        "regex": "(?i)\\b(fuck)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language talks the most about typos?",
+    "rowIndex": 237,
+    "params": {
+        "regex": "(?i)\\b(typo|typos)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language gives the most thumbs up?",
+    "rowIndex": 241,
+    "params": {
+        "regex": "(?i)\\b(👍)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which programming language winks the most?",
+    "rowIndex": 250,
+    "params": {
+        "regex": "(?i)\\b(😉)\\b",
+        "per": 1000,
+        "min_commits": 50000
+    },
+    "errors": {}
+}{
+    "question": "Which language has the most ¯\\_(ツ)_/¯ ?",
+    "rowIndex": 222,
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language has the most ¯\\_(ツ)_/¯ ?",
+    "rowIndex": 222,
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which language has the most ¯\\_(ツ)_/¯ ?",
+    "rowIndex": 222,
+    "errors": {}
+}{
+    "question": "Which language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which programming language uses, ¯\\_(ツ)_/¯, the most?",
+    "rowIndex": 222,
+    "errors": {}
+}{
+    "question": "Which programming language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which programming language uses, ¯\\_(ツ)_/¯, the most?",
+    "rowIndex": 222,
+    "errors": {}
+}{
+    "question": "Which programming language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}{
+    "question": "Which programming language uses, ¯\\_(ツ)_/¯, the most?",
+    "rowIndex": 222,
+    "errors": {}
+}{
+    "question": "Which programming language says \"don't know\" the most?",
+    "rowIndex": 230,
+    "errors": {}
+}

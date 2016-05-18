@@ -1,0 +1,26 @@
+.intro {
+  color: white;
+  letter-spacing: 0.08em;
+
+  &__heading {
+    font-size: 15.5vw;
+    font-weight: 300;
+    margin-bottom: 40px;
+  }
+
+  &__copy-container {
+    font-weight: 200;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    @include vertically-center;
+  }
+
+  &__description {
+    font-size: 2.5vw;
+    line-height: 3.5vw;
+    font-weight: 100;
+    width: 55%;
+    margin: 0 auto;
+  }
+}

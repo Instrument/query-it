@@ -1,0 +1,1934 @@
+top,question,rowIndex
+"1. VimL - 1.3683470025050617 
+2. Emacs Lisp - 1.36659288644956 
+3. ActionScript - 1.1540633333470722 
+4. Haskell - 0.822435923228584 
+5. Lua - 0.7791170117712977 
+6. Rust - 0.7431195095411237 
+7. Prolog - 0.6849445385186171 
+8. Julia - 0.665513110608279 
+9. C - 0.643897128621242 
+10. Assembly - 0.6436404302736276 
+",Which programming language has the angriest developers?,41
+"1. Lua - 0.9133903691191171 
+2. Visual Basic - 0.8516327539788648 
+3. Logos - 0.7398358596720634 
+4. ASP - 0.604182502095149 
+5. VHDL - 0.6038875259482921 
+6. C# - 0.5537934098584227 
+7. Racket - 0.5523075679607727 
+8. ActionScript - 0.5523017381018132 
+9. null - 0.543060331640145 
+10. Assembly - 0.5390488603541631 
+",Which programming language has the funniest developers?,43
+"1. Common Lisp - 1.592770498537166 
+2. Lua - 1.3924644465699787 
+3. C - 1.0131392320322372 
+4. D - 0.9878882197712971 
+5. Racket - 0.9429641404208314 
+6. Assembly - 0.9332786238967601 
+7. OCaml - 0.9257088585528886 
+8. Haskell - 0.8852050054319398 
+9. Clojure - 0.8831783954938276 
+10. Prolog - 0.8752069103293442 
+",Which programming language has the most brash developers?,45
+"1. D - 1.6780567020772719 
+2. Common Lisp - 0.2682560839641543 
+3. Logos - 0.15484936597787374 
+4. Emacs Lisp - 0.15324798842266743 
+5. Prolog - 0.13318366026750889 
+6. ASP - 0.11693854879260948 
+7. Scheme - 0.09711943748421809 
+8. Racket - 0.09429641404208314 
+9. Visual Basic - 0.07325873152506364 
+10. Processing - 0.06697654481400614 
+",Which programming language had the most !'s in its commit messages?,56
+"1. Java - 7.855307488416427 
+2. C - 5.791108550275308 
+3. Logos - 5.471344264551539 
+4. Haxe - 4.669721733372828 
+5. Rust - 4.081849305979458 
+6. Assembly - 3.7894330332359827 
+7. Delphi - 3.748454759341229 
+8. C++ - 3.703491279020774 
+9. Objective-C - 3.0056325082533895 
+10. Groovy - 2.950961867992224 
+",Which programming language mentions Android the most?,51
+"1. VHDL - 0.7548594074353652 
+2. Delphi - 0.7177892092355544 
+3. Objective-C - 0.6425100073042775 
+4. Rust - 0.5467236391623982 
+5. Logos - 0.5161645532595791 
+6. Processing - 0.46883581369804295 
+7. Assembly - 0.46663931194838004 
+8. OCaml - 0.4448211398241153 
+9. Puppet - 0.4367725008033494 
+10. Lua - 0.4326585958985291 
+",Which programming language has the most :( in its commit messages?,39
+"1. TypeScript - 0.1146519766546737 
+2. XSLT - 0.11331211306488663 
+3. Lua - 0.08785787579548676 
+4. PowerShell - 0.0765557565144164 
+5. ASP - 0.06821415346235553 
+6. Delphi - 0.059815767436296206 
+7. Processing - 0.05358123585120491 
+8. Emacs Lisp - 0.05213591358709305 
+9. Scheme - 0.04855971874210904 
+10. Visual Basic - 0.04578670720316478 
+",Which programming language has developers who say newbie or noob the most?,44
+"1. Scheme - 0.1262552687294835 
+2. Prolog - 0.0951311859053635 
+3. Racket - 0.09429641404208314 
+4. Rust - 0.07961994745083469 
+5. Haskell - 0.07886371866575463 
+6. Common Lisp - 0.06706402099103857 
+7. OCaml - 0.06612206132520633 
+8. Emacs Lisp - 0.060035294433622294 
+9. Tcl - 0.058263740532142165 
+10. Arduino - 0.053622896977009185 
+",Which programming language’s developers were the most surprised in their commit messages?
+,47
+"1. Pascal - 1.9103760711751543 
+2. Visual Basic - 1.7032655079577297 
+3. Logos - 1.6861375406479586 
+4. Delphi - 1.5352713641982694 
+5. Lua - 1.5300531954572505 
+6. Arduino - 1.501441115356257 
+7. Haxe - 1.4462197905594953 
+8. C# - 1.4402828606339584 
+9. F# - 1.3252018228286297 
+10. Swift - 1.3092387465761683 
+",Which programming language has the most :) in its commit messages?,40
+"1. Lua - 4.056381548519926 
+2. ActionScript - 3.7012459762345387 
+3. Logos - 3.5443299323824435 
+4. VHDL - 3.4723532742026797 
+5. ASP - 3.400962794051726 
+6. Processing - 3.0139445166302763 
+7. Assembly - 3.009019011529209 
+8. C# - 2.6021690341884933 
+9. Common Lisp - 2.4226877583012683 
+10. C - 2.236015028770481 
+",Which programming language has the most swear words in its commit messages?,37
+"1. Assembly - 2.2929690328497982 
+2. Dart - 1.6831159675713783 
+3. Rust - 1.2526871732264657 
+4. Lua - 1.1852524753542082 
+5. Common Lisp - 1.0897903411043768 
+6. Visual Basic - 1.0805662899946888 
+7. Objective-C - 1.058565208993364 
+8. Processing - 1.0180434811728933 
+9. PHP - 0.9719433189762221 
+10. D - 0.9405237160836322 
+",Which programming language has the happiest developers?,46
+"1. Iowa - 9.56037928062064 
+2. Montana - 8.917775090689238 
+3. Connecticut - 8.279112445779113 
+4. West Virginia - 8.15024805102764 
+5. New Jersey - 7.185811843848741 
+6. Rhode Island - 7.115267330758284 
+7. Indiana - 6.864240575288734 
+8. North Dakota - 6.4065230052417 
+9. New York - 6.305170239596469 
+10. Alaska - 6.179913235655235 
+",In the past year, which state's subreddit talked about pizza the most?,64
+"1. Vermont - 1677.5814120391137 
+2. Pennsylvania - 1629.6172488718034 
+3. Montana - 1375.453446191052 
+4. Delaware - 1352.9384131159864 
+5. New Hampshire - 1293.3319198558254 
+6. Rhode Island - 1290.9127871518601 
+7. West Virginia - 1187.1013465627216 
+8. Utah - 1184.1427835936158 
+9. Wyoming - 1113.2315521628498 
+10. Oregon - 1095.344784665173 
+",In the past year, which state's subreddit talked about beer the most?
+,61
+"1. Wisconsin - 9.486091466289485 
+2. Kentucky - 8.200508200508201 
+3. Louisiana - 7.689110556940981 
+4. Kansas - 7.06635751352545 
+5. South Dakota - 6.271379703534778 
+6. West Virginia - 6.024096385542169 
+7. Nevada - 5.291005291005291 
+8. Arkansas - 5.221932114882507 
+9. Texas - 5.077644162484614 
+10. Illinois - 4.672057502246181 
+",In the past year, which state's subreddit mentioned Obama the most?,63
+"1. Iowa - 4.310007052738814 
+2. Wisconsin - 3.4134842055634134 
+3. Oklahoma - 3.0924128011506653 
+4. Alabama - 2.739331026528258 
+5. Michigan - 2.633479165781761 
+6. North Carolina - 2.6064597935965623 
+7. New York - 2.5220680958385877 
+8. New Hampshire - 2.332237888264603 
+9. Virginia - 2.2082018927444795 
+10. Kentucky - 2.079002079002079 
+",In the past year, which state's subreddit mentioned Donald Trump the most?,67
+"1. Florida - 3.0932993676932177 
+2. Rhode Island - 2.541166903842244 
+3. Delaware - 2.4428054681260862 
+4. North Dakota - 2.03843913803145 
+5. Alaska - 2.0054023082589834 
+6. Connecticut - 1.9394394394394394 
+7. Maine - 1.868105800023722 
+8. Hawaii - 1.8586676481413325 
+9. New Hampshire - 1.8551892293013887 
+10. Idaho - 1.7767249037607344 
+",In the past year, which state's subreddit talked about cats the most?,62
+"1. Texas - 85 
+2. California - 18 
+3. Florida - 12 
+4. New York - 12 
+5. Colorado - 10 
+6. Minnesota - 7 
+7. Oregon - 6 
+8. Ohio - 6 
+9. Kansas - 6 
+10. Michigan - 4 
+",Last month, which state was mentioned the most in /r/fitness?,82
+"1. Texas - 192 
+2. California - 186 
+3. Florida - 184 
+4. New York - 91 
+5. Michigan - 83 
+6. Washington - 62 
+7. Oregon - 48 
+8. Ohio - 46 
+9. Hawaii - 39 
+10. Colorado - 39 
+",Last month, which state was mentioned the most in /r/WTF?,81
+"1. Thailand - 52 
+2. Iceland - 50 
+3. New Zealand - 34 
+4. Australia - 33 
+5. Canada - 26 
+6. China - 23 
+7. Germany - 21 
+8. Slovenia - 20 
+9. Norway - 17 
+10. Japan - 14 
+",Last month, which country was mentioned the most in /r/EarthPorn?,102
+"1. Denver Broncos - 1066447 
+2. Carolina Panthers - 1006545 
+3. New England Patriots - 545585 
+4. Green Bay Packers - 387515 
+5. Oakland Raiders - 274199 
+6. Dallas Cowboys - 269918 
+7. Pittsburgh Steelers - 223064 
+8. New York Giants - 217651 
+9. Seattle Seahawks - 206425 
+10. Chicago Bears - 194335 
+",Last month, which football team had the most popular page?,115
+"1. Texas - 504 
+2. Florida - 358 
+3. California - 324 
+4. New York - 243 
+5. Washington - 178 
+6. Oregon - 145 
+7. Michigan - 140 
+8. Indiana - 128 
+9. Ohio - 111 
+10. Minnesota - 104 
+",Last month, which state was mentioned the most in /r/funny?,79
+"1. California - 6886707 
+2. New York - 1703670 
+3. New Hampshire - 808320 
+4. Alaska - 729805 
+5. Minnesota - 711434 
+6. Iowa - 692729 
+7. New Jersey - 592901 
+8. Texas - 552295 
+9. Hawaii - 488101 
+10. Rhode Island - 463246 
+",Last month, which U.S. state had the most popular page?,120
+"1. The Beatles - 2256389 
+2. One Direction - 2044983 
+3. Coldplay - 1870095 
+4. The Rolling Stones - 1762732 
+5. Pink Floyd - 1596983 
+6. Metallica - 1443771 
+7. Led Zeppelin - 1278119 
+8. System of a Down - 1230262 
+9. Linkin Park - 1174451 
+10. Black Sabbath - 1170554 
+",Last month, what band had the most popular page?,118
+"1. Germany - 620 
+2. Russia - 291 
+3. Japan - 259 
+4. France - 246 
+5. England - 210 
+6. China - 194 
+7. Poland - 156 
+8. India - 131 
+9. Canada - 120 
+10. Italy - 110 
+",Last month, which country was mentioned the most in /r/history?,105
+"1. Arizona - 2298 
+2. Minnesota - 1360 
+3. Washington - 1227 
+4. Kansas - 824 
+5. Texas - 660 
+6. Montana - 658 
+7. New York - 576 
+8. California - 461 
+9. Florida - 439 
+10. Ohio - 420 
+",Last month, which state was mentioned the most in /r/NFL?,80
+"1. Java - 7984335 
+2. HTML - 1589414 
+3. JavaScript - 1169556 
+4. XML - 1105108 
+5. PHP - 1101632 
+6. SQL - 814139 
+7. JSON - 698607 
+8. Cascading Style Sheets - 628238 
+9. Visual Basic - 603941 
+10. MATLAB - 570391 
+",Last month, which programming language had the most popular page?,124
+"1. Seattle - 21.764792859965045 
+2. Los Angeles - 20.943960753659127 
+3. Pittsburgh - 18.979833926453143 
+4. Austin - 16.44241796973342 
+5. San Diego - 15.55156643243097 
+6. Houston - 15.143093072348192 
+7. Washington, D.C. - 14.08579196088091 
+8. Dallas - 13.211718756018458 
+9. Portland - 12.25187076835084 
+10. Philadelphia - 10.989141469612145 
+",Last year, which city's subreddit discussed traffic the most?,153
+"1. Rhode Island - 10.571254319983737 
+2. South Dakota - 5.701254275940707 
+3. Maine - 5.159530304827423 
+4. Wyoming - 5.089058524173028 
+5. Louisiana - 4.467996674979219 
+6. Massachusetts - 3.7809647979139505 
+7. Hawaii - 3.625322046374678 
+8. New Jersey - 3.287126694526552 
+9. Mississippi - 3.0526583566522514 
+10. Alaska - 3.0285667512482606 
+",In the last year, which state's subreddit mentioned coffee the most?,152
+"1. Texas - 84 
+2. Florida - 49 
+3. California - 42 
+4. New York - 42 
+5. Maryland - 32 
+6. Alabama - 26 
+7. Louisiana - 24 
+8. South Carolina - 20 
+9. Hawaii - 20 
+10. Wisconsin - 13 
+",Last month, which state was mentioned the most in /r/food?,155
+"1. Back to the Future - 432042 
+2. Blade Runner - 410669 
+3. Full Metal Jacket - 375184 
+4. Indiana Jones and the Raiders of the Lost Ark - 316558 
+5. Dead Poets Society - 275621 
+6. Star Wars Episode VI: Return of the Jedi - 268111 
+7. Rocky IV - 219725 
+8. Rocky III - 218928 
+9. Rain Man - 218567 
+10. My Neighbor Totoro - 211738 
+",Last month, which '80s film had the most popular page?,126
+"1. Himalayas - 236251 
+2. Rocky Mountains - 197776 
+3. Auckland volcanic field - 176556 
+4. Alps - 126279 
+5. Andes - 103723 
+6. Appalachian Mountains - 84645 
+7. Black Forest - 76504 
+8. Black Hills - 66306 
+9. Hawaiian Islands - 65262 
+10. Lake District - 63544 
+",Last month, which mountain range had the most popular page?,130
+"1. Barack Obama - 10884653 
+2. Abraham Lincoln - 2355984 
+3. Ronald Reagan - 2247486 
+4. Bill Clinton - 1998167 
+5. George Washington - 1776968 
+6. Thomas Jefferson - 1293248 
+7. Theodore Roosevelt - 1265620 
+8. Richard Nixon - 1150756 
+9. Jimmy Carter - 1016716 
+10. Andrew Jackson - 886389 
+",Last month, which U.S. President had the most popular page?,141
+"1. Illinois - 17.969451931716083 
+2. Texas - 17.754000568128017 
+3. Iowa - 15.67275291905023 
+4. Montana - 15.114873035066505 
+5. Minnesota - 8.223346079519757 
+6. Oklahoma - 3.595828838547285 
+7. Wisconsin - 1.8859028760018859 
+8. Hawaii - 1.840264998159735 
+9. New Jersey - 1.2740801141575782 
+10. Mississippi - 0 
+",Last month, which state's subreddit mentioned Velveeta the most?,159
+"1. Wyoming - 34.98727735368957 
+2. Utah - 30.890681311137808 
+3. West Virginia - 17.71793054571226 
+4. Nevada - 17.63668430335097 
+5. South Dakota - 17.10376282782212 
+6. Idaho - 14.806040864672786 
+7. Kentucky - 6.93000693000693 
+8. Oklahoma - 6.472491909385114 
+9. New Hampshire - 6.36064878617619 
+10. Iowa - 6.269101167620092 
+",Last year, which state's subreddit mentioned rock climbing the most?,168
+"1. Japan - 128 
+2. Turkey - 75 
+3. Canada - 64 
+4. Australia - 47 
+5. China - 46 
+6. England - 42 
+7. Mexico - 37 
+8. Germany - 31 
+9. Thailand - 23 
+10. Italy - 21 
+",Last month, which country was mentioned the most in /r/food?,156
+"1. Germany - 404 
+2. France - 302 
+3. England - 236 
+4. China - 224 
+5. Japan - 166 
+6. Russia - 160 
+7. Italy - 149 
+8. Spain - 129 
+9. India - 119 
+10. Soviet Union - 114 
+",Last month, which country was mentioned the most in /r/AskHistorians?,160
+"1. England - 2293 
+2. Germany - 932 
+3. Spain - 924 
+4. Italy - 664 
+5. France - 628 
+6. Brazil - 519 
+7. Argentina - 498 
+8. China - 375 
+9. Song - 346 
+10. Portugal - 341 
+",Last month, which country was mentioned the most in /r/soccer?,68
+"1. Germany - 1658 
+2. Canada - 1456 
+3. China - 1167 
+4. Mexico - 828 
+5. Iraq - 693 
+6. Iran - 663 
+7. Australia - 656 
+8. Israel - 647 
+9. Sweden - 576 
+10. India - 576 
+",Last month, which country was the most discussed in /r/news?,70
+"1. Canada - 225 
+2. Thailand - 220 
+3. Japan - 213 
+4. Mexico - 187 
+5. Italy - 157 
+6. Germany - 155 
+7. Vietnam - 147 
+8. Iceland - 136 
+9. India - 134 
+10. France - 132 
+",Last month, which country was discussed the most in /r/travel?,59
+"1. California - 106 
+2. New York - 100 
+3. Washington - 64 
+4. Texas - 52 
+5. Florida - 49 
+6. Colorado - 46 
+7. Hawaii - 43 
+8. Oregon - 38 
+9. Utah - 36 
+10. Georgia - 23 
+",Which state was mentioned the most in/r/travel last month?,100
+"1. Bernie Sanders - 5037 
+2. Donald Trump - 1693 
+3. Ted Cruz - 1398 
+4. Bill Clinton - 1252 
+5. Ron Paul - 872 
+6. Rand Paul - 847 
+7. Barack Obama - 415 
+8. Jeb Bush - 394 
+9. Elizabeth Warren - 393 
+10. Sarah Palin - 282 
+",Which politician was the most talked about in/r/politics last month?,93
+"1. University of Phoenix - 5 
+2. Drexel University - 2 
+3. McGill University - 1 
+4. Duke University - 1 
+5. Fordham University - 1 
+6. University of Edinburgh - 1 
+7. Harvard Business School - 1 
+8. University of Alabama - 1 
+9. Open University - 1 
+10. Michigan State University - 1 
+",Which university was mentioned the most in /r/personalfinance last month?,106
+"1. DESK - 14 
+2. AZ - 4 
+3. Feyenoord - 1 
+",Which soccer team was most talked about in /r/europe last month?,85
+"1. University of Chicago - 30 
+2. Liberty University - 22 
+3. York University - 20 
+4. New York University - 20 
+5. Duke University - 12 
+6. Quinnipiac University - 11 
+7. University of Arkansas - 10 
+8. University of Michigan - 10 
+9. American University - 9 
+10. Harvard Law School - 9 
+",Which university was most mentioned in/r/politics last month?,96
+"1. California - 1719 
+2. Oregon - 1404 
+3. Texas - 1175 
+4. Michigan - 1128 
+5. Florida - 709 
+6. Washington - 694 
+7. New York - 675 
+8. Colorado - 376 
+9. Nevada - 337 
+10. Arizona - 325 
+",Which state was mentioned the most in/r/news last month?,98
+"1. Goes - 5335 
+2. Flint - 2257 
+3. Chicago - 1783 
+4. Detroit - 1238 
+5. Waco - 612 
+6. Seattle - 319 
+7. Fresno - 310 
+8. St. Louis - 283 
+9. Boston - 274 
+10. Paris - 204 
+",Which U.S. city was mentioned the most in/r/news last month?,99
+"1. Wi-Fi - 1596932 
+2. Coca-Cola - 1418581 
+3. Marvel Comics - 1088245 
+4. Ubuntu - 687313 
+5. Star Trek - 609084 
+6. Xbox 360 - 582090 
+7. Macintosh - 567142 
+8. LEGO - 542117 
+9. Las Vegas - 540507 
+10. iPod - 520888 
+",What brand had the most popular page last month?,132
+"1. Idaho - 11.84483269173823 
+2. Utah - 8.58074480864939 
+3. Nebraska - 6.666666666666667 
+4. Montana - 4.534461910519951 
+5. Louisiana - 4.156275976724855 
+6. Maine - 4.151346222274937 
+7. Rhode Island - 4.0658670461475905 
+8. New Mexico - 3.597122302158273 
+9. Wyoming - 3.1806615776081424 
+10. New Hampshire - 3.180324393088095 
+",Which state's subreddit was the biggest knitting circle in the past year?,171
+"1. American football - 834544 
+2. Basketball - 680005 
+3. Tennis - 413847 
+4. Judo - 372670 
+5. Taekwondo - 359683 
+6. Football - 342280 
+7. Yoga - 305233 
+8. Volleyball - 293412 
+9. Baseball - 290377 
+10. Cricket - 283310 
+",Which sport had the most popular page last month?,121
+"1. Massachusetts - 32.59452411994785 
+2. Vermont - 30.501480218892976 
+3. Rhode Island - 30.494002846106934 
+4. South Dakota - 22.80501710376283 
+5. Delaware - 19.730351857941468 
+6. Connecticut - 18.143143143143142 
+7. Maine - 15.715810698612264 
+8. New Jersey - 14.142289267149119 
+9. Indiana - 11.440400958814557 
+10. Texas - 10.29732032951425 
+",Last year, which state's subreddit liked donuts more than any other?,172
+"1. Stanford University - 965503 
+2. Massachusetts Institute of Technology - 477796 
+3. Harvard University - 425836 
+4. University of Oxford - 265083 
+5. University of Cambridge - 233096 
+6. Yale University - 228351 
+7. University of Chicago - 202518 
+8. Columbia University - 198019 
+9. California Institute of Technology - 189944 
+10. Princeton University - 175346 
+",Which college or university had the most popular page last month?,128
+"1. Portland - 0.15051438290357297 
+2. London - 0.0878753926931611 
+3. Los Angeles - 0.0770140126996107 
+4. Melbourne - 0.03036993619276406 
+5. Austin - 0.027972810428263727 
+6. Houston - 0 
+7. Pittsburgh - 0 
+8. Washington, D.C. - 0 
+9. Dallas - 0 
+10. Seattle - 0 
+",Which city's subreddit mentioned Old Spice the most last year?,174
+"1. Nevada - 88.18342151675485 
+2. New Mexico - 43.16546762589928 
+3. North Dakota - 26.208503203261504 
+4. Idaho - 14.806040864672786 
+5. Arizona - 14.37917894888202 
+6. New Hampshire - 11.131135375808332 
+7. Pennsylvania - 10.028413839211098 
+8. Illinois - 8.984725965858042 
+9. Texas - 8.877000284064009 
+10. Tennessee - 8.748906386701663 
+",In which state's subreddit could you spot the most UFOs mentions last year?,175
+"1. Nebraska - 0 
+2. Vermont - 0 
+3. Delaware - 0 
+4. North Dakota - 0 
+5. New Mexico - 0 
+6. Missouri - 0 
+7. Maine - 0 
+8. West Virginia - 0 
+9. Indiana - 0 
+10. Alaska - 0 
+",Which state's subreddit mentioned artificial intelligence the most in the past year?,176
+"1. Houston - 0.16065237717322503 
+2. Los Angeles - 0.0885661146045523 
+3. Pittsburgh - 0.08212428141253764 
+4. Melbourne - 0.08199882772046296 
+5. Philadelphia - 0.07717927558344564 
+6. San Diego - 0.07216504144979569 
+7. Austin - 0.04195921564239559 
+8. Portland - 0.04013716877428612 
+9. London - 0.03954392671192249 
+10. Washington, D.C. - 0.030409740848188493 
+",Which city's subreddit mentioned insomnia the most in the last year?,178
+"1. Kanye West - 4669734 
+2. Lady Gaga - 3716296 
+3. David Bowie - 3504747 
+4. Michael Jackson - 2803479 
+5. Justin Bieber - 2680954 
+6. Taylor Swift - 2618925 
+7. Quentin Tarantino - 2504023 
+8. Brie Larson - 2342903 
+9. The Beatles - 2256389 
+10. Ronald Reagan - 2247486 
+",Which musican's page had the most views last month?,114
+"1. Rhode Island - 3.049400284610693 
+2. Alaska - 2.8648604403699762 
+3. California - 2.8165613809198087 
+4. Missouri - 2.741228070175439 
+5. Mississippi - 2.543881963876876 
+6. Hawaii - 2.208317997791682 
+7. Louisiana - 2.0781379883624274 
+8. Texas - 2.012120064387842 
+9. Delaware - 1.8790811293277587 
+10. New Jersey - 1.7837121598206096 
+",Which state's subreddit most mentioned calories in the last year?,181
+"1. Kansas - 3.3123550844650547 
+2. North Dakota - 2.9120559114735003 
+3. Indiana - 2.723904990193942 
+4. Mississippi - 2.543881963876876 
+5. Iowa - 2.350912937857535 
+6. Illinois - 1.7969451931716083 
+7. Connecticut - 1.668335001668335 
+8. Georgia - 1.658649859014762 
+9. Alaska - 1.6370631087828436 
+10. New Hampshire - 1.5901621965440476 
+",Which state's subreddit most mentioned Pizza Hut in the last year?,182
+"1. Alaska - 41.74510927396251 
+2. Hawaii - 36.06919396393081 
+3. Utah - 12.013042732109147 
+4. Washington - 11.531365313653136 
+5. New Jersey - 10.192640913260625 
+6. Oregon - 9.957679860592481 
+7. Idaho - 8.883624518803671 
+8. Maine - 7.116593523899893 
+9. Delaware - 7.046554234979095 
+10. Arizona - 6.470630526996908 
+",Which state's subreddit most mentioned Costco in the last year?,184
+"1. Washington - 184.50184501845018 
+2. California - 133.58548263791093 
+3. Oregon - 92.10853871048046 
+4. Hawaii - 84.83621641516379 
+5. Florida - 83.70104171405177 
+6. Nevada - 70.54673721340389 
+7. Alaska - 65.89179012850946 
+8. Maryland - 56.45423949625448 
+9. Arizona - 48.88920842619886 
+10. South Dakota - 45.61003420752566 
+",What state's subreddit most mentioned rain in the past year?,186
+"1. Oregon - 0.4978839930296241 
+2. Hawaii - 0.368052999631947 
+3. Texas - 0.11836000378752012 
+4. Wyoming - 0 
+5. Minnesota - 0 
+6. North Dakota - 0 
+7. Delaware - 0 
+8. Vermont - 0 
+9. Colorado - 0 
+10. Florida - 0 
+",Which state's subreddit most mentioned coconut water in the last year?,183
+"1. Illinois - 57.502246181491465 
+2. South Dakota - 51.31128848346636 
+3. North Dakota - 37.85672684915551 
+4. Oregon - 36.843415484192185 
+5. Kansas - 33.123550844650545 
+6. Wisconsin - 32.06034889203206 
+7. West Virginia - 30.120481927710845 
+8. Nebraska - 30 
+9. North Carolina - 22.190130675213975 
+10. Missouri - 21.92982456140351 
+",Which state's subreddit most mentioned unemployment in the last year?,185
+"1. Idaho - 112.52591057151318 
+2. Hawaii - 86.86050791313949 
+3. Wyoming - 76.33587786259542 
+4. Utah - 68.64595846919512 
+5. South Dakota - 68.41505131128848 
+6. Vermont - 67.28267695344039 
+7. Nebraska - 66.66666666666667 
+8. Iowa - 59.556461092390876 
+9. Delaware - 59.1910555738244 
+10. Colorado - 54.23138725227638 
+",Which state's subreddit most mentioned bikes in the last year?,187
+"1. Kentucky - 40.42504042504042 
+2. Louisiana - 34.28927680798005 
+3. Wisconsin - 31.87175860443187 
+4. Indiana - 30.50773589017215 
+5. Kansas - 29.81119576018549 
+6. Wyoming - 25.44529262086514 
+7. Colorado - 24.43760042849491 
+8. Tennessee - 24.059492563429572 
+9. Nevada - 17.63668430335097 
+10. South Dakota - 17.10376282782212 
+",Which state's subreddit most mentioned the Affordable Care Act in the last year?,189
+"1. Logos - 0.01720548510865264 
+2. Haskell - 0.016094636462398906 
+3. Lua - 0.014919261927535487 
+4. Processing - 0.013395308962801228 
+5. Shell - 0.011047671879444044 
+6. C - 0.007637465941675316 
+7. D - 0.006766357669666418 
+8. Arduino - 0.006702862122126148 
+9. Java - 0.005066889577637355 
+10. JavaScript - 0.004643873172832681 
+",Which programming language has programmers that most mention insomnia?,191
+"1. San Diego - 1.5786102817142806 
+2. Los Angeles - 1.490221145737467 
+3. Austin - 0.9958320512461887 
+4. London - 0.9007227751049013 
+5. Washington, D.C. - 0.9001283291063794 
+6. Philadelphia - 0.8786563681807658 
+7. Seattle - 0.6544708845295203 
+8. Portland - 0.6472118464853638 
+9. Dallas - 0.5084393223890485 
+10. Melbourne - 0.4099941386023148 
+",Which city's subreddit most mentioned Airbnb in the last year?,190
+"1. CoffeeScript - 27.279174217949727 
+2. VimL - 3.0534012788396647 
+3. Emacs Lisp - 2.537281127905195 
+4. Ruby - 1.136671953807353 
+5. JavaScript - 1.0444779153133843 
+6. Scheme - 0.6215643998989958 
+7. CSS - 0.5829525824731142 
+8. ColdFusion - 0.5290205562273277 
+9. Groovy - 0.4276316787121311 
+10. Scala - 0.393452857735901 
+",Which programming language has programmers that most mention coffee?,192
+"1. Emacs Lisp - 0.14692848374544404 
+2. OCaml - 0.126233026166303 
+3. VimL - 0.12153552268853735 
+4. Logos - 0.12043839576056847 
+5. Pascal - 0.10916434692429453 
+6. PHP - 0.09455115696556422 
+7. Ruby - 0.09451871618265911 
+8. Haxe - 0.08712167413009009 
+9. TypeScript - 0.08189426903905264 
+10. Objective-C - 0.07770508035815382 
+",Which language fixes the most conflicts in their commits?,234
+"1. Swift - 59.75985805095695 
+2. null - 53.11091566897692 
+3. Arduino - 52.56384476171325 
+4. VHDL - 50.1792791092659 
+5. Processing - 43.60173067391799 
+6. R - 37.55416340039496 
+7. Visual Basic - 33.77227523305434 
+8. PowerShell - 32.99553105771347 
+9. Objective-C - 32.2591531034299 
+10. Go - 29.12546993911121 
+",Which language updates their readme's the most?,239
+"1. Haskell - 1.633605600933489 
+2. Racket - 1.5491553735485089 
+3. Erlang - 1.390615149058813 
+4. Common Lisp - 1.265833396205853 
+5. C - 1.2312476344050802 
+6. Perl - 1.210240533803809 
+7. Lua - 1.1885678668936606 
+8. ColdFusion - 1.1147218863361548 
+9. Scheme - 1.1071615873200862 
+10. CoffeeScript - 1.067122933012146 
+",Which language has the "oops"?,233
+"1. R - 1.138560153273753 
+2. Matlab - 0.9039657576630347 
+3. FORTRAN - 0.8624979266876762 
+4. Prolog - 0.761049487242908 
+5. Julia - 0.7209725364923022 
+6. TeX - 0.6547174461504307 
+7. Emacs Lisp - 0.5971931919976112 
+8. Logos - 0.5161645532595791 
+9. XSLT - 0.5047539581981314 
+10. Scala - 0.4920870452123941 
+",Which language commits the most minor changes?,240
+"1. CoffeeScript - 0.10018348210768035 
+2. JavaScript - 0.062062610114891 
+3. Elixir - 0.05911679508148265 
+4. Prolog - 0.0570787115432181 
+5. Haskell - 0.02736088198607814 
+6. D - 0.027065430678665674 
+7. Dart - 0.026436376454000706 
+8. TypeScript - 0.01637885380781053 
+9. Assembly - 0.01609101075684069 
+10. Groovy - 0.015164243925962096 
+",Which programming language uses "bump package version" the most?,249
+"1. Rust - 2.0807346267151465 
+2. C - 1.8763197577865802 
+3. Racket - 1.562626289840235 
+4. Common Lisp - 1.492174467050608 
+5. OCaml - 1.4546853491545393 
+6. Assembly - 1.4240544519804013 
+7. Emacs Lisp - 1.2670606877832915 
+8. Go - 1.2528212085632533 
+9. C++ - 1.2343664445686766 
+10. D - 1.2111780228702889 
+",Which language calls out hack the most in their commits?,242
+"1. Texas - 34.91620111731844 
+2. South Carolina - 31.990693616402503 
+3. Louisiana - 29.09393183707398 
+4. Alabama - 28.83506343713956 
+5. Mississippi - 22.894937674891885 
+6. Tennessee - 21.872265966754156 
+7. Georgia - 21.562448167191906 
+8. Arkansas - 17.40644038294169 
+9. North Carolina - 16.20231763587052 
+10. Kentucky - 13.86001386001386 
+",Which state's subreddit most said "y'all" in the last year?,206
+"1. Vermont - 1.7942047187584103 
+2. Montana - 1.5114873035066505 
+3. Massachusetts - 1.303780964797914 
+4. Louisiana - 1.0390689941812137 
+5. Michigan - 0.8495094083166971 
+6. Maine - 0.29652473016249553 
+7. Connecticut - 0.20854187520854187 
+8. Minnesota - 0.20558365198799392 
+9. Hawaii - 0.1840264998159735 
+10. New Jersey - 0.12740801141575783 
+",Which state's subreddit mentioned mocha frappuccinos the most in the last year?,179
+"1. Mozzarella - 7 
+2. Kraft Singles - 6 
+3. Cream cheese - 4 
+4. Brie - 3 
+5. Provolone - 3 
+6. American cheese - 3 
+7. Gorgonzola - 2 
+8. Velveeta - 2 
+9. Cheddar cheese - 1 
+10. Roquefort - 1 
+",Last month, what type of cheese was mentioned most in r/GrilledCheese?,208
+"1. KFC - 390071 
+2. Starbucks - 267257 
+3. Burger King - 265704 
+4. SPQR - 162938 
+5. Taco Bell - 133336 
+6. The Cheesecake Factory - 118869 
+7. Pizza Hut - 118734 
+8. Chipotle Mexican Grill - 91961 
+9. Chick-fil-A - 82697 
+10. Trump International Hotel and Tower - 77692 
+",What restaurant had the most popular page last month?,196
+"1. Labrador Retriever - 491121 
+2. Golden Retriever - 366919 
+3. Jack Russell Terrier - 255188 
+4. Siberian Husky - 248183 
+5. Shar Pei - 212345 
+6. Yorkshire Terrier - 189769 
+7. Pit bull - 164772 
+8. Shiba Inu - 159467 
+9. Border Collie - 157727 
+10. Alaskan Malamute - 155339 
+",Last month, which breed of dog had the most popular page?,117
+"1. Species - 6042710 
+2. Labrador Retriever - 491121 
+3. Golden Retriever - 366919 
+4. Jack Russell Terrier - 255188 
+5. Siberian Husky - 248183 
+6. Shar Pei - 212345 
+7. Yorkshire Terrier - 189769 
+8. Maine Coon - 176854 
+9. Pit bull - 164772 
+10. Shiba Inu - 159467 
+",Which animal had most popular page last month?,137
+"1. Opera - 575262 
+2. Hip hop music - 506145 
+3. Jazz - 385123 
+4. Rock and roll - 366700 
+5. K-pop - 330521 
+6. Rhythm and blues - 305720 
+7. Punk rock - 298975 
+8. Heavy metal - 295021 
+9. Dance - 274766 
+10. Blues - 254067 
+",Last month, which music genre had the most popular page?,131
+"1. Minnesota - 8.223346079519757 
+2. Oregon - 0 
+3. Delaware - 0 
+4. North Dakota - 0 
+5. Rhode Island - 0 
+6. Louisiana - 0 
+7. Connecticut - 0 
+8. Maine - 0 
+9. West Virginia - 0 
+10. Indiana - 0 
+",Which state's subreddit generated the most chatter around spray tans in the past year?,169
+"1. New Mexico - 179.85611510791367 
+2. Nevada - 176.3668430335097 
+3. Delaware - 145.6287875229013 
+4. Iowa - 125.38202335240184 
+5. Hawaii - 123.29775487670224 
+6. New Hampshire - 111.31135375808333 
+7. Utah - 102.96893770379269 
+8. New Jersey - 93.0078483335032 
+9. Rhode Island - 91.4820085383208 
+10. California - 68.40220496519535 
+",Which state's subbreddit talked sushi the most in the past year?,170
+"1. Portland - 168.826966156841 
+2. Washington, D.C. - 60.211286879413215 
+3. Seattle - 51.14568764286251 
+4. Dallas - 40.05885570337958 
+5. Los Angeles - 30.805605079844277 
+6. Houston - 28.596123136834056 
+7. Pittsburgh - 28.287252486540744 
+8. Philadelphia - 26.122216351320063 
+9. Austin - 19.860695404067247 
+10. San Diego - 18.04126036244892 
+",Which city's subreddit mentioned Hillary Clinton the most in the last year?,167
+"1. Philadelphia - 0.017810602057718224 
+2. Portland - 0.017560011338750178 
+3. Seattle - 0.01454379743398934 
+4. Pittsburgh - 0.009124920156948626 
+5. Austin - 0.008391843128479117 
+6. Washington, D.C. - 0.006081948169637698 
+7. San Diego - 0 
+8. Dallas - 0 
+9. Los Angeles - 0 
+10. Houston - 0 
+",Which city's subreddit mentioned Axe body spray the most last year?,173
+"1. North Dakota - 2.9120559114735003 
+2. Mississippi - 2.543881963876876 
+3. Tennessee - 2.1872265966754156 
+4. Delaware - 1.8790811293277587 
+5. Florida - 1.8195878633489515 
+6. West Virginia - 1.7717930545712262 
+7. Colorado - 1.6738082485270487 
+8. Maine - 0.8895741904874866 
+9. Michigan - 0.6371320562375228 
+10. Connecticut - 0.6256256256256256 
+",Which state's subreddit mentioned insomnia the most in the last year?,177
+"1. Nevada - 88.18342151675485 
+2. Kansas - 50.789444628464175 
+3. Florida - 41.39562389118865 
+4. New York - 34.67843631778058 
+5. New Jersey - 32.10681887677097 
+6. Maryland - 29.312778199978286 
+7. California - 26.75733311873818 
+8. South Carolina - 22.53889777519267 
+9. Hawaii - 22.267206477732792 
+10. Massachusetts - 19.55671447196871 
+",Which state's subreddit most mentioned Uber in the past year?,188
+"1. Nevada - 88.18342151675485 
+2. Kansas - 50.789444628464175 
+3. Florida - 41.39562389118865 
+4. New York - 34.67843631778058 
+5. New Jersey - 32.10681887677097 
+6. Maryland - 29.312778199978286 
+7. California - 26.75733311873818 
+8. South Carolina - 22.53889777519267 
+9. Hawaii - 22.267206477732792 
+10. Massachusetts - 19.55671447196871 
+",Which state’s subreddit mentioned barbecue the most in the last year?,198
+"1. Nebraska - 46.666666666666664 
+2. Montana - 40.81015719467956 
+3. Iowa - 38.39824465167307 
+4. Texas - 34.20604109459332 
+5. New Mexico - 32.37410071942446 
+6. North Dakota - 26.208503203261504 
+7. Arizona - 21.56876842332303 
+8. Wyoming - 19.083969465648856 
+9. Utah - 18.87763857902866 
+10. California - 16.29581941817889 
+",Which state’s subreddit mentioned tacos the most in the last year?,200
+"1. Go - 1593 
+2. LESS - 1075 
+3. Java - 975 
+4. C++ - 954 
+5. C - 942 
+6. SMALL - 662 
+7. FACT - 646 
+8. Python - 526 
+9. JavaScript - 456 
+10. BASIC - 393 
+",Which programming language was mentioned the most in /r/programming last month?,111
+"1. Portland - 0.16305724814553738 
+2. Philadelphia - 0.14842168381431853 
+3. Los Angeles - 0.1424759234942798 
+4. Melbourne - 0.11844275115177982 
+5. Seattle - 0.07999088588694137 
+6. Washington, D.C. - 0.07906532620529008 
+7. Austin - 0.07832386919913843 
+8. Pittsburgh - 0.05474952094169176 
+9. London - 0.0483314659812386 
+10. Houston - 0.038556570521574005 
+",Which city's subreddit brought up kale ithe most in the past year?,180
+"1. Alabama - 5.767012687427912 
+2. Georgia - 4.975949577044286 
+3. Kentucky - 3.465003465003465 
+4. Mississippi - 2.543881963876876 
+5. North Carolina - 2.4655700750237752 
+6. South Carolina - 2.1811836556638067 
+7. Virginia - 2.103049421661409 
+8. West Virginia - 1.7717930545712262 
+9. Montana - 1.5114873035066505 
+10. Delaware - 1.409310846995819 
+",Which state’s subreddit mentioned Waffle House the most in the last year?,201
+"1. New Mexico - 3.597122302158273 
+2. Utah - 1.7161489617298782 
+3. Kentucky - 1.155001155001155 
+4. Washington - 1.1531365313653137 
+5. Louisiana - 1.0390689941812137 
+6. Arizona - 0.7189589474441009 
+7. Michigan - 0.42475470415834854 
+8. Connecticut - 0.20854187520854187 
+9. Hawaii - 0.1840264998159735 
+10. Texas - 0.11836000378752012 
+",Which state’s subreddit mentioned "glamping" the most in the last year?,202
+"1. Portland - 0.20068584387143062 
+2. Washington, D.C. - 0.09122922254456547 
+3. Seattle - 0.08726278460393604 
+4. Los Angeles - 0.08471541396957176 
+5. London - 0.07469408378918693 
+6. Philadelphia - 0.05936867352572742 
+7. Austin - 0.047553777728048335 
+8. San Diego - 0.03608252072489784 
+9. Pittsburgh - 0.02737476047084588 
+10. Dallas - 0.023110878290411297 
+",Which city’s subreddit used the phrase “artisanal” the most in the past year?,211
+"1. Batman - 1036812 
+2. Superman - 829955 
+3. Spider-Man - 757880 
+4. Iron Man - 512103 
+5. Colossus - 460489 
+6. Cable - 381997 
+7. Harley Quinn - 329068 
+8. Wonder Woman - 262371 
+9. Captain America - 261669 
+10. Punisher - 250928 
+",Last month, which comic book character had the most popular page?,194
+"1. London - 0.07469408378918693 
+2. Dallas - 0.06162900877443012 
+3. Houston - 0.05462180823889651 
+4. Philadelphia - 0.04155807146800919 
+5. San Diego - 0.03608252072489784 
+6. Portland - 0.032611449629107475 
+7. Los Angeles - 0.02310420380988321 
+8. Austin - 0.019580967299784608 
+9. Melbourne - 0.018221961715658437 
+10. Seattle - 0.016967763672987562 
+",Which city’s subreddit used the phrase “Netflix and chill” the most?,212
+"1. Los Angeles - 0.5814557958820608 
+2. San Diego - 0.32474268652408056 
+3. Houston - 0.26668294610755355 
+4. Dallas - 0.1386652697424678 
+5. Pittsburgh - 0.12774888219728078 
+6. Seattle - 0.11635037947191472 
+7. Portland - 0.10536006803250107 
+8. Washington, D.C. - 0.08514727437492778 
+9. Austin - 0.07552658815631207 
+10. Philadelphia - 0.0712424082308729 
+",Which city’s subreddit talked about gas prices the most in the last year?,214
+"1. Houston - 19.920894769479904 
+2. Dallas - 16.947977412968285 
+3. Austin - 11.468852275588128 
+4. Seattle - 8.483881836493781 
+5. Washington, D.C. - 7.906532620529008 
+6. San Diego - 3.608252072489784 
+7. Philadelphia - 3.5621204115436447 
+8. Portland - 3.010287658071459 
+9. Los Angeles - 1.9253503174902673 
+10. London - 0.4393769634658055 
+",Which city's subreddit mentioned Ted Cruz the most in the last year?,215
+"1. Seattle - 202.8859742041513 
+2. Portland - 105.36006803250108 
+3. Pittsburgh - 88.51172552240168 
+4. Dallas - 80.11771140675916 
+5. Houston - 72.61487448229771 
+6. Los Angeles - 68.92754136615157 
+7. San Diego - 65.85060032293856 
+8. Austin - 60.14154242076702 
+9. Washington, D.C. - 56.56211797763059 
+10. Philadelphia - 45.713878614810106 
+",Which city's subreddit mentioned Bernie Sanders the most in the last year?,216
+"1. Pittsburgh - 54.74952094169176 
+2. San Diego - 12.628882253714245 
+3. Seattle - 10.907848075492005 
+4. Dallas - 10.785076535525272 
+5. Houston - 8.353923613007701 
+6. Washington, D.C. - 5.473753352673929 
+7. Austin - 3.6364653556742845 
+8. Philadelphia - 2.9684336762863706 
+9. London - 2.636261780794833 
+10. Melbourne - 2.4295948954211246 
+",Which city's subreddit mentioned Marco Rubio the most in the last year?,217
+"1. Washington, D.C. - 1.8245844508913096 
+2. Philadelphia - 1.7810602057718223 
+3. Austin - 1.1189124171305491 
+4. Portland - 0.7525719145178648 
+5. Seattle - 0.48479324779964467 
+6. London - 0.4393769634658055 
+7. Los Angeles - 0.38507006349805345 
+8. San Diego - 0 
+9. Melbourne - 0 
+10. Minneapolis - 0 
+",Which city's subreddit mentioned John Kasich the most in the last year?,218
+"1. Rust - 5.387616444173147 
+2. Lua - 4.744325292956285 
+3. C - 4.640348056947883 
+4. Haxe - 4.547751389590703 
+5. C++ - 4.22177363355125 
+6. D - 4.012450098112186 
+7. OCaml - 4.0033902584170376 
+8. VHDL - 3.906397433478015 
+9. Common Lisp - 3.814266193865319 
+10. Logos - 3.802412209012233 
+",Which language says "again" the most?,221
+"1. Java - 0.11587493903144476 
+2. Groovy - 0.09098546355577257 
+3. VHDL - 0.05661445555765239 
+4. TypeScript - 0.027298089679684216 
+5. Processing - 0.026790617925602455 
+6. ActionScript - 0.024729928571722976 
+7. C - 0.024528015620380345 
+8. Lua - 0.021550045006440147 
+9. Delphi - 0.01993858914543207 
+10. Scheme - 0.01942388749684362 
+",Which language says "FML" the most?,225
+"1. Delphi - 69.24672010208558 
+2. Lua - 58.757026557943924 
+3. Haxe - 54.36392465717621 
+4. Pascal - 50.63406291505194 
+5. C# - 48.16082688616005 
+6. ActionScript - 48.066737833905556 
+7. FORTRAN - 47.448443633548955 
+8. ColdFusion - 46.11925634824667 
+9. Common Lisp - 42.98803745525572 
+10. C++ - 42.70688408831364 
+",Which language says "fixed" the most?,227
+"1. Racket - 0.13470916291726162 
+2. Assembly - 0.0885005591626238 
+3. Lua - 0.0762540054074036 
+4. D - 0.06089721902699777 
+5. ActionScript - 0.05770316666735361 
+6. Processing - 0.05358123585120491 
+7. Haxe - 0.05227300447805405 
+8. Logos - 0.05161645532595791 
+9. Clojure - 0.05015581011446428 
+10. ASP - 0.04872439533025395 
+",Which language says "for real this time" the most?,226
+"1. VimL - 0.002144744518033012 
+2. Emacs Lisp - 0.0015798761693058497 
+3. Java - 0.00018096034205847698 
+4. Python - 0.00015652876795267572 
+5. Ruby - 0.0000843917108773742 
+6. JavaScript - 0.00007870971479377425 
+7. null - 0.00006011959832172534 
+8. TypeScript - 0 
+9. Shell - 0 
+10. Groovy - 0 
+",Which language says "I have no idea what this does" the most?,228
+"1. Donald Trump - 4 
+2. Rush Limbaugh - 4 
+3. Bernie Sanders - 2 
+4. James Madison - 2 
+5. Ron Paul - 2 
+6. Adolf Hitler - 1 
+7. Joseph Stalin - 1 
+8. Clint Eastwood - 1 
+9. Thomas Jefferson - 1 
+10. Jimmy Carter - 1 
+",Which politician was most mentioned in /r/science last month?,162
+"1. ColdFusion - 2.607315598548972 
+2. PHP - 2.2029709995813493 
+3. Puppet - 1.6378968780125602 
+4. Groovy - 1.5831470658704427 
+5. CoffeeScript - 1.018719677611806 
+6. Python - 0.928215593959367 
+7. Scala - 0.9256439132409351 
+8. PowerShell - 0.8516827912228825 
+9. Ruby - 0.7828175100985231 
+10. Haxe - 0.7143977278667387 
+",Which language has the most hotfixes?,231
+"1. PHP - 0.002128731488905761 
+2. CSS - 0.002047842795573001 
+3. JavaScript - 0.0011412908645097267 
+4. CoffeeScript - 0.0011256571023334871 
+5. C# - 0.0008999892901274475 
+6. null - 0.0008416743765041547 
+7. Ruby - 0.000421958554386871 
+8. C - 0.00029374869006443526 
+9. Python - 0.00015652876795267572 
+10. VimL - 0 
+",Which language thinks IE sucks the most?,238
+"1. Dart - 1.3746915756080367 
+2. FORTRAN - 0.24326864598883174 
+3. Julia - 0.18856204800567905 
+4. C - 0.18109606742472434 
+5. Lua - 0.17074266428179502 
+6. Matlab - 0.14258134978912218 
+7. TypeScript - 0.14195006633435792 
+8. Delphi - 0.1395701240180245 
+9. Rust - 0.10085193343772393 
+10. OCaml - 0.09617754374575466 
+",Which language has the most +1's in their commits?,236
+"1. Time - 542093 
+2. Rolling Stone - 353411 
+3. Playboy - 261811 
+4. Life Magazine - 234493 
+5. Der Spiegel - 179816 
+6. The Economist - 177566 
+7. De Stijl - 161984 
+8. Nature - 154771 
+9. Sports Illustrated Swimsuit Issue - 144560 
+10. Billboard - 131681 
+",Which magazine was the most popular on Wikipedia last month?,254
+"1. United Airlines - 410481 
+2. Delta Air Lines - 404746 
+3. Royal Air Force - 345956 
+4. American Airlines - 339865 
+5. Turkish Airlines - 323303 
+6. British Airways - 318228 
+7. S7 Airlines - 287512 
+8. Ryanair - 278727 
+9. Air France - 245163 
+10. Pan American World Airways - 239322 
+",Which airline had the most viewed Wikipedia page last month?,253
+"1. John Lennon - 1311520 
+2. Kurt Cobain - 1085939 
+3. Jimi Hendrix - 977165 
+4. Iron Maiden - 869116 
+5. George Harrison - 855418 
+6. Eric Clapton - 735194 
+7. Buddy Holly - 521896 
+8. Frank Zappa - 507777 
+9. John Mayer - 497410 
+10. Neil Young - 466262 
+",Which guitarist was most viewed on Wikipedia last month?,251
+"1. Australia - 294 
+2. Song - 291 
+3. China - 285 
+4. Japan - 241 
+5. Russia - 201 
+6. Brazil - 199 
+7. Canada - 197 
+8. India - 131 
+9. Germany - 114 
+10. Jersey - 89 
+",Last month, which country was mentioned the most in /r/WTF?,103
+"1. Google Chrome - 1611531 
+2. Firefox - 1064403 
+3. Internet Explorer - 745214 
+4. Safari - 171598 
+5. Opera - 151704 
+6. Opera Mini - 59593 
+7. Chromium - 54411 
+8. SeaMonkey - 45389 
+9. Internet Explorer for Mac - 29006 
+10. Konqueror - 25824 
+",What was the most popular browser on Wikipedia last month?,275
+"1. War - 1086524 
+2. Buddhism - 895387 
+3. Christianity - 395001 
+4. Jazz - 385123 
+5. Artificial intelligence - 373653 
+6. Religion - 346061 
+7. Science - 338602 
+8. Manga - 296377 
+9. Philosophy - 295869 
+10. Technology - 286541 
+",What genre of books were most popular on Wikipedia last month?,273
+"1. Information technology - 321244000 
+2. Islam - 1749253 
+3. English Language - 791947 
+4. Unix - 749354 
+5. Computer - 730262 
+6. The Holocaust - 721157 
+7. Opera - 575262 
+8. Latin honors - 531350 
+9. Renaissance - 458100 
+10. Marketing - 427489 
+",What was the most popular college major on Wikipedia last month?,274
+"1. The New York Times - 630359 
+2. The Guardian - 424606 
+3. USA Today - 251426 
+4. The Times - 198299 
+5. The Daily Telegraph - 187965 
+6. The Washington Post - 186310 
+7. The Economist - 177566 
+8. The Wall Street Journal - 166790 
+9. The Independent - 154889 
+10. The Boston Globe - 153528 
+",Which newspaper was most popular on Wikipedia last month?,255
+"1. Germany - 4320 
+2. Russia - 2703 
+3. Poland - 1853 
+4. France - 1570 
+5. Sweden - 1473 
+6. Turkey - 1323 
+7. Greece - 1223 
+8. Italy - 733 
+9. Finland - 728 
+10. Syria - 717 
+",Last month, which country was mentioned the most in /r/europe? ,69
+"1. Germany - 8736 
+2. Israel - 8517 
+3. Iran - 6893 
+4. China - 6331 
+5. Russia - 5075 
+6. Syria - 3781 
+7. Canada - 3290 
+8. Saudi Arabia - 3099 
+9. Japan - 2994 
+10. Turkey - 2928 
+",Last month, which country was mentioned the most in /r/worldnews?,71
+"1. Pakistan - 24841 
+2. United States - 10535 
+3. China - 7850 
+4. Bangladesh - 6784 
+5. United Kingdom - 6520 
+6. Nepal - 4756 
+7. Sri Lanka - 3572 
+8. Japan - 3018 
+9. France - 2859 
+10. Senegal - 2358 
+",Which country was most mentioned in the news with India?,34
+"1. United Kingdom - 147925 
+2. China - 129293 
+3. Iran - 113594 
+4. Russia - 110262 
+5. Canada - 104696 
+6. France - 104691 
+7. Israel - 86234 
+8. Cuba - 77355 
+9. Mexico - 74902 
+10. Iraq - 65442 
+",Which country was most mentioned in news media with the United States?,20
+"1. Objective-C - 0 
+2. Shell - 0 
+3. Groovy - 0 
+4. Processing - 0 
+5. Emacs Lisp - 0 
+6. Prolog - 0 
+7. null - 0 
+8. Scala - 0 
+9. Dart - 0 
+10. Delphi - 0 
+",Which programming language mentions Google the most?,42
+"1. Rust - 24.303192759892777 
+2. Julia - 15.279071831048405 
+3. TypeScript - 12.84320523249783 
+4. Elixir - 11.44698208761109 
+5. Scala - 10.275948107578465 
+6. D - 10.079166384735098 
+7. ColdFusion - 9.726420798065297 
+8. OCaml - 9.609939949146124 
+9. XSLT - 8.625112024475417 
+10. Haxe - 8.489135927235978 
+",Which programming language has the most issues per commit?,48
+"1. Rust - 10045.897184107858 
+2. Delphi - 9413.893208916537 
+3. C - 9085.214012811262 
+4. C++ - 7705.645593378424 
+5. Pascal - 7401.097101686589 
+6. Tcl - 7236.88288988153 
+7. Erlang - 6848.54651895884 
+8. Scala - 6812.409915012015 
+9. OCaml - 6544.993057183561 
+10. TypeScript - 6409.447868838139 
+",Which programming language has the chattiest developers?,49
+"1. JavaScript - 1104776 
+2. Java - 723486 
+3. Ruby - 505549 
+4. PHP - 501839 
+5. Python - 492549 
+6. CSS - 452809 
+7. C++ - 259818 
+8. C - 237922 
+9. C# - 204747 
+10. Objective-C - 168481 
+",What's the most popular programming language?,36
+"1. VimL - 67.93433705682371 
+2. Emacs Lisp - 53.77748513169074 
+3. Rust - 38.33842083842084 
+4. OCaml - 33.580742834073476 
+5. C++ - 29.459579397886213 
+6. C - 28.616693706340733 
+7. Puppet - 28.149029595152367 
+8. Shell - 26.98446627805933 
+9. Python - 25.94098049128107 
+10. Erlang - 24.662372278987117 
+",Which programming language has the most commits?,53
+"1. Rust - 7.468253968253968 
+2. TypeScript - 4.307876849260296 
+3. Emacs Lisp - 3.625573491928632 
+4. OCaml - 3.375454178441663 
+5. JavaScript - 2.9535055069987037 
+6. CoffeeScript - 2.9414217472269453 
+7. Python - 2.9329528635729645 
+8. XSLT - 2.8699125142639788 
+9. Dart - 2.867672563302116 
+10. Scala - 2.765633266321024 
+",Which programming language has the most open issues?,52
+"1. Rust - 4.166463166463166 
+2. TypeScript - 2.447021191523391 
+3. Emacs Lisp - 2.009770603228547 
+4. OCaml - 1.9814291481631006 
+5. Python - 1.7087741524193532 
+6. JavaScript - 1.7047546289926645 
+7. CoffeeScript - 1.7007732167435836 
+8. Dart - 1.6455081512313563 
+9. XSLT - 1.596614682388741 
+10. Scala - 1.5886149613797482 
+",Which programming language has the most issues per repository?,151
+"1. Donald Trump - 17655187 
+2. Leonardo DiCaprio - 11174066 
+3. Kanye West - 4669734 
+4. Ryan Reynolds - 4260448 
+5. Bernie Sanders - 3825812 
+6. Lady Gaga - 3716296 
+7. David Bowie - 3504747 
+8. Michael Jackson - 2803479 
+9. Justin Bieber - 2680954 
+10. Taylor Swift - 2618925 
+",Which actor had the most popular page last month?,119
+"1. Guinness - 135225 
+2. SABMiller - 57971 
+3. Carlsberg Group - 39233 
+4. Brouwerij Bosteels - 31441 
+5. InBev - 30165 
+6. Heineken International - 26699 
+7. Anheuser-Busch - 25267 
+8. AmBev - 24133 
+9. Asahi Breweries - 23915 
+10. Grupo Modelo - 14402 
+",Which brand of beer had the most popular page last month?,244
+"1. New York Yankees - 234571 
+2. Chicago Cubs - 152473 
+3. Boston Red Sox - 144382 
+4. Oakland Athletics - 109834 
+5. San Francisco Giants - 94483 
+6. Toronto Blue Jays - 85594 
+7. New York Mets - 80718 
+8. Los Angeles Dodgers - 80026 
+9. Los Angeles Angels of Anaheim - 79985 
+10. Chicago White Sox - 76375 
+",What was the most popular baseball team on Wikipedia last month?,276
+"1. Golden State Warriors - 462542 
+2. Chicago Bulls - 302095 
+3. Boston Celtics - 274655 
+4. Los Angeles Lakers - 248311 
+5. Miami Heat - 248266 
+6. Toronto Raptors - 191151 
+7. New York Knicks - 168979 
+8. Cleveland Cavaliers - 168375 
+9. Detroit Pistons - 149970 
+10. Oklahoma City Thunder - 136180 
+",What was the most popular basketball team on Wikipedia last month?,277
+"1. Ronaldo - 82 
+2. Neymar - 58 
+3. Tom Brady - 20 
+4. Aaron Rodgers - 19 
+5. Peyton Manning - 13 
+6. Ronaldinho - 10 
+7. LeBron James - 9 
+8. Barry Bonds - 8 
+9. Lance Armstrong - 8 
+10. Michael Jordan - 7 
+",Last month, who was the most popular athlete in /r/sports?,77
+"1. VimL - 3.8683085592150004 
+2. Erlang - 2.9549533540648603 
+3. Emacs Lisp - 2.8302319653326538 
+4. Objective-C - 2.6759781511607197 
+5. Puppet - 2.6059727711901624 
+6. TypeScript - 2.3388429752066116 
+7. C - 2.295279579883871 
+8. JavaScript - 2.082679289975118 
+9. Rust - 1.9993894993894994 
+10. Go - 1.9978226315674876 
+",Which programming language has the most forked projects?,35
+"1. University of Michigan - 3 
+2. Cornell University - 1 
+3. McGill University - 1 
+4. University of Florida - 1 
+5. University of Oregon - 1 
+6. University of Utah - 1 
+7. Reed College - 1 
+8. University of Minnesota - 1 
+9. University of Georgia - 1 
+10. University of Kansas - 1 
+",Which university was most mentioned in/r/WTF last month?,97
+"1. Goes - 1125 
+2. London - 15 
+3. Buffalo - 15 
+4. Chicago - 11 
+5. Boston - 11 
+6. Bury - 9 
+7. Houston - 9 
+8. Portland - 8 
+9. Olympia - 7 
+10. Tyler - 6 
+",Last month, which city was mentioned the most in /r/fitness?,89
+"1. China - 45 
+2. Germany - 28 
+3. Japan - 20 
+4. Iraq - 18 
+5. Australia - 18 
+6. Canada - 18 
+7. Turkey - 14 
+8. India - 13 
+9. France - 9 
+10. England - 7 
+",Which country was mentioned the most in /r/UpliftingNews last month?,108
+"1. David Bowie - 513 
+2. Metallica - 485 
+3. The Beatles - 276 
+4. Tool - 271 
+5. Nirvana - 188 
+6. Queen - 166 
+7. Radiohead - 147 
+8. Dream Theater - 133 
+9. Pink Floyd - 121 
+10. Kanye West - 120 
+",Which musician was most talked about in /r/music last month?,75
+"1. Flint - 334 
+2. Goes - 161 
+3. Detroit - 90 
+4. Austin - 9 
+5. Chicago - 9 
+6. Charlotte - 8 
+7. Sacramento - 7 
+8. Phoenix - 6 
+9. Edmonton - 6 
+10. Houston - 6 
+",Which U.S. city was mentioned the most in /r/UpliftingNews last month?,107
+"1. Goes - 1383 
+2. Flint - 239 
+3. Detroit - 135 
+4. Austin - 75 
+5. Boston - 66 
+6. Chicago - 60 
+7. Jackson - 51 
+8. London - 43 
+9. Houston - 42 
+10. Bury - 38 
+",Which U.S. city was mentioned the most in /r/WTF last month?,104
+"1. Go - 6820 
+2. LESS - 1800 
+3. Hope - 1699 
+4. SMALL - 1516 
+5. FACT - 1350 
+6. Clean - 1164 
+7. Kid - 1132 
+8. Cool - 889 
+9. MetaL - 572 
+10. Self - 536 
+",Which programming language was mentioned the most in /r/WTF last month?,109
+"1. Rhode Island - 1.0164667615368976 
+2. Iowa - 0.7836376459525115 
+3. South Carolina - 0.7270612185546023 
+4. Connecticut - 0.41708375041708373 
+5. Alaska - 0.4092657771957109 
+6. Maine - 0.29652473016249553 
+7. New Jersey - 0.25481602283151567 
+8. Wisconsin - 0 
+9. Kentucky - 0 
+10. Georgia - 0 
+",Which state’s subreddit mentioned Guy Fieri the most in the last year?,199
+"1. Donald Trump - 1 
+",Which politician was most mentioned in /r/frugal last month?,158
+"1. Pancake - 192870 
+2. Hamburger - 176502 
+3. Hot dog - 108638 
+4. Black pudding - 101382 
+5. Oreo - 100588 
+6. Martini - 91137 
+7. Girl Scout Cookies - 81564 
+8. Burrito - 78676 
+9. Mojito - 75321 
+10. Tiramisu - 70737 
+",Which food was most viewed on Wikipedia last month?,248
+"1. Pizza - 358838 
+2. Indian cuisine - 75776 
+3. French food - 71641 
+4. Japanese Cuisine - 71355 
+5. Italian food - 64309 
+6. Chinese food - 59385 
+7. Cuisine of the United States - 51234 
+8. Korean food - 48241 
+9. Thai food - 45947 
+10. German food - 45560 
+",What was the most popular type of cuisine on Wikipedia last month?,278
+"1. Taj Mahal - 1043283 
+2. Burj Khalifa - 916485 
+3. Machu Picchu - 884898 
+4. Mount Everest - 877889 
+5. Great Wall of China - 739415 
+6. Big Ben - 639526 
+7. Eiffel Tower - 600342 
+8. Empire State Building - 598901 
+9. Vatican City - 532825 
+10. Statue of Liberty - 496829 
+",What tourist attraction was researched the most last month?,246
+"1. Germany - 404 
+2. France - 302 
+3. England - 236 
+4. China - 224 
+5. Japan - 166 
+6. Russia - 160 
+7. Italy - 149 
+8. Spain - 129 
+9. India - 119 
+10. Soviet Union - 114 
+",What was the most popular ingredient in r/cooking last month?,205
+"1. Bahrain - 0.0018944361053295315 
+2. Albania - 0.0013466886019188494 
+3. Macedonia - 0.0009779456397113373 
+4. Iran - 0.0008806011941472304 
+5. Swaziland - 0.0008136696501220504 
+6. Palestinian Territory - 0.000701560936620314 
+7. Guinea-Bissau - 0.0006873397308800592 
+8. Nauru - 0.0006870828425598744 
+9. Nepal - 0.0006790629673196309 
+10. Tunisia - 0.0006504752752474082 
+",Which country had the most demands for human rights?,22
+"1. Saint Kitts and Nevis - 0.002338550098938658 
+2. Japan - 0.002161384108343377 
+3. Bolivia - 0.002100814971325083 
+4. Nauru - 0.0020469217446071487 
+5. Guatemala - 0.0019158389608272077 
+6. Turkey - 0.0018803117943546838 
+7. Taiwan - 0.0018150796819980397 
+8. Saint Lucia - 0.0016351001498841804 
+9. Ireland - 0.0016241680539956882 
+10. North Korea - 0.0014442270169760516 
+",Which country was the most apologized to?,25
+"1. Saint Vincent and the Grenadines - 0.00468921139101862 
+2. Haiti - 0.003443864421733696 
+3. United States - 0.0017110163866947946 
+4. Malawi - 0.0016824973354872875 
+5. Canada - 0.0014499134459553058 
+6. Bermuda - 0.0014197925585528954 
+7. Ethiopia - 0.001385049679853983 
+8. Australia - 0.00135321347934288 
+9. Tanzania - 0.001319451919971704 
+10. Greece - 0.001306506621003226 
+",Which country made the most appeals for economic aid?,9
+"1. Greece - 0.013630268689208238 
+2. Saint Vincent and the Grenadines - 0.013588444687842278 
+3. Chile - 0.012152576975735194 
+4. Malta - 0.01123496540452726 
+5. Nepal - 0.011007870451113032 
+6. Niger - 0.010830613043027144 
+7. Nauru - 0.01074793875147232 
+8. Cameroon - 0.010533084509306437 
+9. Haiti - 0.0100169105212852 
+10. Italy - 0.009715370765938139 
+",Which country expressed the strongest intent to provide humanitarian aid?,15
+"1. Haiti - 0.06045229867459866 
+2. Cayman Islands - 0.054163719614339426 
+3. Liechtenstein - 0.05117580026934632 
+4. Central African Republic - 0.04412399801973941 
+5. Mali - 0.04274011759575016 
+6. Somalia - 0.04259029350720737 
+7. Sierra Leone - 0.04168268035177356 
+8. Saint Vincent and the Grenadines - 0.04096652626911993 
+9. Republic of the Congo - 0.039359364435429346 
+10. Liberia - 0.037698391634375494 
+",Which country received the most attention for its humanitarian aid?,12
+"1. United States - 22939 
+2. Russia - 19813 
+3. Israel - 19518 
+4. Libya - 11191 
+5. United Kingdom - 11130 
+6. Saudi Arabia - 10456 
+7. Sudan - 7876 
+8. France - 7801 
+9. Palestinian Territory - 7729 
+10. Syria - 6812 
+",Which country was most mentioned in relation to Egypt?,6
+"1. Comoros - 0.0015364129878111237 
+2. Ivory Coast - 0.001369832869387261 
+3. Togo - 0.0013560944479897893 
+4. Madagascar - 0.001335351197364907 
+5. Antigua and Barbuda - 0.0013102119460500963 
+6. Gabon - 0.00130257202781764 
+7. Guinea - 0.0012770024221852394 
+8. Cook Islands - 0.0012489592006661116 
+9. Guinea-Bissau - 0.001242498744283184 
+10. Haiti - 0.0012234394529813985 
+",Which country made the most appeals for leadership change?,8
+"1. Bahrain - 0.0018944361053295315 
+2. Albania - 0.0013466886019188494 
+3. Macedonia - 0.0009779456397113373 
+4. Iran - 0.0008806011941472304 
+5. Swaziland - 0.0008136696501220504 
+6. Palestinian Territory - 0.000701560936620314 
+7. Guinea-Bissau - 0.0006873397308800592 
+8. Nauru - 0.0006870828425598744 
+9. Nepal - 0.0006790629673196309 
+10. Tunisia - 0.0006504752752474082 
+",Which country had the most demonstrations for rights?,23
+"1. Russia - 73202 
+2. United States - 64501 
+3. Turkey - 62459 
+4. Iraq - 42820 
+5. Iran - 31862 
+6. United Kingdom - 30064 
+7. Lebanon - 27220 
+8. Israel - 21374 
+9. France - 19639 
+10. Jordan - 12977 
+",Which country was most mentioned in relation to Syria?,7
+"1. Equatorial Guinea - 0.001395448690425075 
+2. Uganda - 0.0011492680564027125 
+3. Nigeria - 0.0010614243075017767 
+4. Gambia - 0.0009776923202268247 
+5. Central African Republic - 0.0009620772410584964 
+6. Guinea-Bissau - 0.0009517011658339282 
+7. Myanmar - 0.0009249561325951821 
+8. Sao Tome and Principe - 0.0008490627653321141 
+9. Sierra Leone - 0.0008360954343217176 
+10. South Africa - 0.0008350125596930466 
+",Which country expressed the most forgiveness?,26
+"1. Lesotho - 0.000046346719810905386 
+2. Uzbekistan - 0.00001268284433922381 
+3. Yemen - 0.000010469066525683238 
+4. Russia - 0.000009175762816246714 
+5. Somalia - 0.000008843900109411678 
+6. Kuwait - 0.00000596102680673755 
+7. Honduras - 0.000005780714380683165 
+8. Iraq - 0.000005775177536176434 
+9. Nicaragua - 0.000005074390565693061 
+10. Colombia - 0.0000030551749316786506 
+",Which country most rejected millitary cooperation?,19
+"1. Cuba - 0.0004180717931653794 
+2. Palau - 0.00017898693395382138 
+3. Saint Kitts and Nevis - 0.0001575795776867318 
+4. Myanmar - 0.00013451159444603138 
+5. Zimbabwe - 0.00013176191262010483 
+6. North Korea - 0.00012657449310035307 
+7. Iraq - 0.00012070121050608746 
+8. Burundi - 0.00010397239532904013 
+9. Libya - 0.00008134828454545291 
+10. Nicaragua - 0.00008119024905108897 
+",Which country made the most appeals for the easing of economic sanctions?,5
+"1. Puerto Rico - 0.00847457627118644 
+2. Oman - 0.00744052756965784 
+3. United Arab Emirates - 0.006774879080292936 
+4. Andorra - 0.00612369871402327 
+5. Norway - 0.004953188963231383 
+6. Brazil - 0.0044111779952977544 
+7. Turkmenistan - 0.004330678636408206 
+8. Malaysia - 0.004218920857509617 
+9. Bahamas - 0.003656902267387919 
+10. Suriname - 0.0035733333333333333 
+",Which country is the most cooperative?,2
+"1. Shell - 0.0077568760004607116 
+2. Ruby - 0.0007595253978963678 
+3. VimL - 0.0007149148393443373 
+4. null - 0.0006613155815389787 
+5. Python - 0.00046958630385802715 
+6. Objective-C - 0.0004440290306180218 
+7. JavaScript - 0.0001574194295875485 
+8. ASP - 0 
+9. C++ - 0 
+10. C - 0 
+",Which programming language has the most poop emoji in its commit messages?,38
+"1. United Kingdom - 44123426 
+2. United States of America - 5104099 
+3. Germany - 2580527 
+4. France - 2312708 
+5. Australia - 2210219 
+6. Russia - 2021164 
+7. India - 1941616 
+8. Hong Kong - 1917598 
+9. Japan - 1776683 
+10. Canada - 1683533 
+",Last month, which country had the most popular page?,123
+"1. VHDL - 1.0568031704095113 
+2. ActionScript - 0.626491523816982 
+3. Logos - 0.567781008585537 
+4. Lua - 0.5669319532463485 
+5. Assembly - 0.5068668388404818 
+6. ASP - 0.44826443703833635 
+7. C - 0.38730764784995786 
+8. D - 0.37214967183165304 
+9. Matlab - 0.353601747477023 
+10. C# - 0.34829585527932216 
+",Which language drops the f bomb the most?,229
+"1. Pink Floyd - 13 
+2. The Beatles - 12 
+3. Queen - 12 
+4. No Doubt - 12 
+5. Daft Punk - 11 
+6. David Bowie - 10 
+7. The Cure - 8 
+8. Miles Davis - 7 
+9. Bob Dylan - 7 
+10. Kiss - 7 
+",Which musician was named in /r/ListenToThis the most last month?,157
+"1. Ryan Reynolds - 4260448 
+2. Charlie Chaplin - 1505346 
+3. Ellen DeGeneres - 1182405 
+4. Jackie Chan - 1072175 
+5. Gwyneth Paltrow - 949729 
+6. Dick Van Dyke - 885819 
+7. Woody Allen - 868442 
+8. Jim Carrey - 864362 
+9. Shia LaBeouf - 747255 
+10. Ben Stiller - 740828 
+",Who was the most popular comedian on Wikipedia last month?,262
+"1. Australia - 26359 
+2. United States - 10665 
+3. United Kingdom - 6451 
+4. China - 5155 
+5. Canada - 2845 
+6. France - 2649 
+7. Japan - 2171 
+8. Iraq - 1647 
+9. Vietnam - 1377 
+10. Turkey - 1338 
+",Which country was most mentioned in relation to New Zealand?,264
+"1. South Korea - 30067 
+2. United States - 13908 
+3. China - 13089 
+4. Russia - 4915 
+5. Japan - 4463 
+6. Iran - 3457 
+7. Canada - 1658 
+8. United Kingdom - 781 
+9. Cuba - 630 
+10. Pakistan - 521 
+",Which country was most mentioned in relation to North Korea?,265
+"1. United States - 129293 
+2. Japan - 50356 
+3. Russia - 48721 
+4. United Kingdom - 37803 
+5. Pakistan - 28486 
+6. Taiwan - 26475 
+7. Australia - 23092 
+8. France - 22950 
+9. South Korea - 22776 
+10. Philippines - 21667 
+",Which country was most mentioned in relation to China?,266
+"1. United States - 24221 
+2. Germany - 24049 
+3. Turkey - 17688 
+4. Russia - 10554 
+5. Belgium - 9771 
+6. France - 9423 
+7. Italy - 8253 
+8. United Kingdom - 8228 
+9. Cyprus - 7165 
+10. Syria - 5221 
+",Which country was most mentioned in relation to Greece?,268
+"1. United States - 13466 
+2. China - 5572 
+3. Argentina - 2762 
+4. United Kingdom - 2521 
+5. Indonesia - 2327 
+6. Russia - 2110 
+7. France - 1948 
+8. Australia - 1836 
+9. Mexico - 1757 
+10. Chile - 1674 
+",Which country was most mentioned in relation to Brazil?,269
+"1. United States - 1649 
+2. Norway - 1175 
+3. United Kingdom - 982 
+4. Denmark - 659 
+5. Canada - 453 
+6. Sweden - 452 
+7. Russia - 430 
+8. Finland - 405 
+9. Israel - 360 
+10. France - 303 
+",Which country was most mentioned in relation to Iceland?,271
+"1. Chief Executive Officer - 612409 
+2. System Administrator - 211216 
+3. Board of directors - 149398 
+4. Purser - 137911 
+5. Professor - 134966 
+6. Chief Financial Officer - 113787 
+7. Commander-in-chief - 113632 
+8. Freelancer - 113071 
+9. Chief Operating Officer - 103613 
+10. Secretary-General of the United Nations - 101615 
+",What was the most researched job title on Wikipedia last month?,283
+"1. Saint Helena - 0.2755939524838013 
+2. Djibouti - 0.19526386006522384 
+3. Aruba - 0.1934098429909174 
+4. Cape Verde - 0.17000442575791105 
+5. Mongolia - 0.1521189151001938 
+6. Laos - 0.14830961719231142 
+7. Dominican Republic - 0.14627505843127728 
+8. Suriname - 0.14469333333333334 
+9. Mauritius - 0.13812231866706576 
+10. Brunei - 0.13304979681796267 
+",Which country is the most hospitable to visiting officials?,288
+"1. Macao - 0.16995089202461616 
+2. Saint Kitts and Nevis - 0.1688622754491018 
+3. Kiribati - 0.14077965585503274 
+4. Cape Verde - 0.1400199159105997 
+5. Cook Islands - 0.1308909242298085 
+6. Sao Tome and Principe - 0.13042910325909476 
+7. Mongolia - 0.127726808405014 
+8. Andorra - 0.12737293325168403 
+9. Benin - 0.12590924835469344 
+10. Wallis and Futuna - 0.1245136186770428 
+",Which country visits others the most?,289
+"1. North Korea - 0.08442607826760522 
+2. Georgia - 0.0784929711160331 
+3. Cyprus - 0.0780808264102018 
+4. Turkmenistan - 0.07782692538158999 
+5. South Korea - 0.06958367847230149 
+6. Uzbekistan - 0.0653969730278177 
+7. Luxembourg - 0.06514207726763718 
+8. Tajikistan - 0.06513355776925411 
+9. Bhutan - 0.06312441824387217 
+10. Jordan - 0.06238734850315942 
+",Which country negotiates the most?,290
+"1. C++ - 0.004723085497293672 
+2. Shell - 0 
+3. C# - 0 
+4. Python - 0 
+5. Go - 0 
+6. C - 0 
+7. Ruby - 0 
+8. Java - 0 
+9. PHP - 0 
+10. Scala - 0 
+",Which language gives the most thumbs up?,241
+"1. Shell - 1.2170805603749644 
+2. Java - 1.1028920279844927 
+3. PHP - 1.0826398935808679 
+4. C# - 1.023494893897696 
+5. CSS - 1.0232748516251464 
+6. JavaScript - 0.9553125995117291 
+7. C++ - 0.864324646004742 
+8. C - 0.8448367672961127 
+9. Python - 0.7588205419293161 
+10. Ruby - 0.6128260895687386 
+",Which language laughs out loud the most?,220

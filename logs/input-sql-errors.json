@@ -1,0 +1,797 @@
+{
+    "items": [
+        {
+            "top10": [
+                {
+                    "label": "TeX",
+                    "number": 89.79185797367616
+                },
+                {
+                    "label": "Go",
+                    "number": 89.46383089883972
+                },
+                {
+                    "label": "XSLT",
+                    "number": 88.62685431723088
+                },
+                {
+                    "label": "Dart",
+                    "number": 88.39750260145681
+                },
+                {
+                    "label": "Puppet",
+                    "number": 88.32001405111092
+                },
+                {
+                    "label": "Rust",
+                    "number": 88.31908831908832
+                },
+                {
+                    "label": "R",
+                    "number": 88.19653023714528
+                },
+                {
+                    "label": "TypeScript",
+                    "number": 87.88484606157537
+                },
+                {
+                    "label": "CoffeeScript",
+                    "number": 87.86737915958221
+                },
+                {
+                    "label": "Logos",
+                    "number": 87.69155923133057
+                }
+            ],
+            "answer": "TeX",
+            "answerValue": 89.79185797367616,
+            "question": "Which programming language has the most projects?",
+            "rowIndex": 54,
+            "approved": true,
+            "sql": "SELECT\n  repos.repository_language,\n  ((names.total / repos.total) * 100) per,\nFROM (\n  SELECT\n  repository_language,\n  COUNT(UNIQUE(repository_name)) total\n  FROM \n    [githubarchive:github.timeline]\n  WHERE\n    type = 'PushEvent'\n  AND\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language) names\nJOIN (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM (\n    SELECT\n      repository_language,\n    FROM\n      [githubarchive:github.timeline]\n    WHERE\n      repository_language IS NOT NULL\n    GROUP BY\n      repository_language,\n      repository_name)\n  GROUP BY\n    repository_language\n  HAVING\n    total > 4000) repos\nON\n  repos.repository_language = names.repository_language\nORDER BY\n  per DESC\nLIMIT 10",
+            "inputSQL": "SELECT\n  repos.repository_language,\n  ((names.total / repos.total) * 100) per,\nFROM (\n  SELECT\n  repository_language,\n  COUNT(UNIQUE(repository_name)) total\n  FROM \n    [githubarchive:github.timeline]\n  WHERE\n    type = 'PushEvent'\n  AND\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language) names\nJOIN (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM (\n    SELECT\n      repository_language,\n    FROM\n      [githubarchive:github.timeline]\n    WHERE\n      repository_language IS NOT NULL\n    GROUP BY\n      repository_language,\n      repository_name)\n  GROUP BY\n    repository_language\n  HAVING\n    total > 4000) repos\nON\n  repos.repository_language = names.repository_language\nWHERE\n  lower(names.repository_language) = lower('userInput')\nORDER BY\n  per DESC\nLIMIT 10",
+            "databases": "GitHub",
+            "units": "Projects per 1,000",
+            "hasPassingInputQuery": false,
+            "rowsSearched": 1236709136,
+            "warnings": {},
+            "errors": "Query timed out"
+        },
+        {
+            "top10": [
+                {
+                    "label": "New England Patriots",
+                    "number": 346736
+                },
+                {
+                    "label": "Green Bay Packers",
+                    "number": 296968
+                },
+                {
+                    "label": "Washington Redskins",
+                    "number": 226648
+                },
+                {
+                    "label": "Oakland Raiders",
+                    "number": 225124
+                },
+                {
+                    "label": "Miami Dolphins",
+                    "number": 163421
+                },
+                {
+                    "label": "Denver Broncos",
+                    "number": 160117
+                },
+                {
+                    "label": "Dallas Cowboys",
+                    "number": 156990
+                },
+                {
+                    "label": "Pittsburgh Steelers",
+                    "number": 147409
+                },
+                {
+                    "label": "Seattle Seahawks",
+                    "number": 139763
+                },
+                {
+                    "label": "Cleveland Browns",
+                    "number": 136763
+                }
+            ],
+            "answer": "New England Patriots",
+            "answerValue": 346736,
+            "question": "Which football team had the most popular page in the past month?",
+            "rowIndex": 115,
+            "approved": true,
+            "params": {
+                "freebase_tag": "football_teams",
+                "substring": true
+            },
+            "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.football_teams]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.football_teams]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name CONTAINS 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "databases": "Wikipedia",
+            "units": "Views",
+            "hasPassingInputQuery": false,
+            "rowsSearched": 6530513614,
+            "warnings": {},
+            "errors": "Query timed out"
+        },
+        {
+            "top10": [
+                {
+                    "label": "Basketball",
+                    "number": 656276
+                },
+                {
+                    "label": "Football",
+                    "number": 473742
+                },
+                {
+                    "label": "Tennis",
+                    "number": 463152
+                },
+                {
+                    "label": "American football",
+                    "number": 417491
+                },
+                {
+                    "label": "Taekwondo",
+                    "number": 399261
+                },
+                {
+                    "label": "Judo",
+                    "number": 391138
+                },
+                {
+                    "label": "Baseball",
+                    "number": 339914
+                },
+                {
+                    "label": "Cricket",
+                    "number": 312618
+                },
+                {
+                    "label": "Muay Thai",
+                    "number": 312433
+                },
+                {
+                    "label": "Golf",
+                    "number": 306362
+                }
+            ],
+            "answer": "Basketball",
+            "answerValue": 656276,
+            "question": "Which sport had the most popular page in the past month?",
+            "rowIndex": 121,
+            "approved": true,
+            "params": {
+                "freebase_tag": "sports",
+                "substring": true
+            },
+            "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.sports]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.sports]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name CONTAINS 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "databases": "Wikipedia",
+            "units": "Views",
+            "hasPassingInputQuery": false,
+            "rowsSearched": 6538074504,
+            "warnings": {},
+            "errors": "Query timed out"
+        },
+        {
+            "top10": [
+                {
+                    "label": "California",
+                    "number": 7146325
+                },
+                {
+                    "label": "New York",
+                    "number": 3078930
+                },
+                {
+                    "label": "Minnesota",
+                    "number": 1055276
+                },
+                {
+                    "label": "New Jersey",
+                    "number": 912767
+                },
+                {
+                    "label": "Alaska",
+                    "number": 817686
+                },
+                {
+                    "label": "Texas",
+                    "number": 761855
+                },
+                {
+                    "label": "Florida",
+                    "number": 625685
+                },
+                {
+                    "label": "Hawaii",
+                    "number": 591962
+                },
+                {
+                    "label": "Maryland",
+                    "number": 570807
+                },
+                {
+                    "label": "Oregon",
+                    "number": 543085
+                }
+            ],
+            "answer": "California",
+            "answerValue": 7146325,
+            "question": "Which U.S. state had the most popular page in the past month?",
+            "rowIndex": 120,
+            "approved": true,
+            "params": {
+                "freebase_tag": "states"
+            },
+            "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.states]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.states]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name = 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "databases": "Wikipedia",
+            "units": "Views",
+            "hasPassingInputQuery": false,
+            "rowsSearched": 6528649399,
+            "warnings": {},
+            "errors": "Query timed out"
+        },
+        {
+            "top10": [
+                {
+                    "label": "Barack Obama",
+                    "number": 9881003
+                },
+                {
+                    "label": "Abraham Lincoln",
+                    "number": 2053409
+                },
+                {
+                    "label": "Andrew Jackson",
+                    "number": 1865590
+                },
+                {
+                    "label": "Ronald Reagan",
+                    "number": 1691374
+                },
+                {
+                    "label": "Bill Clinton",
+                    "number": 1668313
+                },
+                {
+                    "label": "George Washington",
+                    "number": 1393824
+                },
+                {
+                    "label": "Richard Nixon",
+                    "number": 1332894
+                },
+                {
+                    "label": "Thomas Jefferson",
+                    "number": 1061515
+                },
+                {
+                    "label": "Theodore Roosevelt",
+                    "number": 1037221
+                },
+                {
+                    "label": "Jimmy Carter",
+                    "number": 902443
+                }
+            ],
+            "answer": "Barack Obama",
+            "answerValue": 9881003,
+            "question": "Which U.S. President had the most popular page in the past month?",
+            "rowIndex": 141,
+            "approved": true,
+            "params": {
+                "freebase_tag": "presidents",
+                "substring": true
+            },
+            "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.presidents]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.presidents]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name CONTAINS 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "databases": "Wikipedia",
+            "units": "Views",
+            "hasPassingInputQuery": false,
+            "rowsSearched": 6527189583,
+            "warnings": {},
+            "errors": "Query timed out"
+        },
+        {
+            "top10": [
+                {
+                    "label": "Batman",
+                    "number": 1544853
+                },
+                {
+                    "label": "Superman",
+                    "number": 1434153
+                },
+                {
+                    "label": "Spider-Man",
+                    "number": 1032563
+                },
+                {
+                    "label": "Iron Man",
+                    "number": 731749
+                },
+                {
+                    "label": "Doctor Strange",
+                    "number": 706163
+                },
+                {
+                    "label": "Wonder Woman",
+                    "number": 670942
+                },
+                {
+                    "label": "Harley Quinn",
+                    "number": 558141
+                },
+                {
+                    "label": "Punisher",
+                    "number": 524912
+                },
+                {
+                    "label": "Captain America",
+                    "number": 467760
+                },
+                {
+                    "label": "He-Man",
+                    "number": 351251
+                }
+            ],
+            "answer": "Batman",
+            "answerValue": 1544853,
+            "question": "What comic book character was the most popular in the past month?",
+            "rowIndex": 194,
+            "approved": true,
+            "params": {
+                "freebase_tag": "comic_characters"
+            },
+            "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.comic_characters]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.comic_characters]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name = 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "databases": "Wikipedia",
+            "units": "Views",
+            "hasPassingInputQuery": false,
+            "rowsSearched": 6541467713,
+            "warnings": {},
+            "errors": "Query timed out"
+        },
+        {
+            "top10": [
+                {
+                    "label": "The New York Times",
+                    "number": 1248584
+                },
+                {
+                    "label": "The Guardian",
+                    "number": 729878
+                },
+                {
+                    "label": "USA Today",
+                    "number": 400897
+                },
+                {
+                    "label": "The Times",
+                    "number": 351615
+                },
+                {
+                    "label": "The Washington Post",
+                    "number": 327458
+                },
+                {
+                    "label": "The Daily Telegraph",
+                    "number": 308294
+                },
+                {
+                    "label": "The Wall Street Journal",
+                    "number": 261723
+                },
+                {
+                    "label": "Los Angeles Times",
+                    "number": 231990
+                },
+                {
+                    "label": "The Economist",
+                    "number": 194620
+                },
+                {
+                    "label": "The Independent",
+                    "number": 182967
+                }
+            ],
+            "answer": "The New York Times",
+            "answerValue": 1248584,
+            "question": "What newspaper had the most popular Wikipedia page in the past month?",
+            "rowIndex": 255,
+            "approved": true,
+            "params": {
+                "freebase_tag": "newspapers",
+                "substring": true
+            },
+            "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.newspapers]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.newspapers]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name CONTAINS 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "databases": "Wikipedia",
+            "units": "Views",
+            "hasPassingInputQuery": false,
+            "rowsSearched": 6601199350,
+            "warnings": {},
+            "errors": "Query timed out"
+        },
+        {
+            "top10": [
+                {
+                    "label": "Frying pan",
+                    "number": 63367
+                },
+                {
+                    "label": "Wok",
+                    "number": 16280
+                },
+                {
+                    "label": "Dutch oven",
+                    "number": 12033
+                },
+                {
+                    "label": "Kitchen knife",
+                    "number": 11291
+                },
+                {
+                    "label": "Parchment paper",
+                    "number": 7779
+                },
+                {
+                    "label": "Cast-iron cookware",
+                    "number": 6796
+                },
+                {
+                    "label": "Cutting board",
+                    "number": 5004
+                },
+                {
+                    "label": "Mixer",
+                    "number": 4000
+                },
+                {
+                    "label": "Juicer",
+                    "number": 3220
+                },
+                {
+                    "label": "Sheet pan",
+                    "number": 2852
+                }
+            ],
+            "answer": "Frying pan",
+            "answerValue": 63367,
+            "question": "What was the most popular kitchen tool in the past month?",
+            "rowIndex": 279,
+            "approved": true,
+            "params": {
+                "freebase_tag": "kitchen_utensils",
+                "substring": true
+            },
+            "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.kitchen_utensils]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.kitchen_utensils]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name CONTAINS 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "databases": "Wikipedia",
+            "units": "Views",
+            "hasPassingInputQuery": false,
+            "rowsSearched": 6521886044,
+            "warnings": {},
+            "errors": "Query timed out"
+        },
+        {
+            "top10": [
+                {
+                    "label": "Chris Cornell",
+                    "number": 290044
+                },
+                {
+                    "label": "Gordon Ramsay",
+                    "number": 235016
+                },
+                {
+                    "label": "Vincent Price",
+                    "number": 200371
+                },
+                {
+                    "label": "Jamie Oliver",
+                    "number": 155087
+                },
+                {
+                    "label": "Julia Child",
+                    "number": 150956
+                },
+                {
+                    "label": "Auguste Escoffier",
+                    "number": 107520
+                },
+                {
+                    "label": "Dom DeLuise",
+                    "number": 68277
+                },
+                {
+                    "label": "Anthony Bourdain",
+                    "number": 66063
+                },
+                {
+                    "label": "Action Bronson",
+                    "number": 52967
+                },
+                {
+                    "label": "Bas Rutten",
+                    "number": 44241
+                }
+            ],
+            "answer": "Chris Cornell",
+            "answerValue": 290044,
+            "question": "Who was the most popular chef in the past month?",
+            "rowIndex": 284,
+            "approved": true,
+            "params": {
+                "freebase_tag": "chefs",
+                "substring": true
+            },
+            "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.chefs]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.chefs]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name CONTAINS 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201604] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "databases": "Wikipedia",
+            "units": "Views",
+            "hasPassingInputQuery": false,
+            "rowsSearched": 6534305686,
+            "warnings": {},
+            "errors": "Query timed out"
+        },
+        {
+            "top10": [
+                {
+                    "label": "Batman",
+                    "number": 14222
+                },
+                {
+                    "label": "Superman",
+                    "number": 9503
+                },
+                {
+                    "label": "Deadpool",
+                    "number": 1915
+                },
+                {
+                    "label": "Flash",
+                    "number": 1802
+                },
+                {
+                    "label": "Wonder Woman",
+                    "number": 1665
+                },
+                {
+                    "label": "Doomsday",
+                    "number": 1611
+                },
+                {
+                    "label": "Iron Man",
+                    "number": 1396
+                },
+                {
+                    "label": "Spider-Man",
+                    "number": 1379
+                },
+                {
+                    "label": "Vision",
+                    "number": 898
+                },
+                {
+                    "label": "Thor",
+                    "number": 855
+                }
+            ],
+            "answer": "Batman",
+            "answerValue": 14222,
+            "question": "Which superhero was mentioned the most in /r/movies in the past month?",
+            "rowIndex": 60,
+            "approved": true,
+            "params": {
+                "freebase_tag": "superheroes",
+                "subreddit": "movies",
+                "top_wiki": 100
+            },
+            "sql": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name as name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.superheroes]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201604] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name\n  ORDER BY\n    total DESC\n  LIMIT\n    100 ) pop_topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_03]\n  WHERE\n    subreddit = 'movies') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', pop_topic.name, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC\nIGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name as name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.superheroes]\n      WHERE\n        name = 'userInput') topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201604] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name\n  ORDER BY\n    total DESC\n  LIMIT\n    100 ) pop_topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_03]\n  WHERE\n    subreddit = 'movies') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', pop_topic.name, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+            "databases": "Reddit",
+            "units": "Mentions",
+            "hasPassingInputQuery": false,
+            "rowsSearched": 6632445135,
+            "warnings": {},
+            "errors": "Query timed out"
+        },
+        {
+            "top10": [
+                {
+                    "label": "Zack Snyder",
+                    "number": 733
+                },
+                {
+                    "label": "Ben Affleck",
+                    "number": 608
+                },
+                {
+                    "label": "Prince",
+                    "number": 339
+                },
+                {
+                    "label": "Michael Bay",
+                    "number": 211
+                },
+                {
+                    "label": "George Lucas",
+                    "number": 186
+                },
+                {
+                    "label": "Tim Burton",
+                    "number": 186
+                },
+                {
+                    "label": "Kevin Smith",
+                    "number": 164
+                },
+                {
+                    "label": "Tom Hanks",
+                    "number": 160
+                },
+                {
+                    "label": "Clint Eastwood",
+                    "number": 151
+                },
+                {
+                    "label": "Peter Jackson",
+                    "number": 146
+                }
+            ],
+            "answer": "Zack Snyder",
+            "answerValue": 733,
+            "question": "What director was mentioned in /r/movies the most in the past month?",
+            "rowIndex": 66,
+            "approved": true,
+            "params": {
+                "freebase_tag": "directors",
+                "subreddit": "movies",
+                "top_wiki": 500
+            },
+            "sql": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name as name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.directors]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201604] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_03]\n  WHERE\n    subreddit = 'movies') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', pop_topic.name, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC\nIGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name as name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.directors]\n      WHERE\n        name = 'userInput') topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201604] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_03]\n  WHERE\n    subreddit = 'movies') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', pop_topic.name, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+            "databases": "Reddit",
+            "units": "Comments",
+            "hasPassingInputQuery": false,
+            "rowsSearched": 6717552436,
+            "warnings": {},
+            "errors": "Query timed out"
+        },
+        {
+            "top10": [
+                {
+                    "label": "San Francisco",
+                    "number": 1391
+                },
+                {
+                    "label": "New York City",
+                    "number": 957
+                },
+                {
+                    "label": "Flint",
+                    "number": 558
+                },
+                {
+                    "label": "Detroit",
+                    "number": 419
+                },
+                {
+                    "label": "Atlanta",
+                    "number": 224
+                },
+                {
+                    "label": "Washington, D.C.",
+                    "number": 196
+                },
+                {
+                    "label": "Los Angeles",
+                    "number": 145
+                },
+                {
+                    "label": "Bury",
+                    "number": 133
+                },
+                {
+                    "label": "Jackson",
+                    "number": 130
+                },
+                {
+                    "label": "Seattle",
+                    "number": 129
+                }
+            ],
+            "answer": "San Francisco",
+            "answerValue": 1391,
+            "question": "Which city was mentioned the most in /r/news in the past month?",
+            "rowIndex": 99,
+            "approved": true,
+            "params": {
+                "freebase_tag": "cities",
+                "subreddit": "news",
+                "top_wiki": 75,
+                "num_common_words": 2000
+            },
+            "sql": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.cities]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201604] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      2000)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_03]\n  WHERE\n    subreddit = 'news') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.cities]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201604] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias,\n    CASE WHEN obj = 'userInput' THEN 1 ELSE 0 END AS input,\n    SUM(input) OVER (PARTITION BY sub) AS input_alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      2000)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_03]\n  WHERE\n    subreddit = 'news') comments\nWHERE\n  aliases.input_alias > 0\n  AND comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+            "databases": "Reddit",
+            "units": "Mentions",
+            "hasPassingInputQuery": false,
+            "rowsSearched": 7233515523,
+            "warnings": {},
+            "errors": "Query timed out"
+        },
+        {
+            "top10": [
+                {
+                    "label": "Hillary Rodham Clinton",
+                    "number": 29302
+                },
+                {
+                    "label": "Barack Obama",
+                    "number": 20578
+                },
+                {
+                    "label": "Bernie Sanders",
+                    "number": 5050
+                },
+                {
+                    "label": "Ted Kennedy",
+                    "number": 2641
+                },
+                {
+                    "label": "Spiro Agnew",
+                    "number": 2639
+                },
+                {
+                    "label": "Donald Trump",
+                    "number": 1944
+                },
+                {
+                    "label": "Jesse Ventura",
+                    "number": 1538
+                },
+                {
+                    "label": "Bill Clinton",
+                    "number": 1404
+                },
+                {
+                    "label": "Ted Cruz",
+                    "number": 1398
+                },
+                {
+                    "label": "John McCain",
+                    "number": 1153
+                }
+            ],
+            "answer": "Hillary Rodham Clinton",
+            "answerValue": 29302,
+            "question": "Which politician was most mentioned in /r/politics in the past month?",
+            "rowIndex": 93,
+            "approved": true,
+            "params": {
+                "freebase_tag": "politicians",
+                "subreddit": "politics",
+                "top_wiki": 100,
+                "num_common_words": 2000
+            },
+            "sql": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.politicians]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201510] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      2000)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'politics') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  pop_topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    topic_wiki.mid AS mid,\n    topic_wiki.name AS name,\n    topic_wiki.title AS title,\n    SUM(requests) AS total\n  FROM (\n    SELECT\n      topic.mid AS mid,\n      topic.name AS name,\n      REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n    FROM (\n      SELECT\n        mid,\n        name\n      FROM\n        [freebase_tags.politicians]) topic\n    JOIN (\n      SELECT\n        REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n        sub AS mid\n      FROM\n        [fh-bigquery:freebase20140119.triples_nolang]\n      WHERE\n        obj CONTAINS '/wikipedia/en'\n        OR obj CONTAINS '/wikipedia/id'\n        AND pred = '/type/object/key') wiki\n    ON\n      wiki.mid = topic.mid) topic_wiki\n  JOIN\n    [fh-bigquery:wikipedia.pagecounts_201510] views\n  ON\n    views.title = topic_wiki.title\n  GROUP BY\n    mid,\n    name,\n    title\n  ORDER BY\n    total DESC\n  LIMIT\n    500 ) pop_topic\nJOIN (\n  SELECT\n    sub,\n    obj AS alias,\n    CASE WHEN obj = 'userInput' THEN 1 ELSE 0 END AS input,\n    SUM(input) OVER (PARTITION BY sub) AS input_alias\n  FROM\n    [fh-bigquery:freebase20140119.triples_lang_en]\n  WHERE\n    (pred = '/common/topic/alias'\n      OR pred = '/type/object/name')\n    AND obj NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      2000)) aliases\nON\n  aliases.sub = pop_topic.mid\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_01]\n  WHERE\n    subreddit = 'politics') comments\nWHERE\n  aliases.input_alias > 0\n  AND comments.body CONTAINS CONCAT(' ', aliases.alias, ' ')\nGROUP BY\n  pop_topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
+            "databases": "Reddit",
+            "units": "Mentions",
+            "hasPassingInputQuery": false,
+            "rowsSearched": 6639585607,
+            "warnings": {},
+            "errors": "Query timed out"
+        }
+    ]
+}

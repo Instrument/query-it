@@ -1,0 +1,14 @@
+.animate {
+  text-indent: -9999px;
+  &.is-visible {
+    text-indent: 0;
+  }
+  &__text-char {
+    opacity: 0;
+    transition: opacity 400ms ease;
+
+    &.visible {
+      opacity: 1;
+    }
+  }
+}

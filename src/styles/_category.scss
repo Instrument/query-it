@@ -1,0 +1,15 @@
+.category {
+  color: $mako;
+
+  &__label {
+    @include small-heading;
+  }
+
+  &__description {
+    font-size: 2.5vw;
+    line-height: 3vw;
+    font-weight: 100;
+    width: 40vw;
+    margin: 0 auto;
+  }
+}

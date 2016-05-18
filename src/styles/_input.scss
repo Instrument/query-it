@@ -1,0 +1,108 @@
+  .player-input {
+    &__container {
+      border: none;
+      border-bottom: .5vmin solid $silver-chalice;
+      bottom: $padding;
+      padding-bottom: 10px;
+      position: absolute;
+      transition: border-bottom 200ms ease, transform 400ms ease, opacity 400ms linear;
+      width: 25%;
+      &.is-hidden {
+        opacity: 0;
+      }
+      &.is-submitted {
+        border-bottom: .5vw solid rgba($silver-chalice, 0);
+        transform: translateX(6vw);
+
+        .player-input__checkmark {
+          transform: scale(1);
+        }
+        .player-input__label {
+          opacity: 0;
+        }
+      }
+
+      &--team-one {
+        left: $padding;
+        &.is-active {
+          top: 0;
+        }
+
+        .player-input__checkmark {
+          margin-left: -5.5vw;
+          margin-right: 1.5vw;
+        }
+      }
+
+      &--team-two {
+        right: 6vw;
+        text-align: right;
+        &:before {
+          left: auto;
+          right: -6vw;
+        }
+        &.is-submitted {
+          padding-left: 0;
+          transform: translateX(-5vw);
+        }
+        .player-input__checkmark {
+          margin-left: 1.5vw;
+          margin-right: -5.5vw;
+        }
+      }
+    }
+
+    &__label {
+      @include small-heading($margin: 20px 0);
+      font-weight: 400;
+      color: white;
+      display: block;
+      transition: opacity 200ms linear;
+    }
+
+    &__checkmark {
+      content: '';
+      background-image: url(../images/check-blue.png);
+      background-size: cover;
+      box-shadow: 0 0 0 0.333vw white inset;
+      border-radius: 4vw;
+      display: inline-block;
+      font-size: 1.7vw;
+      height: 4vw;
+      line-height: 4vw;
+      text-align: center;
+      transform: scale(0);
+      transition: transform 200ms linear;
+      vertical-align: middle;
+      width: 4vw;
+    }
+
+    &__input {
+      animation: pulse 2s infinite;
+      background-color: transparent;
+      color: white;
+      display: inline;
+      font-size: 2.5vw;
+      font-weight: 100;
+      min-height: 6.5vh;
+      padding-bottom: 20px;
+      transition: color 600ms ease;
+      vertical-align: middle;
+      width: 100%;
+      -webkit-appearance: none;
+
+      &--right:after {
+        float: right;
+      }
+
+
+      &--secondary {
+        color: white;
+        border-bottom-color: white;
+      }
+      &.is-active {
+        animation: none;
+        color: white;
+      }
+    }
+}
