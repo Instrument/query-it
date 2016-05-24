@@ -1,0 +1,3 @@
+#!/bin/bash
+/usr/bin/node /home/pi/www/client.js --host=localhost --port=8095 --id=1
+$SHELL
