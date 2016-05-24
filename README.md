@@ -91,4 +91,9 @@ For example, if the computer running the experience has an address of `172.20.6.
 3. Edit line 3 to read `/usr/bin/node /home/pi/www/client.js --host=172.20.6.144 --port=8095 --id=1`
 4. `sudo reboot`
 
+Optionally, you can get the Pis to autostart the `client.js`:
+1. `sudo nano ~/.config/lxsession/LXDE-pi/autostart`
+2. Add `@lxterminal --command /home/pi/www/client.shl`
+
+
 Follow these steps for Player 2 Pi, only use `ssh pi@172.20.2.151` and `--id=2`.
