@@ -20,3 +20,15 @@ wss.on('connection', function connection(ws) {
 
   //ws.send('something');
 });
+
+if (argv.live) {
+  var express = require('express');
+  var app = express();
+
+  app.use(express.static('serve'));
+
+  app.listen(8080, function() {
+    console.log('Serving content at http://localhost:8080')
+  })
+
+}
