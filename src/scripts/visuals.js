@@ -59,8 +59,8 @@ export default class Visuals {
   quesitonParticleVariable = 50; //number of random particles to be added to the particleMin
   fadeDistance = 300; //z depth position where particles in the instruction view begin to fade
 
-  windowWidth = window.innerWidth;
-  windowHeight = window.innerHeight;
+  windowWidth = window.innerWidth * window.devicePixelRatio;
+  windowHeight = window.innerHeight * window.devicePixelRatio;
   aspect = this.windowWidth / this.windowHeight;
 
   container;//html reference used to append html labels
@@ -752,7 +752,7 @@ export default class Visuals {
 
     this.scene.add( this.mesh );
 
-    this.renderer.setPixelRatio( window.devicePixelRatio );
+    //this.renderer.setPixelRatio( window.devicePixelRatio );
     this.renderer.setSize( this.windowWidth, this.windowHeight );
     this.container.appendChild( this.renderer.domElement );
 
@@ -2513,8 +2513,8 @@ export default class Visuals {
   toScreenPosition(vec) {
     var targetVec = this.mesh.localToWorld(vec.clone());
     targetVec.project( this.camera );
-    targetVec.x =  (( targetVec.x ) * (this.windowWidth*0.5)) + (this.windowWidth * 0.5) ;
-    targetVec.y =  (( targetVec.y * -1 ) * (this.windowHeight*0.5)) + (this.windowHeight * 0.5) ;
+    targetVec.x =  (( targetVec.x ) * (this.windowWidth*0.5)/window.devicePixelRatio) + (this.windowWidth * 0.5)/window.devicePixelRatio ;
+    targetVec.y =  (( targetVec.y * -1 ) * (this.windowHeight*0.5)/window.devicePixelRatio) + (this.windowHeight * 0.5)/window.devicePixelRatio ;
     return targetVec;
   }
 
