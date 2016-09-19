@@ -24,11 +24,15 @@ wss.on('connection', function connection(ws) {
 if (argv.live) {
   var express = require('express');
   var app = express();
-
+  
+  //start bigquery server
+  var fork = require('child_process').fork;
+  var child = fork('./querysrv/querysrv.js');
+  
   app.use(express.static('serve'));
-
-  app.listen(8080, function() {
-    console.log('Serving content at http://localhost:8080')
+  var port = process.env.port || 8080;
+  app.listen(port, function() {
+    console.log('Serving content at http://localhost:',port)
   })
 
 }

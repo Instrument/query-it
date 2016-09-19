@@ -10,7 +10,7 @@ var refRes;
 
 const bigQuery = require('gcloud').bigquery({
   projectId: 'sodium-primer-120219',
-  keyFilename: '../cert/Big-Data-34fbefa58bd8.json'
+  keyFilename: './cert/Big-Data-34fbefa58bd8.json'
 });
 
 app.use(cors());
