@@ -299,6 +299,10 @@ export default class Visuals {
     this.timeouts.push(setTimeout(this.setup, 10));
   }
 
+  rgbToHex(r, g, b) {
+    return ((r << 16) | (g << 8) | b).toString(16);
+  }
+
   //function that loops through all the colors and runs them through the hexToRgb function to convert hex to rgb values from 0-1
   @autobind
   processColors(data) {
@@ -1091,6 +1095,9 @@ export default class Visuals {
 
     TweenMax.to(this.cameraTarget.rotation, 1.5, {x: 0, y: 0, z: 0, ease:Power2.easeInOut});
     TweenMax.to(this.camera.position, 1.5, {x: this.tempVector2.x, y: this.tempVector2.y, z:this.tempVector2.z + 1.5, ease:Power2.easeInOut, onComplete: this.pauseVisuals});
+    var tempColor = this.rgbToHex(this.colorsArray[this.targetDotIndex * 3] * 255, this.colorsArray[this.targetDotIndex * 3 + 1] * 255, this.colorsArray[this.targetDotIndex * 3 + 2] * 255);
+    console.log('tempColor - ' + tempColor);
+    
   }
 
   //handler for the intro effect based on the color passed, currently only blue is ever used.
@@ -2592,6 +2599,7 @@ export default class Visuals {
   //called by a tween onUpdate used to update colors an dopacities during tweens for use by the shaders
   @autobind
   updateColorTime (event, opacity=true) {
+
     var r = 0;
     var g = 0;
     var b = 0;
