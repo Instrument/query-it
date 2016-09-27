@@ -752,8 +752,8 @@ export default class Visuals {
 
     this.scene.add( this.mesh );
 
-    //this.renderer.setPixelRatio( window.devicePixelRatio );
-    this.renderer.setSize( this.windowWidth, this.windowHeight );
+    // this.renderer.setPixelRatio( window.devicePixelRatio );
+    this.renderer.setSize( this.windowWidth * window.devicePixelRatio, this.windowHeight * window.devicePixelRatio );
     this.container.appendChild( this.renderer.domElement );
 
     this.overlay = document.createElement("div");
@@ -766,7 +766,7 @@ export default class Visuals {
 
     this.effect = new THREE.ShaderPass ( THREE.FXAAShader );
     this.effect.enabled = true;
-    this.effect.uniforms.resolution.value = new THREE.Vector2(1 / this.windowWidth, 1 / this.windowHeight);
+    this.effect.uniforms.resolution.value = new THREE.Vector2(1 / (this.windowWidth * window.devicePixelRatio), 1 / (this.windowHeight * window.devicePixelRatio));
     this.composer.addPass(this.effect);
 
 
