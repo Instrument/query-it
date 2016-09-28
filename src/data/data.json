@@ -962,7 +962,7 @@
                     "number": 0.6274915104089768
                 }
             ],
-            "answer": "Iowa",
+            "answer": "Texas",
             "answerValue": 2.0339258837407965,
             "question": "Which state's subreddit talked about Ted Cruz the most in the past year?",
             "rowIndex": 215,
@@ -2320,47 +2320,47 @@
             "top10": [
                 {
                     "label": "Indian Institutes of Management",
-                    "number": 20921
+                    "number": 22284
                 },
                 {
                     "label": "Harvard Business School",
-                    "number": 16977
+                    "number": 17602
                 },
                 {
                     "label": "INSEAD",
-                    "number": 15587
-                },
-                {
-                    "label": "London Business School",
-                    "number": 9729
+                    "number": 16344
                 },
                 {
                     "label": "MIT Sloan School of Management",
-                    "number": 7934
+                    "number": 11518
+                },
+                {
+                    "label": "London Business School",
+                    "number": 9732
                 },
                 {
                     "label": "Hult International Business School",
-                    "number": 6373
+                    "number": 7219
                 },
                 {
-                    "label": "Columbia Business School",
-                    "number": 4890
+                    "label": "Moore School of Business",
+                    "number": 6240
+                },
+                {
+                    "label": "KEDGE Business School",
+                    "number": 5343
                 },
                 {
                     "label": "Pentacle",
-                    "number": 4845
+                    "number": 5284
                 },
                 {
-                    "label": "IE Business School",
-                    "number": 4569
-                },
-                {
-                    "label": "Copenhagen Business School",
-                    "number": 4300
+                    "label": "Columbia Business School",
+                    "number": 4879
                 }
             ],
             "answer": "Indian Institutes of Management",
-            "answerValue": 20921,
+            "answerValue": 22284,
             "question": "Which business school had the most popular page in the past month?",
             "rowIndex": 351,
             "approved": true,
@@ -2368,8 +2368,8 @@
                 "wikidata_tag": "business_schools_clean",
                 "substring": true
             },
-            "sql": "\n  SELECT\n    replace(school.name, \"_\", \" \") AS name,\n    SUM(requests) AS total\n  FROM\n    [wikidata_tags.business_schools_clean] school\n  JOIN EACH (\n    SELECT\n      title,\n      requests\n    FROM\n      [fh-bigquery:wikipedia.pagecounts_201607]) views\n  ON\n    views.title = name\n  GROUP BY\n    name\n  ORDER BY\n    total DESC IGNORE case\n",
-            "inputSQL": "\n   SELECT\n      replace(school.name, \"_\", \" \") AS name,\n      SUM(requests) AS total\n    FROM\n      [wikidata_tags.business_schools_clean] school\n    JOIN EACH (\n      SELECT\n        title,\n        requests\n      FROM\n        [fh-bigquery:wikipedia.pagecounts_201607]\n      WHERE\n        title = 'userInput'\nOR title CONTAINS CONCAT('_', replace('userInput', ' ', '_' ))\nOR title CONTAINS CONCAT(replace('userInput', ' ', '_' ), '_')\n ) views\n    ON\n      views.title = name\n    GROUP BY\n      name\n    ORDER BY\n      total DESC IGNORE case\n",
+            "sql": "\n  SELECT\n    replace(school.name, \"_\", \" \") AS name,\n    SUM(requests) AS total\n  FROM\n    [wikidata_tags.business_schools_clean] school\n  JOIN EACH (\n    SELECT\n      title,\n      requests\n    FROM\n      [fh-bigquery:wikipedia.pagecounts_201606]) views\n  ON\n    views.title = name\n  GROUP BY\n    name\n  ORDER BY\n    total DESC IGNORE case\n",
+            "inputSQL": "\n   SELECT\n      replace(school.name, \"_\", \" \") AS name,\n      SUM(requests) AS total\n    FROM\n      [wikidata_tags.business_schools_clean] school\n    JOIN EACH (\n      SELECT\n        title,\n        requests\n      FROM\n        [fh-bigquery:wikipedia.pagecounts_201606]\n      WHERE\n        title = 'userInput'\nOR title CONTAINS CONCAT('_', replace('userInput', ' ', '_' ))\nOR title CONTAINS CONCAT(replace('userInput', ' ', '_' ), '_')\n ) views\n    ON\n      views.title = name\n    GROUP BY\n      name\n    ORDER BY\n      total DESC IGNORE case\n",
             "databases": "Wikipedia",
             "units": "Views",
             "hasPassingInputQuery": true,
@@ -2379,48 +2379,48 @@
         {
             "top10": [
                 {
-                    "label": "Pikachu",
-                    "number": 158856
-                },
-                {
-                    "label": "Mewtwo",
-                    "number": 102986
-                },
-                {
                     "label": "Volbeat",
-                    "number": 59632
+                    "number": 123023
                 },
                 {
                     "label": "Golem",
-                    "number": 45912
+                    "number": 47092
                 },
                 {
-                    "label": "MissingNo.",
-                    "number": 38044
+                    "label": "Pikachu",
+                    "number": 30867
                 },
                 {
-                    "label": "Eevee",
-                    "number": 30378
+                    "label": "Altaria",
+                    "number": 25816
                 },
                 {
-                    "label": "Squirtle",
-                    "number": 29477
+                    "label": "Electrode",
+                    "number": 12101
                 },
                 {
-                    "label": "Articuno",
-                    "number": 27189
+                    "label": "MissingNo",
+                    "number": 10207
                 },
                 {
-                    "label": "Meowth",
-                    "number": 26345
+                    "label": "Mewtwo",
+                    "number": 9844
                 },
                 {
-                    "label": "Zapdos",
-                    "number": 24035
+                    "label": "Dragonair",
+                    "number": 9165
+                },
+                {
+                    "label": "Klang",
+                    "number": 7703
+                },
+                {
+                    "label": "Kabuto",
+                    "number": 6233
                 }
             ],
-            "answer": "Pikachu",
-            "answerValue": 158856,
+            "answer": "Volbeat",
+            "answerValue": 123023,
             "question": "What was the most popular Pokemon species in the past month?",
             "rowIndex": 355,
             "approved": true,
@@ -2428,8 +2428,8 @@
                 "wikidata_tag": "pokemon_species",
                 "substring": true
             },
-            "sql": "\n  SELECT\n    replace(school.name, \"_\", \" \") AS name,\n    SUM(requests) AS total\n  FROM\n    [wikidata_tags.pokemon_species] school\n  JOIN EACH (\n    SELECT\n      title,\n      requests\n    FROM\n      [fh-bigquery:wikipedia.pagecounts_201607]) views\n  ON\n    views.title = name\n  GROUP BY\n    name\n  ORDER BY\n    total DESC IGNORE case\n",
-            "inputSQL": "\n   SELECT\n      replace(school.name, \"_\", \" \") AS name,\n      SUM(requests) AS total\n    FROM\n      [wikidata_tags.pokemon_species] school\n    JOIN EACH (\n      SELECT\n        title,\n        requests\n      FROM\n        [fh-bigquery:wikipedia.pagecounts_201607]\n      WHERE\n        title = 'userInput'\nOR title CONTAINS CONCAT('_', replace('userInput', ' ', '_' ))\nOR title CONTAINS CONCAT(replace('userInput', ' ', '_' ), '_')\n ) views\n    ON\n      views.title = name\n    GROUP BY\n      name\n    ORDER BY\n      total DESC IGNORE case\n",
+            "sql": "\n  SELECT\n    replace(school.name, \"_\", \" \") AS name,\n    SUM(requests) AS total\n  FROM\n    [wikidata_tags.pokemon_species] school\n  JOIN EACH (\n    SELECT\n      title,\n      requests\n    FROM\n      [fh-bigquery:wikipedia.pagecounts_201606]) views\n  ON\n    views.title = name\n  GROUP BY\n    name\n  ORDER BY\n    total DESC IGNORE case\n",
+            "inputSQL": "\n   SELECT\n      replace(school.name, \"_\", \" \") AS name,\n      SUM(requests) AS total\n    FROM\n      [wikidata_tags.pokemon_species] school\n    JOIN EACH (\n      SELECT\n        title,\n        requests\n      FROM\n        [fh-bigquery:wikipedia.pagecounts_201606]\n      WHERE\n        title = 'userInput'\nOR title CONTAINS CONCAT('_', replace('userInput', ' ', '_' ))\nOR title CONTAINS CONCAT(replace('userInput', ' ', '_' ), '_')\n ) views\n    ON\n      views.title = name\n    GROUP BY\n      name\n    ORDER BY\n      total DESC IGNORE case\n",
             "databases": "Wikipedia",
             "units": "Views",
             "hasPassingInputQuery": true,
@@ -2687,47 +2687,47 @@
             "top10": [
                 {
                     "label": "Netflix",
-                    "number": 275966
+                    "number": 349324
                 },
                 {
                     "label": "Opera",
-                    "number": 252696
+                    "number": 259082
                 },
                 {
                     "label": "BitTorrent",
-                    "number": 164517
+                    "number": 171479
                 },
                 {
                     "label": "Dolphin",
-                    "number": 82356
-                },
-                {
-                    "label": "MATLAB",
-                    "number": 76054
+                    "number": 103172
                 },
                 {
                     "label": "Haiku",
-                    "number": 72901
+                    "number": 91320
                 },
                 {
-                    "label": "Dropbox",
-                    "number": 66272
+                    "label": "MATLAB",
+                    "number": 88690
                 },
                 {
                     "label": "Osiris",
-                    "number": 66143
+                    "number": 83718
+                },
+                {
+                    "label": "Calculator",
+                    "number": 71610
+                },
+                {
+                    "label": "Dropbox",
+                    "number": 71356
                 },
                 {
                     "label": "Hydrogen",
-                    "number": 56036
-                },
-                {
-                    "label": "Hyper-V",
-                    "number": 53635
+                    "number": 63869
                 }
             ],
             "answer": "Netflix",
-            "answerValue": 275966,
+            "answerValue": 349324,
             "question": "Which software application had the most popular page in the last month?",
             "rowIndex": 385,
             "approved": true,
@@ -2735,8 +2735,8 @@
                 "wikidata_tag": "software_applications",
                 "substring": true
             },
-            "sql": "\n  SELECT\n    replace(school.name, \"_\", \" \") AS name,\n    SUM(requests) AS total\n  FROM\n    [wikidata_tags.software_applications] school\n  JOIN EACH (\n    SELECT\n      title,\n      requests\n    FROM\n      [fh-bigquery:wikipedia.pagecounts_201607]) views\n  ON\n    views.title = name\n  GROUP BY\n    name\n  ORDER BY\n    total DESC IGNORE case\n",
-            "inputSQL": "\n   SELECT\n      replace(school.name, \"_\", \" \") AS name,\n      SUM(requests) AS total\n    FROM\n      [wikidata_tags.software_applications] school\n    JOIN EACH (\n      SELECT\n        title,\n        requests\n      FROM\n        [fh-bigquery:wikipedia.pagecounts_201607]\n      WHERE\n        title = 'userInput'\nOR title CONTAINS CONCAT('_', replace('userInput', ' ', '_' ))\nOR title CONTAINS CONCAT(replace('userInput', ' ', '_' ), '_')\n ) views\n    ON\n      views.title = name\n    GROUP BY\n      name\n    ORDER BY\n      total DESC IGNORE case\n",
+            "sql": "\n  SELECT\n    replace(school.name, \"_\", \" \") AS name,\n    SUM(requests) AS total\n  FROM\n    [wikidata_tags.software_applications] school\n  JOIN EACH (\n    SELECT\n      title,\n      requests\n    FROM\n      [fh-bigquery:wikipedia.pagecounts_201606]) views\n  ON\n    views.title = name\n  GROUP BY\n    name\n  ORDER BY\n    total DESC IGNORE case\n",
+            "inputSQL": "\n   SELECT\n      replace(school.name, \"_\", \" \") AS name,\n      SUM(requests) AS total\n    FROM\n      [wikidata_tags.software_applications] school\n    JOIN EACH (\n      SELECT\n        title,\n        requests\n      FROM\n        [fh-bigquery:wikipedia.pagecounts_201606]\n      WHERE\n        title = 'userInput'\nOR title CONTAINS CONCAT('_', replace('userInput', ' ', '_' ))\nOR title CONTAINS CONCAT(replace('userInput', ' ', '_' ), '_')\n ) views\n    ON\n      views.title = name\n    GROUP BY\n      name\n    ORDER BY\n      total DESC IGNORE case\n",
             "databases": "Wikipedia",
             "units": "Views",
             "hasPassingInputQuery": true,
@@ -2907,7 +2907,7 @@
                 {
                     "label": "Disney",
                     "number":   22
-                },
+                }
             ],
             "answer": "Apple",
             "answerValue": 344,
@@ -3240,47 +3240,47 @@
             "top10": [
                 {
                     "label": "Leonardo da Vinci",
-                    "number": 1749665
+                    "number": 2789455
                 },
                 {
                     "label": "Nikola Tesla",
-                    "number": 1394772
+                    "number": 1435575
                 },
                 {
                     "label": "Elon Musk",
-                    "number": 1265031
+                    "number": 1354960
                 },
                 {
                     "label": "Steve Jobs",
-                    "number": 1032954
+                    "number": 1292571
                 },
                 {
                     "label": "Thomas Jefferson",
-                    "number": 847434
-                },
-                {
-                    "label": "Benjamin Franklin",
-                    "number": 741076
-                },
-                {
-                    "label": "James Cameron",
-                    "number": 593890
+                    "number": 851182
                 },
                 {
                     "label": "Thomas Edison",
-                    "number": 583373
+                    "number": 824721
+                },
+                {
+                    "label": "Benjamin Franklin",
+                    "number": 810477
                 },
                 {
                     "label": "Henry Ford",
-                    "number": 412508
+                    "number": 481990
                 },
                 {
-                    "label": "Alexander Graham Bell",
-                    "number": 330032
+                    "label": "Blaise Pascal",
+                    "number": 468417
+                },
+                {
+                    "label": "James Cameron",
+                    "number": 445742
                 }
             ],
             "answer": "Leonardo da Vinci",
-            "answerValue": 1749665,
+            "answerValue": 2789455,
             "question": "Which inventor had the most popular page in the past month?",
             "rowIndex": 285,
             "approved": true,
@@ -3288,8 +3288,8 @@
                 "freebase_tag": "inventors",
                 "substring": true
             },
-            "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.inventors]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201607] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.inventors]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name CONTAINS 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201607] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.inventors]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201606] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.inventors]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name CONTAINS 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201606] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
             "databases": "Wikipedia",
             "units": "Views",
             "hasPassingInputQuery": true,
@@ -3300,47 +3300,47 @@
             "top10": [
                 {
                     "label": "USB",
-                    "number": 1371138
+                    "number": 1482926
                 },
                 {
                     "label": "Wi-Fi",
-                    "number": 1174452
+                    "number": 1440064
                 },
                 {
-                    "label": "HDMI",
-                    "number": 742223
+                    "label": "Graphene",
+                    "number": 914109
                 },
                 {
                     "label": "AK-47",
-                    "number": 724971
+                    "number": 825248
+                },
+                {
+                    "label": "HDMI",
+                    "number": 794023
                 },
                 {
                     "label": "RAID",
-                    "number": 591887
-                },
-                {
-                    "label": "Radio control",
-                    "number": 536035
+                    "number": 699266
                 },
                 {
                     "label": "Internet Protocol",
-                    "number": 357013
-                },
-                {
-                    "label": "Hashtag",
-                    "number": 346137
+                    "number": 667222
                 },
                 {
                     "label": "ARPANET",
-                    "number": 339104
+                    "number": 444662
                 },
                 {
                     "label": "Periodic Table",
-                    "number": 295302
+                    "number": 372663
+                },
+                {
+                    "label": "Hashtag",
+                    "number": 362196
                 }
             ],
             "answer": "USB",
-            "answerValue": 1371138,
+            "answerValue": 1482926,
             "question": "What invention had the most pageviews in the past month?",
             "rowIndex": 328,
             "approved": true,
@@ -3348,8 +3348,8 @@
                 "freebase_tag": "invention",
                 "substring": true
             },
-            "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.invention]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201607] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.invention]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name CONTAINS 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201607] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.invention]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201606] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.invention]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name CONTAINS 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201606] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
             "databases": "Wikipedia",
             "units": "Views",
             "hasPassingInputQuery": true,
