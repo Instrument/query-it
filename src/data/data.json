@@ -962,7 +962,7 @@
                     "number": 0.6274915104089768
                 }
             ],
-            "answer": "Iowa",
+            "answer": "Texas",
             "answerValue": 2.0339258837407965,
             "question": "Which state's subreddit talked about Ted Cruz the most in the past year?",
             "rowIndex": 215,
@@ -2869,68 +2869,6 @@
         {
             "top10": [
                 {
-                    "label": "Apple",
-                    "number":   344  
-                },
-                {
-                    "label": "Google",
-                    "number":   292  
-                },
-                {
-                    "label": "Target",
-                    "number":   125  
-                },
-                {
-                    "label": "Facebook",
-                    "number":   53   
-                },
-                {
-                    "label": "Microsoft",
-                    "number":   52   
-                },
-                {
-                    "label": "Starbucks",
-                    "number":   28   
-                },
-                {
-                    "label": "UPS",
-                    "number":   26   
-                },
-                {
-                    "label": "Netflix",
-                    "number":   25   
-                },
-                {
-                    "label": "Ball",
-                    "number":  24   
-                },
-                {
-                    "label": "Disney",
-                    "number":   22
-                },
-            ],
-            "answer": "Apple",
-            "answerValue": 344,
-            "question": "Which Fortune 500 company was discussed the most in /r/personalfinance in the past month?",
-            "rowIndex": 361,
-            "approved": true,
-            "params": {
-                "wikidata_tag": "fortune_500",
-                "subreddit": "personalfinance",
-                "num_common_words": 10000,
-                "top_wiki": 500
-            },
-            "sql": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM\n  [wikidata_tags.fortune_500] topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_08]\n  WHERE\n    subreddit = 'personalfinance') comments\nWHERE\n  topic.name NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      10000) AND\n      comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    [wikidata_tags.fortune_500]\n  WHERE\n    name = 'userInput') topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_08]\n  WHERE\n    subreddit = 'personalfinance') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
-            "databases": "Reddit",
-            "units": "Mentions",
-            "hasPassingInputQuery": true,
-            "rowsSearched": 69849810,
-            "warnings": {}
-        },
-        {
-            "top10": [
-                {
                     "label": "Google",
                     "number": 86
                 },
@@ -3357,5 +3295,5 @@
             "warnings": {}
         }
     ],
-    "total": 55
+    "total": 54
 }
