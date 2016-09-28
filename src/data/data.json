@@ -1,10 +1,11 @@
+
 {
     "questions": [
         {
             "top10": [
                 {
                     "label": "Benin",
-                    "number": 9.946524064171124
+                    "number": 9.902044293015333
                 },
                 {
                     "label": "Liechtenstein",
@@ -12,39 +13,39 @@
                 },
                 {
                     "label": "Niger",
-                    "number": 5.215047788397421
+                    "number": 5.196279275787608
                 },
                 {
                     "label": "Djibouti",
-                    "number": 5.116416150898909
+                    "number": 5.117045053523115
                 },
                 {
                     "label": "Brunei",
-                    "number": 5.067594592432606
+                    "number": 5.058350260883419
                 },
                 {
                     "label": "Iran",
-                    "number": 4.6967974965359405
+                    "number": 4.707319379405168
                 },
                 {
                     "label": "Cameroon",
-                    "number": 4.685465350285295
+                    "number": 4.676760280605617
                 },
                 {
                     "label": "Aruba",
-                    "number": 4.253112033195021
+                    "number": 4.248704663212435
                 },
                 {
                     "label": "Germany",
-                    "number": 4.132632219656246
+                    "number": 4.1390257004355675
                 },
                 {
                     "label": "Russia",
-                    "number": 4.025043069527008
+                    "number": 4.0256333477721995
                 }
             ],
             "answer": "Benin",
-            "answerValue": 9.946524064171124,
+            "answerValue": 9.902044293015333,
             "question": "Which country was the most cooperative last year?",
             "rowIndex": 2,
             "approved": true,
@@ -67,47 +68,47 @@
             "top10": [
                 {
                     "label": "Benin",
-                    "number": 3.1372549019607843
+                    "number": 3.1232254400908577
                 },
                 {
                     "label": "Armenia",
-                    "number": 2.715272972523189
+                    "number": 2.7258907197399918
                 },
                 {
                     "label": "Niger",
-                    "number": 1.9726605912424984
+                    "number": 1.9655611538674491
                 },
                 {
                     "label": "Cameroon",
-                    "number": 1.7520183725169876
+                    "number": 1.7478801048728063
                 },
                 {
                     "label": "Chad",
-                    "number": 1.6296712559707782
+                    "number": 1.622317116377944
                 },
                 {
                     "label": "Iceland",
-                    "number": 0.9528346831824679
+                    "number": 0.9492732126965292
                 },
                 {
                     "label": "Belarus",
-                    "number": 0.805189675341446
+                    "number": 0.8028478376126638
                 },
                 {
                     "label": "Kazakhstan",
-                    "number": 0.6832371304040523
+                    "number": 0.6802880668089798
                 },
                 {
                     "label": "Tajikistan",
-                    "number": 0.662361318099023
+                    "number": 0.6587072869493619
                 },
                 {
                     "label": "Kyrgyzstan",
-                    "number": 0.5552813425468904
+                    "number": 0.5540848365449732
                 }
             ],
             "answer": "Benin",
-            "answerValue": 3.1372549019607843,
+            "answerValue": 3.1232254400908577,
             "question": "Which country had the most cooperative military last year?",
             "rowIndex": 14,
             "approved": true,
@@ -130,23 +131,23 @@
             "top10": [
                 {
                     "label": "Ivory Coast",
-                    "number": 4.228673660242335
+                    "number": 4.214963119072708
                 },
                 {
                     "label": "Guatemala",
-                    "number": 3.5446125700346838
+                    "number": 3.533434650455927
                 },
                 {
                     "label": "Guinea",
-                    "number": 3.1391014322150284
+                    "number": 3.13275029369534
                 },
                 {
                     "label": "Burkina Faso",
-                    "number": 1.8883415435139572
+                    "number": 1.882930822758903
                 },
                 {
                     "label": "Burundi",
-                    "number": 1.857552276828362
+                    "number": 1.8518518518518519
                 },
                 {
                     "label": "Togo",
@@ -154,23 +155,23 @@
                 },
                 {
                     "label": "Moldova",
-                    "number": 1.5679323743949827
+                    "number": 1.5611212923369306
                 },
                 {
                     "label": "Honduras",
-                    "number": 1.4513788098693758
+                    "number": 1.442244657139111
                 },
                 {
                     "label": "Senegal",
-                    "number": 1.2675036214389184
+                    "number": 1.2620950778291964
                 },
                 {
                     "label": "Antigua and Barbuda",
-                    "number": 1.2619433928249504
+                    "number": 1.257183908045977
                 }
             ],
             "answer": "Ivory Coast",
-            "answerValue": 4.228673660242335,
+            "answerValue": 4.214963119072708,
             "question": "Which country called for leadership change the most last year?",
             "rowIndex": 8,
             "approved": true,
@@ -193,47 +194,47 @@
             "top10": [
                 {
                     "label": "Brazil",
-                    "number": 1.5230109029662877
+                    "number": 1.5145035991732592
                 },
                 {
                     "label": "Grenada",
-                    "number": 1.036699149906697
+                    "number": 1.0334849111202977
                 },
                 {
                     "label": "Switzerland",
-                    "number": 1.0303592317156693
+                    "number": 1.0259257471153382
                 },
                 {
                     "label": "Bangladesh",
-                    "number": 0.9906644444703442
+                    "number": 0.9823012428999844
                 },
                 {
                     "label": "Zimbabwe",
-                    "number": 0.6752080484799379
+                    "number": 0.6719131888160049
                 },
                 {
                     "label": "Lithuania",
-                    "number": 0.669882100750268
+                    "number": 0.6678242286630159
                 },
                 {
                     "label": "Chile",
-                    "number": 0.5642279480910288
+                    "number": 0.5626828719333784
                 },
                 {
                     "label": "Chad",
-                    "number": 0.561955605507165
+                    "number": 0.5594196953027393
                 },
                 {
                     "label": "Rwanda",
-                    "number": 0.4202828503582911
+                    "number": 0.41857642159017183
                 },
                 {
                     "label": "Nepal",
-                    "number": 0.3592760587416356
+                    "number": 0.3581373277583289
                 }
             ],
             "answer": "Brazil",
-            "answerValue": 1.5230109029662877,
+            "answerValue": 1.5145035991732592,
             "question": "Which country willingly shared the most intelligence last year?",
             "rowIndex": 16,
             "approved": true,
@@ -256,47 +257,47 @@
             "top10": [
                 {
                     "label": "China",
-                    "number": 23087
+                    "number": 23417
                 },
                 {
                     "label": "Russia",
-                    "number": 12343
+                    "number": 12478
                 },
                 {
                     "label": "Iran",
-                    "number": 9079
+                    "number": 9178
                 },
                 {
                     "label": "Australia",
-                    "number": 8981
+                    "number": 9086
                 },
                 {
                     "label": "United Kingdom",
-                    "number": 8428
+                    "number": 8656
                 },
                 {
                     "label": "Canada",
-                    "number": 8078
+                    "number": 8222
                 },
                 {
                     "label": "Japan",
-                    "number": 7759
+                    "number": 7827
                 },
                 {
                     "label": "Vietnam",
-                    "number": 5573
+                    "number": 5753
                 },
                 {
                     "label": "Turkey",
-                    "number": 5503
+                    "number": 5575
                 },
                 {
                     "label": "Germany",
-                    "number": 4727
+                    "number": 4834
                 }
             ],
             "answer": "China",
-            "answerValue": 23087,
+            "answerValue": 23417,
             "question": "Which country, besides the United States, provided the most economic support to other countries last year?",
             "rowIndex": 17,
             "approved": true,
@@ -319,47 +320,47 @@
             "top10": [
                 {
                     "label": "United Kingdom",
-                    "number": 148231
+                    "number": 149022
                 },
                 {
                     "label": "China",
-                    "number": 129654
+                    "number": 130391
                 },
                 {
                     "label": "Iran",
-                    "number": 113828
+                    "number": 114165
                 },
                 {
                     "label": "Russia",
-                    "number": 110351
+                    "number": 110670
                 },
                 {
                     "label": "Canada",
-                    "number": 105030
+                    "number": 105612
                 },
                 {
                     "label": "France",
-                    "number": 104969
+                    "number": 105517
                 },
                 {
                     "label": "Israel",
-                    "number": 86381
+                    "number": 86706
                 },
                 {
                     "label": "Cuba",
-                    "number": 77636
+                    "number": 77880
                 },
                 {
                     "label": "Mexico",
-                    "number": 75061
+                    "number": 75764
                 },
                 {
                     "label": "Iraq",
-                    "number": 65497
+                    "number": 65609
                 }
             ],
             "answer": "United Kingdom",
-            "answerValue": 148231,
+            "answerValue": 149022,
             "question": "Which country was mentioned the most with the United States in the news last year?",
             "rowIndex": 20,
             "approved": true,
@@ -379,47 +380,47 @@
             "top10": [
                 {
                     "label": "Haiti",
-                    "number": 5.0675675675675675
+                    "number": 5.048683736025965
                 },
                 {
                     "label": "Macao",
-                    "number": 4.459308807134894
-                },
-                {
-                    "label": "Nepal",
-                    "number": 3.646651996227601
+                    "number": 4.424778761061947
                 },
                 {
                     "label": "Saint Vincent and the Grenadines",
-                    "number": 3.5655512890839276
+                    "number": 3.693065244152647
+                },
+                {
+                    "label": "Nepal",
+                    "number": 3.6350938767470384
                 },
                 {
                     "label": "Malawi",
-                    "number": 2.5917199596095593
+                    "number": 2.5800830987803245
                 },
                 {
                     "label": "Papua New Guinea",
-                    "number": 2.332814930015552
+                    "number": 2.320599785790789
                 },
                 {
                     "label": "Kiribati",
-                    "number": 2.0796197266785503
-                },
-                {
-                    "label": "Tanzania",
-                    "number": 2.065867062457379
+                    "number": 2.0667257159728374
                 },
                 {
                     "label": "Nicaragua",
-                    "number": 2.061105722599418
+                    "number": 2.0533880903490758
+                },
+                {
+                    "label": "Tanzania",
+                    "number": 2.0525287951855247
                 },
                 {
                     "label": "United States",
-                    "number": 1.877092553721561
+                    "number": 1.8773320109901808
                 }
             ],
             "answer": "Haiti",
-            "answerValue": 5.0675675675675675,
+            "answerValue": 5.048683736025965,
             "question": "Which country appealed the most for economic aid last year?",
             "rowIndex": 9,
             "approved": true,
@@ -442,27 +443,27 @@
             "top10": [
                 {
                     "label": "Pakistan",
-                    "number": 24881
+                    "number": 24921
                 },
                 {
                     "label": "United States",
-                    "number": 10570
+                    "number": 10701
                 },
                 {
                     "label": "China",
-                    "number": 7851
+                    "number": 7891
                 },
                 {
                     "label": "Bangladesh",
-                    "number": 6869
+                    "number": 6902
                 },
                 {
                     "label": "United Kingdom",
-                    "number": 6552
+                    "number": 6563
                 },
                 {
                     "label": "Nepal",
-                    "number": 4762
+                    "number": 4800
                 },
                 {
                     "label": "Sri Lanka",
@@ -470,19 +471,19 @@
                 },
                 {
                     "label": "Japan",
-                    "number": 3018
+                    "number": 3026
                 },
                 {
                     "label": "France",
-                    "number": 2876
+                    "number": 2890
                 },
                 {
                     "label": "Senegal",
-                    "number": 2366
+                    "number": 2380
                 }
             ],
             "answer": "Pakistan",
-            "answerValue": 24881,
+            "answerValue": 24921,
             "question": "Which country was mentioned with India the most in the news last year?",
             "rowIndex": 34,
             "approved": true,
@@ -501,48 +502,48 @@
         {
             "top10": [
                 {
-                    "label": "Nebraska",
-                    "number": 2.2900763358778624
-                },
-                {
-                    "label": "Pennsylvania",
-                    "number": 1.9593872461702886
-                },
-                {
-                    "label": "New York",
-                    "number": 1.7699115044247788
+                    "label": "Nevada",
+                    "number": 1.487603305785124
                 },
                 {
                     "label": "Alabama",
-                    "number": 1.6734279918864097
+                    "number": 1.150386948337168
                 },
                 {
-                    "label": "Kentucky",
-                    "number": 1.407954945441746
+                    "label": "New York",
+                    "number": 1.0204081632653061
+                },
+                {
+                    "label": "Pennsylvania",
+                    "number": 1.006155303030303
+                },
+                {
+                    "label": "Nebraska",
+                    "number": 0.981675392670157
                 },
                 {
                     "label": "Illinois",
-                    "number": 1.1778563015312131
-                },
-                {
-                    "label": "Iowa",
-                    "number": 1.1219147344801794
+                    "number": 0.9424842919284678
                 },
                 {
                     "label": "Kansas",
-                    "number": 1.092896174863388
+                    "number": 0.8461668641056016
+                },
+                {
+                    "label": "Kentucky",
+                    "number": 0.8338044092707745
                 },
                 {
                     "label": "Wisconsin",
-                    "number": 0.8661614058465895
+                    "number": 0.7640631920862248
                 },
                 {
-                    "label": "West Virginia",
-                    "number": 0.6961506961506961
+                    "label": "North Dakota",
+                    "number": 0.761307657859382
                 }
             ],
-            "answer": "Nebraska",
-            "answerValue": 2.2900763358778624,
+            "answer": "Nevada",
+            "answerValue": 1.487603305785124,
             "question": "Which state's subreddit talked about Obama the most in the past year?",
             "rowIndex": 63,
             "approved": true,
@@ -561,48 +562,48 @@
         {
             "top10": [
                 {
+                    "label": "Nevada",
+                    "number": 4.132231404958677
+                },
+                {
+                    "label": "Indiana",
+                    "number": 3.4480110582091843
+                },
+                {
                     "label": "Ohio",
-                    "number": 3.7789427697684577
+                    "number": 3.2946635730858467
                 },
                 {
                     "label": "Iowa",
-                    "number": 3.5901271503365746
-                },
-                {
-                    "label": "South Carolina",
-                    "number": 3.5624325296869377
-                },
-                {
-                    "label": "Nevada",
-                    "number": 3.559870550161812
-                },
-                {
-                    "label": "New York",
-                    "number": 2.4582104228121926
-                },
-                {
-                    "label": "Florida",
-                    "number": 2.45275432247688
-                },
-                {
-                    "label": "Missouri",
-                    "number": 2.2538552787663106
-                },
-                {
-                    "label": "Minnesota",
-                    "number": 1.8172977572479183
-                },
-                {
-                    "label": "North Carolina",
-                    "number": 1.7235943247503942
+                    "number": 3.1592520954223082
                 },
                 {
                     "label": "Pennsylvania",
-                    "number": 1.7100106875667973
+                    "number": 2.8172348484848486
+                },
+                {
+                    "label": "New York",
+                    "number": 2.1683673469387754
+                },
+                {
+                    "label": "Wisconsin",
+                    "number": 1.9968994537132734
+                },
+                {
+                    "label": "South Carolina",
+                    "number": 1.9457841343755198
+                },
+                {
+                    "label": "North Dakota",
+                    "number": 1.9256605463502015
+                },
+                {
+                    "label": "Florida",
+                    "number": 1.6951507572599693
                 }
             ],
-            "answer": "Ohio",
-            "answerValue": 3.7789427697684577,
+            "answer": "Nevada",
+            "answerValue": 4.132231404958677,
             "question": "Which state's subreddit talked about Donald Trump the most in the past year?",
             "rowIndex": 67,
             "approved": true,
@@ -622,47 +623,47 @@
             "top10": [
                 {
                     "label": "Seattle",
-                    "number": 2.111801242236025
+                    "number": 2.07013113161729
                 },
                 {
                     "label": "Los Angeles",
-                    "number": 2.047327217353936
+                    "number": 2.009327966450079
                 },
                 {
                     "label": "Atlanta",
-                    "number": 1.824178134389152
+                    "number": 1.8245817459002815
                 },
                 {
                     "label": "Pittsburgh",
-                    "number": 1.7944059394836598
-                },
-                {
-                    "label": "Austin",
-                    "number": 1.7139845078141636
-                },
-                {
-                    "label": "Denver",
-                    "number": 1.6448027238133387
+                    "number": 1.7225177868684514
                 },
                 {
                     "label": "Boston",
-                    "number": 1.5753958798171697
+                    "number": 1.6950304128381002
+                },
+                {
+                    "label": "Austin",
+                    "number": 1.6140799764570761
+                },
+                {
+                    "label": "Denver",
+                    "number": 1.5895004720272545
                 },
                 {
                     "label": "San Diego",
-                    "number": 1.509454290793514
+                    "number": 1.4581608424625196
                 },
                 {
                     "label": "Houston",
-                    "number": 1.4879872537110945
+                    "number": 1.4423202377930602
                 },
                 {
                     "label": "San Francisco",
-                    "number": 1.403764641538672
+                    "number": 1.3825753223174684
                 }
             ],
             "answer": "Seattle",
-            "answerValue": 2.111801242236025,
+            "answerValue": 2.07013113161729,
             "question": "Which city's subreddit discussed traffic the most?",
             "rowIndex": 153,
             "approved": true,
@@ -682,47 +683,47 @@
             "top10": [
                 {
                     "label": "New York",
-                    "number": 6.588003933136677
+                    "number": 4.464285714285714
                 },
                 {
                     "label": "Nevada",
-                    "number": 3.559870550161812
+                    "number": 4.132231404958677
                 },
                 {
-                    "label": "Mississippi",
-                    "number": 2.992957746478873
-                },
-                {
-                    "label": "South Carolina",
-                    "number": 2.626844188557035
-                },
-                {
-                    "label": "Missouri",
-                    "number": 2.372479240806643
-                },
-                {
-                    "label": "Iowa",
-                    "number": 1.6454749439042633
-                },
-                {
-                    "label": "Ohio",
-                    "number": 1.6164263870685889
-                },
-                {
-                    "label": "Tennessee",
-                    "number": 1.4304291287386215
+                    "label": "Indiana",
+                    "number": 2.7568729841806174
                 },
                 {
                     "label": "Pennsylvania",
-                    "number": 1.3181332383327395
+                    "number": 2.1661931818181817
                 },
                 {
-                    "label": "Nebraska",
-                    "number": 1.2213740458015268
+                    "label": "Mississippi",
+                    "number": 1.8689128718083707
+                },
+                {
+                    "label": "Ohio",
+                    "number": 1.8561484918793503
+                },
+                {
+                    "label": "Iowa",
+                    "number": 1.7408123791102514
+                },
+                {
+                    "label": "Missouri",
+                    "number": 1.5316404675534059
+                },
+                {
+                    "label": "South Carolina",
+                    "number": 1.3969732246798603
+                },
+                {
+                    "label": "Wisconsin",
+                    "number": 1.3767901963679314
                 }
             ],
             "answer": "New York",
-            "answerValue": 6.588003933136677,
+            "answerValue": 4.464285714285714,
             "question": "Which state's subreddit talked about Hillary Clinton the most in the past year?",
             "rowIndex": 167,
             "approved": true,
@@ -801,48 +802,48 @@
         {
             "top10": [
                 {
-                    "label": "Kansas",
-                    "number": 5.46448087431694
-                },
-                {
-                    "label": "Tennessee",
-                    "number": 5.201560468140442
-                },
-                {
-                    "label": "Missouri",
-                    "number": 4.744958481613286
-                },
-                {
                     "label": "South Dakota",
-                    "number": 4.405286343612334
+                    "number": 5.0
+                },
+                {
+                    "label": "Kansas",
+                    "number": 4.569301066170249
                 },
                 {
                     "label": "New Mexico",
-                    "number": 3.816793893129771
+                    "number": 3.7688442211055277
                 },
                 {
                     "label": "Massachusetts",
-                    "number": 3.707627118644068
+                    "number": 3.0748206354629315
                 },
                 {
                     "label": "West Virginia",
-                    "number": 3.276003276003276
+                    "number": 2.998800479808077
                 },
                 {
-                    "label": "Nevada",
-                    "number": 3.236245954692557
+                    "label": "Oregon",
+                    "number": 2.6751463759337777
                 },
                 {
                     "label": "Illinois",
-                    "number": 2.944640753828033
+                    "number": 2.416626389560174
                 },
                 {
-                    "label": "Michigan",
-                    "number": 2.1515497882068177
+                    "label": "North Carolina",
+                    "number": 2.396215846144271
+                },
+                {
+                    "label": "Wisconsin",
+                    "number": 2.067030857817806
+                },
+                {
+                    "label": "Tennessee",
+                    "number": 2.04029584289722
                 }
             ],
-            "answer": "Kansas",
-            "answerValue": 5.46448087431694,
+            "answer": "South Dakota",
+            "answerValue": 5.0,
             "question": "Which state's subreddit discussed unemployment the most in the past year?",
             "rowIndex": 185,
             "approved": true,
@@ -862,47 +863,47 @@
             "top10": [
                 {
                     "label": "San Francisco",
-                    "number": 7.641705786731082
+                    "number": 6.402684255280032
                 },
                 {
                     "label": "Vancouver",
-                    "number": 2.0920935435093315
-                },
-                {
-                    "label": "Montreal",
-                    "number": 1.5772210203084653
-                },
-                {
-                    "label": "San Diego",
-                    "number": 1.5730216021117276
+                    "number": 3.063870383809392
                 },
                 {
                     "label": "New York City",
-                    "number": 1.4869238170209045
+                    "number": 1.5567301426399247
                 },
                 {
-                    "label": "Austin",
-                    "number": 1.2531984486869343
+                    "label": "Montreal",
+                    "number": 1.5528736602244915
                 },
                 {
-                    "label": "Denver",
-                    "number": 1.0848521263101676
+                    "label": "San Diego",
+                    "number": 1.3274669330724016
                 },
                 {
                     "label": "Los Angeles",
-                    "number": 1.0603314586797705
+                    "number": 1.2894715828263679
+                },
+                {
+                    "label": "Denver",
+                    "number": 1.221113984320486
+                },
+                {
+                    "label": "Seattle",
+                    "number": 1.1869839728023313
                 },
                 {
                     "label": "Chicago",
-                    "number": 1.0168693269395443
+                    "number": 1.1694226744901728
                 },
                 {
-                    "label": "Washington, D.C.",
-                    "number": 0.9992089595736708
+                    "label": "Portland",
+                    "number": 1.1626110321800183
                 }
             ],
             "answer": "San Francisco",
-            "answerValue": 7.641705786731082,
+            "answerValue": 6.402684255280032,
             "question": "Which city's subreddit talked about Airbnb the most?",
             "rowIndex": 190,
             "approved": true,
@@ -921,48 +922,48 @@
         {
             "top10": [
                 {
-                    "label": "Iowa",
-                    "number": 2.7424582398404387
-                },
-                {
-                    "label": "Idaho",
-                    "number": 2.4479804161566707
-                },
-                {
                     "label": "Texas",
-                    "number": 2.3393180887771217
+                    "number": 2.0339258837407965
                 },
                 {
-                    "label": "New York",
-                    "number": 1.966568338249754
+                    "label": "Indiana",
+                    "number": 1.8430348640761787
                 },
                 {
-                    "label": "Illinois",
-                    "number": 1.7667844522968197
+                    "label": "Iowa",
+                    "number": 1.3969482054588438
                 },
                 {
                     "label": "Ohio",
-                    "number": 1.747487986020096
+                    "number": 1.2064965197215778
                 },
                 {
-                    "label": "Missouri",
-                    "number": 1.1862396204033214
+                    "label": "New York",
+                    "number": 0.8503401360544217
+                },
+                {
+                    "label": "Illinois",
+                    "number": 0.7249879168680522
+                },
+                {
+                    "label": "Idaho",
+                    "number": 0.7140307033202428
                 },
                 {
                     "label": "Kentucky",
-                    "number": 1.0559662090813093
+                    "number": 0.7066139061616733
                 },
                 {
-                    "label": "Utah",
-                    "number": 1.0476689366160294
+                    "label": "Kansas",
+                    "number": 0.6769334912844813
                 },
                 {
-                    "label": "Oklahoma",
-                    "number": 0.9599232061435086
+                    "label": "Wisconsin",
+                    "number": 0.6274915104089768
                 }
             ],
             "answer": "Iowa",
-            "answerValue": 2.7424582398404387,
+            "answerValue": 2.0339258837407965,
             "question": "Which state's subreddit talked about Ted Cruz the most in the past year?",
             "rowIndex": 215,
             "approved": true,
@@ -982,47 +983,47 @@
             "top10": [
                 {
                     "label": "Nevada",
-                    "number": 9.06148867313916
+                    "number": 5.785123966942149
                 },
                 {
                     "label": "New York",
-                    "number": 6.784660766961652
+                    "number": 5.48469387755102
                 },
                 {
                     "label": "Nebraska",
-                    "number": 6.717557251908397
+                    "number": 3.6649214659685865
                 },
                 {
                     "label": "South Carolina",
-                    "number": 5.325656711047139
+                    "number": 2.51122567769832
                 },
                 {
-                    "label": "Iowa",
-                    "number": 3.5402642732485665
-                },
-                {
-                    "label": "Missouri",
-                    "number": 3.0842230130486357
-                },
-                {
-                    "label": "Tennessee",
-                    "number": 2.6657997399219764
-                },
-                {
-                    "label": "Ohio",
-                    "number": 2.5557011795543905
-                },
-                {
-                    "label": "Montana",
-                    "number": 2.1760154738878144
+                    "label": "Indiana",
+                    "number": 2.319152203962525
                 },
                 {
                     "label": "Vermont",
-                    "number": 2.1467327199811277
+                    "number": 1.9527664190937162
+                },
+                {
+                    "label": "Iowa",
+                    "number": 1.730066623683645
+                },
+                {
+                    "label": "North Dakota",
+                    "number": 1.567398119122257
+                },
+                {
+                    "label": "South Dakota",
+                    "number": 1.5
+                },
+                {
+                    "label": "Wisconsin",
+                    "number": 1.4949062453860917
                 }
             ],
             "answer": "Nevada",
-            "answerValue": 9.06148867313916,
+            "answerValue": 5.785123966942149,
             "question": "Which state's subreddit talked about Bernie Sanders the most in the past year?",
             "rowIndex": 216,
             "approved": true,
@@ -1042,47 +1043,47 @@
             "top10": [
                 {
                     "label": "Los Angeles",
-                    "number": 6.072382803011902
+                    "number": 4.377105372896845
                 },
                 {
                     "label": "San Diego",
-                    "number": 3.663200991219092
+                    "number": 2.7370452228296944
                 },
                 {
                     "label": "Houston",
-                    "number": 3.431086431827862
+                    "number": 2.5857385842013745
                 },
                 {
                     "label": "Vancouver",
-                    "number": 2.4166097037236502
+                    "number": 2.1200433793491467
                 },
                 {
                     "label": "Boston",
-                    "number": 1.9496133266902065
+                    "number": 1.682412320434839
                 },
                 {
                     "label": "Dallas",
-                    "number": 1.869775626924769
+                    "number": 1.4524419970445963
                 },
                 {
                     "label": "Montreal",
-                    "number": 1.8145020587619514
+                    "number": 1.2659296143134442
                 },
                 {
                     "label": "Chicago",
-                    "number": 1.462864645772678
+                    "number": 1.208175472670159
                 },
                 {
                     "label": "Washington, D.C.",
-                    "number": 1.3877902216300984
+                    "number": 1.1826181413622885
                 },
                 {
                     "label": "Denver",
-                    "number": 1.3352026169971294
+                    "number": 1.0261462053113328
                 }
             ],
             "answer": "Los Angeles",
-            "answerValue": 6.072382803011902,
+            "answerValue": 4.377105372896845,
             "question": "Which city’s subreddit talked about gas prices the most?",
             "rowIndex": 214,
             "approved": true,
@@ -1102,47 +1103,47 @@
             "top10": [
                 {
                     "label": "Ohio",
-                    "number": 3.757099169943207
+                    "number": 2.6542923433874708
                 },
                 {
                     "label": "New York",
-                    "number": 0.688298918387414
+                    "number": 0.3826530612244898
+                },
+                {
+                    "label": "Indiana",
+                    "number": 0.2380586699431731
                 },
                 {
                     "label": "Wisconsin",
-                    "number": 0.3997668026984259
+                    "number": 0.2140853388454156
+                },
+                {
+                    "label": "Rhode Island",
+                    "number": 0.12302284710017575
                 },
                 {
                     "label": "Idaho",
-                    "number": 0.3671970624235006
-                },
-                {
-                    "label": "Arizona",
-                    "number": 0.14527845036319612
-                },
-                {
-                    "label": "South Carolina",
-                    "number": 0.1439366678661389
+                    "number": 0.10710460549803641
                 },
                 {
                     "label": "Pennsylvania",
-                    "number": 0.14250089063056645
+                    "number": 0.10653409090909091
                 },
                 {
-                    "label": "Florida",
-                    "number": 0.1407318053880177
+                    "label": "Illinois",
+                    "number": 0.09666505558240696
                 },
                 {
-                    "label": "Tennessee",
-                    "number": 0.13003901170351106
+                    "label": "Maryland",
+                    "number": 0.0735775016350556
                 },
                 {
-                    "label": "North Dakota",
-                    "number": 0.12562814070351758
+                    "label": "Arizona",
+                    "number": 0.0704163365900889
                 }
             ],
             "answer": "Ohio",
-            "answerValue": 3.757099169943207,
+            "answerValue": 2.6542923433874708,
             "question": "Which state's subreddit talked about John Kasich the most in the past year?",
             "rowIndex": 218,
             "approved": true,
@@ -1162,47 +1163,47 @@
             "top10": [
                 {
                     "label": "United States",
-                    "number": 129654
+                    "number": 130391
                 },
                 {
                     "label": "Japan",
-                    "number": 50486
+                    "number": 50766
                 },
                 {
                     "label": "Russia",
-                    "number": 48841
+                    "number": 49032
                 },
                 {
                     "label": "United Kingdom",
-                    "number": 37946
+                    "number": 38336
                 },
                 {
                     "label": "Pakistan",
-                    "number": 28558
+                    "number": 28792
                 },
                 {
                     "label": "Taiwan",
-                    "number": 26521
+                    "number": 26695
                 },
                 {
                     "label": "Australia",
-                    "number": 23346
+                    "number": 23580
                 },
                 {
                     "label": "France",
-                    "number": 23058
+                    "number": 23247
                 },
                 {
                     "label": "South Korea",
-                    "number": 22825
+                    "number": 23030
                 },
                 {
                     "label": "Philippines",
-                    "number": 21712
+                    "number": 21827
                 }
             ],
             "answer": "United States",
-            "answerValue": 129654,
+            "answerValue": 130391,
             "question": "Which country was mentioned with China the most in the news last year?",
             "rowIndex": 265,
             "approved": true,
@@ -1222,39 +1223,39 @@
             "top10": [
                 {
                     "label": "South Korea",
-                    "number": 30196
+                    "number": 30325
                 },
                 {
                     "label": "United States",
-                    "number": 13973
+                    "number": 14031
                 },
                 {
                     "label": "China",
-                    "number": 13124
+                    "number": 13139
                 },
                 {
                     "label": "Russia",
-                    "number": 4929
+                    "number": 4935
                 },
                 {
                     "label": "Japan",
-                    "number": 4468
+                    "number": 4471
                 },
                 {
                     "label": "Iran",
-                    "number": 3459
+                    "number": 3480
                 },
                 {
                     "label": "Canada",
-                    "number": 1661
+                    "number": 1662
                 },
                 {
                     "label": "United Kingdom",
-                    "number": 781
+                    "number": 794
                 },
                 {
                     "label": "Cuba",
-                    "number": 630
+                    "number": 634
                 },
                 {
                     "label": "Pakistan",
@@ -1262,7 +1263,7 @@
                 }
             ],
             "answer": "South Korea",
-            "answerValue": 30196,
+            "answerValue": 30325,
             "question": "Which country was mentioned with North Korea the most in the news last year?",
             "rowIndex": 264,
             "approved": true,
@@ -1282,31 +1283,31 @@
             "top10": [
                 {
                     "label": "Nauru",
-                    "number": 3.2859832277939414
+                    "number": 3.2658615410784146
                 },
                 {
                     "label": "Vanuatu",
-                    "number": 2.6664702416028283
+                    "number": 2.6450387257051
                 },
                 {
                     "label": "Botswana",
-                    "number": 2.610099951988128
+                    "number": 2.598360300177851
                 },
                 {
                     "label": "Zambia",
-                    "number": 2.593852948629765
+                    "number": 2.5912817364296292
                 },
                 {
                     "label": "Burundi",
-                    "number": 2.5023882814987792
+                    "number": 2.5105820105820107
                 },
                 {
                     "label": "Estonia",
-                    "number": 2.423284604240748
+                    "number": 2.417841400078558
                 },
                 {
                     "label": "Ghana",
-                    "number": 2.378803769013764
+                    "number": 2.385139680198397
                 },
                 {
                     "label": "Guinea-Bissau",
@@ -1314,15 +1315,15 @@
                 },
                 {
                     "label": "Australia",
-                    "number": 2.257467803139979
+                    "number": 2.2519541458972445
                 },
                 {
                     "label": "New Zealand",
-                    "number": 2.250073006911321
+                    "number": 2.242261051489675
                 }
             ],
             "answer": "Nauru",
-            "answerValue": 3.2859832277939414,
+            "answerValue": 3.2658615410784146,
             "question": "Officials of which country made the most pessimistic statements last year?",
             "rowIndex": 291,
             "approved": true,
@@ -1408,23 +1409,23 @@
             "top10": [
                 {
                     "label": "Benin",
-                    "number": 4.09982174688057
+                    "number": 4.081487791027825
                 },
                 {
                     "label": "Moldova",
-                    "number": 2.610948258231645
+                    "number": 2.6063938098147017
                 },
                 {
                     "label": "Niger",
-                    "number": 2.578350744609913
+                    "number": 2.569071479984497
                 },
                 {
                     "label": "Burkina Faso",
-                    "number": 2.257799671592775
+                    "number": 2.275890298812935
                 },
                 {
                     "label": "Cameroon",
-                    "number": 2.1497738949262497
+                    "number": 2.1446961286817676
                 },
                 {
                     "label": "Guinea-Bissau",
@@ -1432,23 +1433,23 @@
                 },
                 {
                     "label": "Georgia",
-                    "number": 1.9250253292806485
+                    "number": 1.9114688128772637
                 },
                 {
                     "label": "Zambia",
-                    "number": 1.8951598305759694
+                    "number": 1.890642493408935
                 },
                 {
                     "label": "Swaziland",
-                    "number": 1.8194380469829572
+                    "number": 1.8167184086466597
                 },
                 {
                     "label": "India",
-                    "number": 1.781373556395753
+                    "number": 1.7787682803144238
                 }
             ],
             "answer": "Benin",
-            "answerValue": 4.09982174688057,
+            "answerValue": 4.081487791027825,
             "question": "Which country made the most demands for economic, military and/or humanitarian aid?",
             "rowIndex": 305,
             "approved": true,
@@ -2901,12 +2902,12 @@
                 },
                 {
                     "label": "Ball",
-                    "number":   24   
+                    "number":  24   
                 },
                 {
                     "label": "Disney",
                     "number":   22
-                }
+                },
             ],
             "answer": "Apple",
             "answerValue": 344,
