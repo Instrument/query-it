@@ -3033,8 +3033,8 @@
                     "number": 4
                 }
             ],
-            "answer": "Facebook",
-            "answerValue": 89,
+            "answer": "Google",
+            "answerValue": 113,
             "question": "What company was mentioned the most in /r/tech in the past month?",
             "rowIndex": 350,
             "approved": true,
