@@ -1042,66 +1042,6 @@
         {
             "top10": [
                 {
-                    "label": "Los Angeles",
-                    "number": 4.377105372896845
-                },
-                {
-                    "label": "San Diego",
-                    "number": 2.7370452228296944
-                },
-                {
-                    "label": "Houston",
-                    "number": 2.5857385842013745
-                },
-                {
-                    "label": "Vancouver",
-                    "number": 2.1200433793491467
-                },
-                {
-                    "label": "Boston",
-                    "number": 1.682412320434839
-                },
-                {
-                    "label": "Dallas",
-                    "number": 1.4524419970445963
-                },
-                {
-                    "label": "Montreal",
-                    "number": 1.2659296143134442
-                },
-                {
-                    "label": "Chicago",
-                    "number": 1.208175472670159
-                },
-                {
-                    "label": "Washington, D.C.",
-                    "number": 1.1826181413622885
-                },
-                {
-                    "label": "Denver",
-                    "number": 1.0261462053113328
-                }
-            ],
-            "answer": "Los Angeles",
-            "answerValue": 4.377105372896845,
-            "question": "Which city’s subreddit talked about gas prices the most?",
-            "rowIndex": 214,
-            "approved": true,
-            "params": {
-                "regex": "(?i)\\b(gas prices?|price of gas)\\b",
-                "per": 10000
-            },
-            "sql": "\nSELECT\n cities.city,\n SUM(CASE WHEN REGEXP_MATCH(body, r'(?i)\\b(gas prices?|price of gas)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per\nFROM (\n SELECT\n   body,\n   subreddit\n FROM\n   TABLE_QUERY([fh-bigquery:reddit_comments], 'regexp_match(table_id, \"^(2016|2015_(0[7-9]|1[0-2]))\")')) comments\nJOIN\n [subreddits.cities] cities\nON\n comments.subreddit = cities.subreddit\nGROUP BY\n cities.city\nORDER BY\n per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  cities.city,\n  SUM(CASE WHEN REGEXP_MATCH(body, r'(?i)\\b(gas prices?|price of gas)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per\nFROM (\n  SELECT\n    body,\n    subreddit\n  FROM\n    TABLE_QUERY([fh-bigquery:reddit_comments], 'regexp_match(table_id, \"^(2016|2015_(0[7-9]|1[0-2]))\")')) comments\nJOIN\n  [subreddits.cities] cities\nON\n  comments.subreddit = cities.subreddit\nJOIN\n  [fh-bigquery:freebase20140119.triples_lang_en] aliases\nON\n  aliases.sub = cities.mid\nWHERE\n  (aliases.pred = '/common/topic/alias'\n    OR aliases.pred = '/type/object/name')\n  AND aliases.obj = 'userInput'\nGROUP BY\n  cities.city\nORDER BY\n  per DESC IGNORE CASE\n",
-            "databases": "Reddit",
-            "units": "Comments per 10,000",
-            "hasPassingInputQuery": true,
-            "rowsSearched": 532396361,
-            "warnings": {}
-        },
-        {
-            "top10": [
-                {
                     "label": "Ohio",
                     "number": 2.6542923433874708
                 },
@@ -2869,50 +2809,48 @@
         {
             "top10": [
                 {
-<<<<<<< HEAD
-=======
-                    "label": "Apple",
-                    "number":   344  
+                    "label": "Target",
+                    "number":   792  
                 },
                 {
                     "label": "Google",
-                    "number":   292  
+                    "number":   609  
                 },
                 {
-                    "label": "Target",
-                    "number":   125  
+                    "label": "Visa",
+                    "number":   241  
                 },
                 {
-                    "label": "Facebook",
-                    "number":   53   
-                },
-                {
-                    "label": "Microsoft",
-                    "number":   52   
-                },
-                {
-                    "label": "Starbucks",
-                    "number":   28   
+                    "label": "Gap",
+                    "number":   230  
                 },
                 {
                     "label": "UPS",
-                    "number":   26   
+                    "number":   131  
                 },
                 {
                     "label": "Netflix",
-                    "number":   25   
+                    "number":   122  
                 },
                 {
-                    "label": "Ball",
-                    "number":  24   
+                    "label": "Apple",
+                    "number":   122  
                 },
                 {
-                    "label": "Disney",
-                    "number":   22
+                    "label": "Wells Fargo",
+                    "number":  119  
+                },
+                {
+                    "label": "Walmart",
+                    "number":   107
+                },
+                {
+                    "label": "Facebook",
+                    "number":   87
                 }
             ],
-            "answer": "Apple",
-            "answerValue": 344,
+            "answer": "Target",
+            "answerValue": 792,
             "question": "Which Fortune 500 company was discussed the most in /r/personalfinance in the past month?",
             "rowIndex": 361,
             "approved": true,
@@ -2933,7 +2871,6 @@
         {
             "top10": [
                 {
->>>>>>> 96448813eef05304ec3fcbdd45d0a413a6f798cd
                     "label": "Google",
                     "number": 86
                 },
@@ -3056,6 +2993,14 @@
         {
             "top10": [
                 {
+                    "label": "Google",
+                    "number": 113
+                },
+                {
+                    "label": "Apple",
+                    "number": 102
+                },
+                {
                     "label": "Facebook",
                     "number": 89
                 },
@@ -3085,14 +3030,6 @@
                 },
                 {
                     "label": "The Bay",
-                    "number": 4
-                },
-                {
-                    "label": "The Sun",
-                    "number": 4
-                },
-                {
-                    "label": "Exxon",
                     "number": 4
                 }
             ],
@@ -3175,188 +3112,6 @@
             "units": "Mentions",
             "hasPassingInputQuery": true,
             "rowsSearched": 70487291,
-            "warnings": {}
-        },
-        {
-            "top10": [
-                {
-                    "label": "Facebook",
-                    "number": 59
-                },
-                {
-                    "label": "Tesla",
-                    "number": 55
-                },
-                {
-                    "label": "Uber",
-                    "number": 27
-                },
-                {
-                    "label": "Sears",
-                    "number": 26
-                },
-                {
-                    "label": "Twitter",
-                    "number": 15
-                },
-                {
-                    "label": "Aetna",
-                    "number": 13
-                },
-                {
-                    "label": "Airbnb",
-                    "number": 12
-                },
-                {
-                    "label": "Mylan",
-                    "number": 9
-                },
-                {
-                    "label": "Dime",
-                    "number": 8
-                },
-                {
-                    "label": "LinkedIn",
-                    "number": 7
-                }
-            ],
-            "answer": "Facebook",
-            "answerValue": 59,
-            "question": "What company was mentioned the most in /r/Business in the past month?",
-            "rowIndex": 349,
-            "approved": true,
-            "params": {
-                "wikidata_tag": "businesses_clean",
-                "subreddit": "business",
-                "num_common_words": 10000,
-                "top_wiki": 500
-            },
-            "sql": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM\n  [wikidata_tags.businesses_clean] topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_08]\n  WHERE\n    subreddit = 'business') comments\nWHERE\n  topic.name NOT IN (\n    SELECT\n      word\n    FROM\n      [words.top10000]\n    LIMIT\n      10000) AND\n      comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  topic.name,\n  COUNT(UNIQUE(comments.id)) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    [wikidata_tags.businesses_clean]\n  WHERE\n    name = 'userInput') topic\nCROSS JOIN (\n  SELECT\n    id,\n    body\n  FROM\n    [fh-bigquery:reddit_comments.2016_08]\n  WHERE\n    subreddit = 'business') comments\nWHERE\n  comments.body CONTAINS CONCAT(' ', topic.name, ' ')\nGROUP BY\n  topic.name,\nORDER BY\n  total DESC IGNORE CASE\n",
-            "databases": "Reddit",
-            "units": "Mentions",
-            "hasPassingInputQuery": true,
-            "rowsSearched": 69773233,
-            "warnings": {}
-        },
-        {
-            "top10": [
-                {
-                    "label": "Leonardo da Vinci",
-                    "number": 2789455
-                },
-                {
-                    "label": "Nikola Tesla",
-                    "number": 1435575
-                },
-                {
-                    "label": "Elon Musk",
-                    "number": 1354960
-                },
-                {
-                    "label": "Steve Jobs",
-                    "number": 1292571
-                },
-                {
-                    "label": "Thomas Jefferson",
-                    "number": 851182
-                },
-                {
-                    "label": "Thomas Edison",
-                    "number": 824721
-                },
-                {
-                    "label": "Benjamin Franklin",
-                    "number": 810477
-                },
-                {
-                    "label": "Henry Ford",
-                    "number": 481990
-                },
-                {
-                    "label": "Blaise Pascal",
-                    "number": 468417
-                },
-                {
-                    "label": "James Cameron",
-                    "number": 445742
-                }
-            ],
-            "answer": "Leonardo da Vinci",
-            "answerValue": 2789455,
-            "question": "Which inventor had the most popular page in the past month?",
-            "rowIndex": 285,
-            "approved": true,
-            "params": {
-                "freebase_tag": "inventors",
-                "substring": true
-            },
-            "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.inventors]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201606] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.inventors]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name CONTAINS 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201606] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
-            "databases": "Wikipedia",
-            "units": "Views",
-            "hasPassingInputQuery": true,
-            "rowsSearched": 6072462329,
-            "warnings": {}
-        },
-        {
-            "top10": [
-                {
-                    "label": "USB",
-                    "number": 1482926
-                },
-                {
-                    "label": "Wi-Fi",
-                    "number": 1440064
-                },
-                {
-                    "label": "Graphene",
-                    "number": 914109
-                },
-                {
-                    "label": "AK-47",
-                    "number": 825248
-                },
-                {
-                    "label": "HDMI",
-                    "number": 794023
-                },
-                {
-                    "label": "RAID",
-                    "number": 699266
-                },
-                {
-                    "label": "Internet Protocol",
-                    "number": 667222
-                },
-                {
-                    "label": "ARPANET",
-                    "number": 444662
-                },
-                {
-                    "label": "Periodic Table",
-                    "number": 372663
-                },
-                {
-                    "label": "Hashtag",
-                    "number": 362196
-                }
-            ],
-            "answer": "USB",
-            "answerValue": 1482926,
-            "question": "What invention had the most pageviews in the past month?",
-            "rowIndex": 328,
-            "approved": true,
-            "params": {
-                "freebase_tag": "invention",
-                "substring": true
-            },
-            "sql": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.invention]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid) topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201606] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  topic_wiki.name AS name,\n  SUM(requests) AS total\nFROM (\n  SELECT\n    topic.mid AS mid,\n    topic.name AS name,\n    REPLACE(REPLACE(wiki.title, '$0028', '('), '$0029', ')') AS title\n  FROM (\n    SELECT\n      mid,\n      name\n    FROM\n      [freebase_tags.invention]) topic\n  JOIN (\n    SELECT\n      REGEXP_REPLACE(REGEXP_REPLACE(obj, '/wikipedia/en/', ''), '/wikipedia/id/', '') AS title,\n      sub AS mid\n    FROM\n      [fh-bigquery:freebase20140119.triples_nolang]\n    WHERE\n      obj CONTAINS '/wikipedia/en'\n      OR obj CONTAINS '/wikipedia/id'\n      AND pred = '/type/object/key') wiki\n  ON\n    wiki.mid = topic.mid\n  WHERE\n    topic.name CONTAINS 'userInput') topic_wiki\nJOIN\n  [fh-bigquery:wikipedia.pagecounts_201606] views\nON\n  views.title = topic_wiki.title\nGROUP BY\n  mid,\n  name\nORDER BY\n  total DESC\nLIMIT\n  10\nIGNORE CASE\n",
-            "databases": "Wikipedia",
-            "units": "Views",
-            "hasPassingInputQuery": true,
-            "rowsSearched": 6081738567,
             "warnings": {}
         },
         {
@@ -3539,9 +3294,5 @@
             "warnings": {}
         }
     ],
-<<<<<<< HEAD
-    "total": 54
-=======
     "total": 58
->>>>>>> 96448813eef05304ec3fcbdd45d0a413a6f798cd
 }
