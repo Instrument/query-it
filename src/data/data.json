@@ -5,7 +5,7 @@
             "top10": [
                 {
                     "label": "Benin",
-                    "number": 9.902044293015333
+                    "number": 9.897828863346104
                 },
                 {
                     "label": "Liechtenstein",
@@ -45,7 +45,7 @@
                 }
             ],
             "answer": "Benin",
-            "answerValue": 9.902044293015333,
+            "answerValue": 9.897828863346104,
             "question": "Which country was the most cooperative last year?",
             "rowIndex": 2,
             "approved": true,
@@ -68,7 +68,7 @@
             "top10": [
                 {
                     "label": "Benin",
-                    "number": 3.1232254400908577
+                    "number": 3.1218958422023557
                 },
                 {
                     "label": "Armenia",
@@ -108,7 +108,7 @@
                 }
             ],
             "answer": "Benin",
-            "answerValue": 3.1232254400908577,
+            "answerValue": 3.1218958422023557,
             "question": "Which country had the most cooperative military last year?",
             "rowIndex": 14,
             "approved": true,
@@ -194,7 +194,7 @@
             "top10": [
                 {
                     "label": "Brazil",
-                    "number": 1.5145035991732592
+                    "number": 1.5134519167423393
                 },
                 {
                     "label": "Grenada",
@@ -234,7 +234,7 @@
                 }
             ],
             "answer": "Brazil",
-            "answerValue": 1.5145035991732592,
+            "answerValue": 1.5134519167423393,
             "question": "Which country willingly shared the most intelligence last year?",
             "rowIndex": 16,
             "approved": true,
@@ -257,7 +257,7 @@
             "top10": [
                 {
                     "label": "China",
-                    "number": 23417
+                    "number": 23460
                 },
                 {
                     "label": "Russia",
@@ -297,7 +297,7 @@
                 }
             ],
             "answer": "China",
-            "answerValue": 23417,
+            "answerValue": 23460,
             "question": "Which country, besides the United States, provided the most economic support to other countries last year?",
             "rowIndex": 17,
             "approved": true,
@@ -320,7 +320,7 @@
             "top10": [
                 {
                     "label": "United Kingdom",
-                    "number": 149022
+                    "number": 149089
                 },
                 {
                     "label": "China",
@@ -360,7 +360,7 @@
                 }
             ],
             "answer": "United Kingdom",
-            "answerValue": 149022,
+            "answerValue": 149089,
             "question": "Which country was mentioned the most with the United States in the news last year?",
             "rowIndex": 20,
             "approved": true,
@@ -380,7 +380,7 @@
             "top10": [
                 {
                     "label": "Haiti",
-                    "number": 5.048683736025965
+                    "number": 5.046257359125315
                 },
                 {
                     "label": "Macao",
@@ -420,7 +420,7 @@
                 }
             ],
             "answer": "Haiti",
-            "answerValue": 5.048683736025965,
+            "answerValue": 5.046257359125315,
             "question": "Which country appealed the most for economic aid last year?",
             "rowIndex": 9,
             "approved": true,
@@ -443,7 +443,7 @@
             "top10": [
                 {
                     "label": "Pakistan",
-                    "number": 24921
+                    "number": 24924
                 },
                 {
                     "label": "United States",
@@ -483,7 +483,7 @@
                 }
             ],
             "answer": "Pakistan",
-            "answerValue": 24921,
+            "answerValue": 24924,
             "question": "Which country was mentioned with India the most in the news last year?",
             "rowIndex": 34,
             "approved": true,
@@ -1103,7 +1103,7 @@
             "top10": [
                 {
                     "label": "United States",
-                    "number": 130391
+                    "number": 130438
                 },
                 {
                     "label": "Japan",
@@ -1143,7 +1143,7 @@
                 }
             ],
             "answer": "United States",
-            "answerValue": 130391,
+            "answerValue": 130438,
             "question": "Which country was mentioned with China the most in the news last year?",
             "rowIndex": 265,
             "approved": true,
@@ -1163,7 +1163,7 @@
             "top10": [
                 {
                     "label": "South Korea",
-                    "number": 30325
+                    "number": 30341
                 },
                 {
                     "label": "United States",
@@ -1203,7 +1203,7 @@
                 }
             ],
             "answer": "South Korea",
-            "answerValue": 30325,
+            "answerValue": 30341,
             "question": "Which country was mentioned with North Korea the most in the news last year?",
             "rowIndex": 264,
             "approved": true,
@@ -1286,7 +1286,7 @@
             "top10": [
                 {
                     "label": "Antigua and Barbuda",
-                    "number": 3.7137191274562826
+                    "number": 3.7508973438621678
                 },
                 {
                     "label": "Luxembourg",
@@ -1326,7 +1326,7 @@
                 }
             ],
             "answer": "Antigua and Barbuda",
-            "answerValue": 3.7137191274562826,
+            "answerValue": 3.7508973438621678,
             "question": "Officials of which country made the most optimistic statements last year?",
             "rowIndex": 292,
             "approved": true,
@@ -1349,7 +1349,7 @@
             "top10": [
                 {
                     "label": "Benin",
-                    "number": 4.081487791027825
+                    "number": 4.079750248332624
                 },
                 {
                     "label": "Moldova",
@@ -1389,7 +1389,7 @@
                 }
             ],
             "answer": "Benin",
-            "answerValue": 4.081487791027825,
+            "answerValue": 4.079750248332624,
             "question": "Which country made the most demands for economic, military and/or humanitarian aid?",
             "rowIndex": 305,
             "approved": true,
@@ -2197,7 +2197,7 @@
             "top10": [
                 {
                     "label": "Cayman Islands",
-                    "number": 4.837604494997945
+                    "number": 4.676027309030014
                 },
                 {
                     "label": "Luxembourg",
@@ -2237,7 +2237,7 @@
                 }
             ],
             "answer": "Cayman Islands",
-            "answerValue": 4.837604494997945,
+            "answerValue": 4.676027309030014,
             "question": "Which country provided the most proportional economic aid so far this year?",
             "rowIndex": 379,
             "approved": true,
@@ -2380,7 +2380,7 @@
             "top10": [
                 {
                     "label": "Chad",
-                    "number": 9.825865928145983
+                    "number": 9.23795703111174
                 },
                 {
                     "label": "Iraq",
@@ -2420,7 +2420,7 @@
                 }
             ],
             "answer": "Chad",
-            "answerValue": 9.825865928145983,
+            "answerValue": 9.23795703111174,
             "question": "Which country provided the most proportional military aid so far this year?",
             "rowIndex": 380,
             "approved": true,
