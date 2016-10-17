@@ -257,7 +257,7 @@
             "top10": [
                 {
                     "label": "China",
-                    "number": 23460
+                    "number": 23461
                 },
                 {
                     "label": "Russia",
@@ -297,7 +297,7 @@
                 }
             ],
             "answer": "China",
-            "answerValue": 23460,
+            "answerValue": 23461,
             "question": "Which country, besides the United States, provided the most economic support to other countries last year?",
             "rowIndex": 17,
             "approved": true,
@@ -320,7 +320,7 @@
             "top10": [
                 {
                     "label": "United Kingdom",
-                    "number": 149089
+                    "number": 149090
                 },
                 {
                     "label": "China",
@@ -360,7 +360,7 @@
                 }
             ],
             "answer": "United Kingdom",
-            "answerValue": 149089,
+            "answerValue": 149090,
             "question": "Which country was mentioned the most with the United States in the news last year?",
             "rowIndex": 20,
             "approved": true,
@@ -443,7 +443,7 @@
             "top10": [
                 {
                     "label": "Pakistan",
-                    "number": 24924
+                    "number": 24931
                 },
                 {
                     "label": "United States",
@@ -483,7 +483,7 @@
                 }
             ],
             "answer": "Pakistan",
-            "answerValue": 24924,
+            "answerValue": 24931,
             "question": "Which country was mentioned with India the most in the news last year?",
             "rowIndex": 34,
             "approved": true,
@@ -2197,7 +2197,7 @@
             "top10": [
                 {
                     "label": "Cayman Islands",
-                    "number": 4.676027309030014
+                    "number": 4.66820987654321
                 },
                 {
                     "label": "Luxembourg",
@@ -2237,7 +2237,7 @@
                 }
             ],
             "answer": "Cayman Islands",
-            "answerValue": 4.676027309030014,
+            "answerValue": 4.66820987654321,
             "question": "Which country provided the most proportional economic aid so far this year?",
             "rowIndex": 379,
             "approved": true,
@@ -2380,7 +2380,7 @@
             "top10": [
                 {
                     "label": "Chad",
-                    "number": 9.23795703111174
+                    "number": 9.223918575063614
                 },
                 {
                     "label": "Iraq",
@@ -2420,7 +2420,7 @@
                 }
             ],
             "answer": "Chad",
-            "answerValue": 9.23795703111174,
+            "answerValue": 9.223918575063614,
             "question": "Which country provided the most proportional military aid so far this year?",
             "rowIndex": 380,
             "approved": true,
