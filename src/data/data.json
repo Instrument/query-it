@@ -194,7 +194,7 @@
             "top10": [
                 {
                     "label": "Brazil",
-                    "number": 1.5134519167423393
+                    "number": 1.513438443116971
                 },
                 {
                     "label": "Grenada",
@@ -234,7 +234,7 @@
                 }
             ],
             "answer": "Brazil",
-            "answerValue": 1.5134519167423393,
+            "answerValue": 1.513438443116971,
             "question": "Which country willingly shared the most intelligence last year?",
             "rowIndex": 16,
             "approved": true,
@@ -320,7 +320,7 @@
             "top10": [
                 {
                     "label": "United Kingdom",
-                    "number": 149090
+                    "number": 149099
                 },
                 {
                     "label": "China",
@@ -360,7 +360,7 @@
                 }
             ],
             "answer": "United Kingdom",
-            "answerValue": 149090,
+            "answerValue": 149099,
             "question": "Which country was mentioned the most with the United States in the news last year?",
             "rowIndex": 20,
             "approved": true,
@@ -380,7 +380,7 @@
             "top10": [
                 {
                     "label": "Haiti",
-                    "number": 5.046257359125315
+                    "number": 5.0461057880034845
                 },
                 {
                     "label": "Macao",
@@ -420,7 +420,7 @@
                 }
             ],
             "answer": "Haiti",
-            "answerValue": 5.046257359125315,
+            "answerValue": 5.0461057880034845,
             "question": "Which country appealed the most for economic aid last year?",
             "rowIndex": 9,
             "approved": true,
@@ -443,7 +443,7 @@
             "top10": [
                 {
                     "label": "Pakistan",
-                    "number": 24931
+                    "number": 24940
                 },
                 {
                     "label": "United States",
@@ -483,7 +483,7 @@
                 }
             ],
             "answer": "Pakistan",
-            "answerValue": 24931,
+            "answerValue": 24940,
             "question": "Which country was mentioned with India the most in the news last year?",
             "rowIndex": 34,
             "approved": true,
@@ -2197,7 +2197,7 @@
             "top10": [
                 {
                     "label": "Cayman Islands",
-                    "number": 4.66820987654321
+                    "number": 4.677688068691529
                 },
                 {
                     "label": "Luxembourg",
@@ -2237,7 +2237,7 @@
                 }
             ],
             "answer": "Cayman Islands",
-            "answerValue": 4.66820987654321,
+            "answerValue": 4.677688068691529,
             "question": "Which country provided the most proportional economic aid so far this year?",
             "rowIndex": 379,
             "approved": true,
@@ -2380,7 +2380,7 @@
             "top10": [
                 {
                     "label": "Chad",
-                    "number": 9.223918575063614
+                    "number": 9.190464452973696
                 },
                 {
                     "label": "Iraq",
@@ -2420,7 +2420,7 @@
                 }
             ],
             "answer": "Chad",
-            "answerValue": 9.223918575063614,
+            "answerValue": 9.190464452973696,
             "question": "Which country provided the most proportional military aid so far this year?",
             "rowIndex": 380,
             "approved": true,
