@@ -194,7 +194,7 @@
             "top10": [
                 {
                     "label": "Brazil",
-                    "number": 1.5133980236802278
+                    "number": 1.5133845510144128
                 },
                 {
                     "label": "Grenada",
@@ -234,7 +234,7 @@
                 }
             ],
             "answer": "Brazil",
-            "answerValue": 1.5133980236802278,
+            "answerValue": 1.5133845510144128,
             "question": "Which country willingly shared the most intelligence last year?",
             "rowIndex": 16,
             "approved": true,
@@ -257,7 +257,7 @@
             "top10": [
                 {
                     "label": "China",
-                    "number": 23468
+                    "number": 23474
                 },
                 {
                     "label": "Russia",
@@ -297,7 +297,7 @@
                 }
             ],
             "answer": "China",
-            "answerValue": 23468,
+            "answerValue": 23474,
             "question": "Which country, besides the United States, provided the most economic support to other countries last year?",
             "rowIndex": 17,
             "approved": true,
@@ -320,7 +320,7 @@
             "top10": [
                 {
                     "label": "United Kingdom",
-                    "number": 149105
+                    "number": 149111
                 },
                 {
                     "label": "China",
@@ -360,7 +360,7 @@
                 }
             ],
             "answer": "United Kingdom",
-            "answerValue": 149105,
+            "answerValue": 149111,
             "question": "Which country was mentioned the most with the United States in the news last year?",
             "rowIndex": 20,
             "approved": true,
@@ -1103,7 +1103,7 @@
             "top10": [
                 {
                     "label": "United States",
-                    "number": 130444
+                    "number": 130453
                 },
                 {
                     "label": "Japan",
@@ -1143,7 +1143,7 @@
                 }
             ],
             "answer": "United States",
-            "answerValue": 130444,
+            "answerValue": 130453,
             "question": "Which country was mentioned with China the most in the news last year?",
             "rowIndex": 265,
             "approved": true,
@@ -2197,7 +2197,7 @@
             "top10": [
                 {
                     "label": "Cayman Islands",
-                    "number": 4.669907881269191
+                    "number": 4.679331888308045
                 },
                 {
                     "label": "Luxembourg",
@@ -2237,7 +2237,7 @@
                 }
             ],
             "answer": "Cayman Islands",
-            "answerValue": 4.669907881269191,
+            "answerValue": 4.679331888308045,
             "question": "Which country provided the most proportional economic aid so far this year?",
             "rowIndex": 379,
             "approved": true,
@@ -2380,7 +2380,7 @@
             "top10": [
                 {
                     "label": "Chad",
-                    "number": 9.172055102614562
+                    "number": 9.137055837563452
                 },
                 {
                     "label": "Iraq",
@@ -2420,7 +2420,7 @@
                 }
             ],
             "answer": "Chad",
-            "answerValue": 9.172055102614562,
+            "answerValue": 9.137055837563452,
             "question": "Which country provided the most proportional military aid so far this year?",
             "rowIndex": 380,
             "approved": true,
