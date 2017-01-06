@@ -1091,8 +1091,8 @@
                 "per": 1000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(a+rgh|angry|annoyed|annoying|appalled|bitter|cranky|hate|hating|mad)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(a+rgh|angry|annoyed|annoying|appalled|bitter|cranky|hate|hating|mad)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(a+rgh|angry|annoyed|annoying|appalled|bitter|cranky|hate|hating|mad)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(a+rgh|angry|annoyed|annoying|appalled|bitter|cranky|hate|hating|mad)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 1,000",
             "hasPassingInputQuery": false,
@@ -1151,8 +1151,8 @@
                 "per": 10000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r':\\(') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r':\\(') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r':\\(') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r':\\(') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 10,000",
             "hasPassingInputQuery": false,
@@ -1211,8 +1211,8 @@
                 "per": 10000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(ha(ha)+|he(he)+|lol|rofl|lmfao|lulz|lolz|rotfl|lawl|hilarious)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(ha(ha)+|he(he)+|lol|rofl|lmfao|lulz|lolz|rotfl|lawl|hilarious)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(ha(ha)+|he(he)+|lol|rofl|lmfao|lulz|lolz|rotfl|lawl|hilarious)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(ha(ha)+|he(he)+|lol|rofl|lmfao|lulz|lolz|rotfl|lawl|hilarious)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 10,000",
             "hasPassingInputQuery": false,
@@ -1271,8 +1271,8 @@
                 "per": 1000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(yes|yay|hallelujah|hurray|bingo|amused|cheerful|excited|glad|proud)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(yes|yay|hallelujah|hurray|bingo|amused|cheerful|excited|glad|proud)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(yes|yay|hallelujah|hurray|bingo|amused|cheerful|excited|glad|proud)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(yes|yay|hallelujah|hurray|bingo|amused|cheerful|excited|glad|proud)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 1,000",
             "hasPassingInputQuery": false,
@@ -1326,8 +1326,8 @@
             "question": "Which programming language has the most issues per commit?",
             "rowIndex": 48,
             "approved": true,
-            "sql": "SELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(#)\\d+') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE",
-            "inputSQL": "SELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(#)\\d+') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\nAND\n  repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE",
+            "sql": "SELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(#)\\d+') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE",
+            "inputSQL": "SELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(#)\\d+') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\nAND\n  repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE",
             "databases": "GitHub",
             "units": "Issues per Commit",
             "hasPassingInputQuery": false,
@@ -1386,8 +1386,8 @@
                 "per": 10000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(yikes|gosh|baffled|stumped|surprised|shocked)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(yikes|gosh|baffled|stumped|surprised|shocked)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(yikes|gosh|baffled|stumped|surprised|shocked)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(yikes|gosh|baffled|stumped|surprised|shocked)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 10,000",
             "hasPassingInputQuery": false,
@@ -1446,8 +1446,8 @@
                 "per": 1000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(android)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(android)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(android)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(android)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 1,000",
             "hasPassingInputQuery": false,
@@ -1506,8 +1506,8 @@
                 "per": 1000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r':\\)') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r':\\)') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r':\\)') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r':\\)') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 1,000",
             "hasPassingInputQuery": false,
@@ -1561,8 +1561,8 @@
             "question": "Which programming language has the chattiest developers?",
             "rowIndex": 49,
             "approved": true,
-            "sql": "SELECT\n  repository_language,\n  SUM(LENGTH(payload_commit_msg)) / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE",
-            "inputSQL": "SELECT\n  repository_language,\n  SUM(LENGTH(payload_commit_msg)) / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\nAND\n  repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE",
+            "sql": "SELECT\n  repository_language,\n  SUM(LENGTH(payload_commit_msg)) / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE",
+            "inputSQL": "SELECT\n  repository_language,\n  SUM(LENGTH(payload_commit_msg)) / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\nAND\n  repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE",
             "databases": "GitHub",
             "units": "Characters per Commit",
             "hasPassingInputQuery": false,
@@ -1621,8 +1621,8 @@
                 "per": 1000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(!)+\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(!)+\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(!)+\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(!)+\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 1,000",
             "hasPassingInputQuery": false,
@@ -1681,8 +1681,8 @@
                 "per": 10000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(newbie|noob|newb|n00b)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(newbie|noob|newb|n00b)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(newbie|noob|newb|n00b)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(newbie|noob|newb|n00b)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 10,000",
             "hasPassingInputQuery": false,
@@ -1854,8 +1854,8 @@
             "question": "Which programming language created the most new projects last year?",
             "rowIndex": 55,
             "approved": true,
-            "sql": "SELECT\n  repository_language,\n  COUNT(UNIQUE(repository_name)) total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'CreateEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nORDER BY\n  total DESC",
-            "inputSQL": "SELECT\n  repository_language,\n  COUNT(UNIQUE(repository_name)) total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'CreateEvent'\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nORDER BY\n  total DESC IGNORE CASE",
+            "sql": "SELECT\n  repository_language,\n  COUNT(UNIQUE(repository_name)) total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'CreateEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nORDER BY\n  total DESC",
+            "inputSQL": "SELECT\n  repository_language,\n  COUNT(UNIQUE(repository_name)) total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'CreateEvent'\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nORDER BY\n  total DESC IGNORE CASE",
             "databases": "GitHub",
             "units": "Projects",
             "hasPassingInputQuery": false,
@@ -2027,8 +2027,8 @@
             "question": "What's the most popular programming language?",
             "rowIndex": 36,
             "approved": true,
-            "sql": "SELECT\n  repository_language,\n  COUNT(*) total\nFROM (\n  SELECT\n    repository_language,\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language,\n    repository_name )\nGROUP BY\n  repository_language\nORDER BY\n  total DESC",
-            "inputSQL": "SELECT\n  repository_language,\n  COUNT(*) total\nFROM (\n  SELECT\n    repository_language,\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    LOWER(repository_language) = lower('userInput')\n  GROUP BY\n    repository_language,\n    repository_name )\nGROUP BY\n  repository_language\nORDER BY\n  total DESC",
+            "sql": "SELECT\n  repository_language,\n  COUNT(*) total\nFROM (\n  SELECT\n    repository_language,\n  FROM\n    [bigquery-public-data:samples.github_timeline]\n  WHERE\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language,\n    repository_name )\nGROUP BY\n  repository_language\nORDER BY\n  total DESC",
+            "inputSQL": "SELECT\n  repository_language,\n  COUNT(*) total\nFROM (\n  SELECT\n    repository_language,\n  FROM\n    [bigquery-public-data:samples.github_timeline]\n  WHERE\n    LOWER(repository_language) = lower('userInput')\n  GROUP BY\n    repository_language,\n    repository_name )\nGROUP BY\n  repository_language\nORDER BY\n  total DESC",
             "databases": "GitHub",
             "units": "Repositories",
             "hasPassingInputQuery": false,
@@ -2141,8 +2141,8 @@
             "question": "Which programming language has the most forked projects per repo?",
             "rowIndex": 35,
             "approved": true,
-            "sql": "SELECT\n  repos.repository_language,\n  forks.total / repos.total per\nFROM (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    type = 'ForkEvent'\n  GROUP BY\n    repository_language) forks\nJOIN (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM (\n    SELECT\n      repository_language,\n    FROM\n      [githubarchive:github.timeline]\n    WHERE\n      repository_language IS NOT NULL\n    GROUP BY\n      repository_language,\n      repository_name)\n  GROUP BY\n    repository_language\n  HAVING\n    total > 4000) repos\nON\n  repos.repository_language = forks.repository_language\nORDER BY\n  per DESC IGNORE CASE",
-            "inputSQL": "SELECT\n  repos.repository_language,\n  forks.total / repos.total per\nFROM (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    type = 'ForkEvent'\n  GROUP BY\n    repository_language) forks\nJOIN (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM (\n    SELECT\n      repository_language,\n    FROM\n      [githubarchive:github.timeline]\n    WHERE\n      repository_language IS NOT NULL\n    GROUP BY\n      repository_language,\n      repository_name)\n  GROUP BY\n    repository_language\n  HAVING\n    total > 4000) repos\nON\n  repos.repository_language = forks.repository_language\nWHERE\n  repos.repository_language = 'userInput'\nORDER BY\n  per DESC IGNORE CASE",
+            "sql": "SELECT\n  repos.repository_language,\n  forks.total / repos.total per\nFROM (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM\n    [bigquery-public-data:samples.github_timeline]\n  WHERE\n    type = 'ForkEvent'\n  GROUP BY\n    repository_language) forks\nJOIN (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM (\n    SELECT\n      repository_language,\n    FROM\n      [bigquery-public-data:samples.github_timeline]\n    WHERE\n      repository_language IS NOT NULL\n    GROUP BY\n      repository_language,\n      repository_name)\n  GROUP BY\n    repository_language\n  HAVING\n    total > 4000) repos\nON\n  repos.repository_language = forks.repository_language\nORDER BY\n  per DESC IGNORE CASE",
+            "inputSQL": "SELECT\n  repos.repository_language,\n  forks.total / repos.total per\nFROM (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM\n    [bigquery-public-data:samples.github_timeline]\n  WHERE\n    type = 'ForkEvent'\n  GROUP BY\n    repository_language) forks\nJOIN (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM (\n    SELECT\n      repository_language,\n    FROM\n      [bigquery-public-data:samples.github_timeline]\n    WHERE\n      repository_language IS NOT NULL\n    GROUP BY\n      repository_language,\n      repository_name)\n  GROUP BY\n    repository_language\n  HAVING\n    total > 4000) repos\nON\n  repos.repository_language = forks.repository_language\nWHERE\n  repos.repository_language = 'userInput'\nORDER BY\n  per DESC IGNORE CASE",
             "databases": "GitHub",
             "units": "Forks per Repo",
             "hasPassingInputQuery": false,
@@ -2196,8 +2196,8 @@
             "question": "Which programming language has the most open issues per repo?",
             "rowIndex": 52,
             "approved": true,
-            "sql": "SELECT\n  repos.repository_language,\n  (issues.total / repos.total) per\nFROM (\n  SELECT\n  repository_language,\n  COUNT(*) total\n  FROM \n    [githubarchive:github.timeline]\n  WHERE\n    type = 'IssuesEvent'\n  AND\n    repository_language IS NOT NULL\n  AND\n    payload_action = 'opened'\n  GROUP BY\n    repository_language) issues\nJOIN (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM (\n    SELECT\n      repository_language,\n    FROM\n      [githubarchive:github.timeline]\n    WHERE\n      repository_language IS NOT NULL\n    GROUP BY\n      repository_language,\n      repository_name)\n  GROUP BY\n    repository_language\n  HAVING\n    total > 4000) repos\nON\n  repos.repository_language = issues.repository_language\nORDER BY\n  per DESC\nLIMIT 10",
-            "inputSQL": "SELECT\n  repos.repository_language,\n  (issues.total / repos.total) per\nFROM (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM\n    [githubarchive:github.timeline]\n  WHERE\n    type = 'IssuesEvent'\n    AND repository_language IS NOT NULL\n    AND payload_action = 'opened'\n  GROUP BY\n    repository_language) issues\nJOIN (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM (\n    SELECT\n      repository_language,\n    FROM\n      [githubarchive:github.timeline]\n    WHERE\n      repository_language IS NOT NULL\n    GROUP BY\n      repository_language,\n      repository_name)\n  GROUP BY\n    repository_language\n  HAVING\n    total > 4000) repos\nON\n  repos.repository_language = issues.repository_language\nWHERE\n  repos.repository_language = 'userInput'\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE",
+            "sql": "SELECT\n  repos.repository_language,\n  (issues.total / repos.total) per\nFROM (\n  SELECT\n  repository_language,\n  COUNT(*) total\n  FROM \n    [bigquery-public-data:samples.github_timeline]\n  WHERE\n    type = 'IssuesEvent'\n  AND\n    repository_language IS NOT NULL\n  AND\n    payload_action = 'opened'\n  GROUP BY\n    repository_language) issues\nJOIN (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM (\n    SELECT\n      repository_language,\n    FROM\n      [bigquery-public-data:samples.github_timeline]\n    WHERE\n      repository_language IS NOT NULL\n    GROUP BY\n      repository_language,\n      repository_name)\n  GROUP BY\n    repository_language\n  HAVING\n    total > 4000) repos\nON\n  repos.repository_language = issues.repository_language\nORDER BY\n  per DESC\nLIMIT 10",
+            "inputSQL": "SELECT\n  repos.repository_language,\n  (issues.total / repos.total) per\nFROM (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM\n    [bigquery-public-data:samples.github_timeline]\n  WHERE\n    type = 'IssuesEvent'\n    AND repository_language IS NOT NULL\n    AND payload_action = 'opened'\n  GROUP BY\n    repository_language) issues\nJOIN (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM (\n    SELECT\n      repository_language,\n    FROM\n      [bigquery-public-data:samples.github_timeline]\n    WHERE\n      repository_language IS NOT NULL\n    GROUP BY\n      repository_language,\n      repository_name)\n  GROUP BY\n    repository_language\n  HAVING\n    total > 4000) repos\nON\n  repos.repository_language = issues.repository_language\nWHERE\n  repos.repository_language = 'userInput'\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE",
             "databases": "GitHub",
             "units": "Issues per Repo",
             "hasPassingInputQuery": false,
@@ -2251,8 +2251,8 @@
             "question": "Which programming language has the most commits per repo?",
             "rowIndex": 53,
             "approved": true,
-            "sql": "SELECT\n  repos.repository_language,\n  (commits.total / repos.total) per,\nFROM (\n  SELECT\n  repository_language,\n  COUNT(payload_commit_msg) total\n  FROM \n    [githubarchive:github.timeline]\n  WHERE\n    type = 'PushEvent'\n  AND\n    payload_commit_msg IS NOT NULL\n  AND\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language) commits\nJOIN (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM (\n    SELECT\n      repository_language,\n    FROM\n      [githubarchive:github.timeline]\n    WHERE\n      repository_language IS NOT NULL\n    GROUP BY\n      repository_language,\n      repository_name)\n  GROUP BY\n    repository_language\n  HAVING\n    total > 4000) repos\nON\n  repos.repository_language = commits.repository_language\nORDER BY\n  per DESC\nLIMIT 10",
-            "inputSQL": "SELECT\n  repos.repository_language,\n  (commits.total / repos.total) per,\nFROM (\n  SELECT\n  repository_language,\n  COUNT(payload_commit_msg) total\n  FROM \n    [githubarchive:github.timeline]\n  WHERE\n    type = 'PushEvent'\n  AND\n    payload_commit_msg IS NOT NULL\n  AND\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language) commits\nJOIN (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM (\n    SELECT\n      repository_language,\n    FROM\n      [githubarchive:github.timeline]\n    WHERE\n      repository_language IS NOT NULL\n    GROUP BY\n      repository_language,\n      repository_name)\n  GROUP BY\n    repository_language\n  HAVING\n    total > 4000) repos\nON\n  repos.repository_language = commits.repository_language\nWHERE\n  lower(commits.repository_language) = lower('userInput')\nORDER BY\n  per DESC\nLIMIT 10",
+            "sql": "SELECT\n  repos.repository_language,\n  (commits.total / repos.total) per,\nFROM (\n  SELECT\n  repository_language,\n  COUNT(payload_commit_msg) total\n  FROM \n    [bigquery-public-data:samples.github_timeline]\n  WHERE\n    type = 'PushEvent'\n  AND\n    payload_commit_msg IS NOT NULL\n  AND\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language) commits\nJOIN (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM (\n    SELECT\n      repository_language,\n    FROM\n      [bigquery-public-data:samples.github_timeline]\n    WHERE\n      repository_language IS NOT NULL\n    GROUP BY\n      repository_language,\n      repository_name)\n  GROUP BY\n    repository_language\n  HAVING\n    total > 4000) repos\nON\n  repos.repository_language = commits.repository_language\nORDER BY\n  per DESC\nLIMIT 10",
+            "inputSQL": "SELECT\n  repos.repository_language,\n  (commits.total / repos.total) per,\nFROM (\n  SELECT\n  repository_language,\n  COUNT(payload_commit_msg) total\n  FROM \n    [bigquery-public-data:samples.github_timeline]\n  WHERE\n    type = 'PushEvent'\n  AND\n    payload_commit_msg IS NOT NULL\n  AND\n    repository_language IS NOT NULL\n  GROUP BY\n    repository_language) commits\nJOIN (\n  SELECT\n    repository_language,\n    COUNT(*) total\n  FROM (\n    SELECT\n      repository_language,\n    FROM\n      [bigquery-public-data:samples.github_timeline]\n    WHERE\n      repository_language IS NOT NULL\n    GROUP BY\n      repository_language,\n      repository_name)\n  GROUP BY\n    repository_language\n  HAVING\n    total > 4000) repos\nON\n  repos.repository_language = commits.repository_language\nWHERE\n  lower(commits.repository_language) = lower('userInput')\nORDER BY\n  per DESC\nLIMIT 10",
             "databases": "GitHub",
             "units": "Commits per Repo",
             "hasPassingInputQuery": false,
@@ -2316,66 +2316,6 @@
             "units": "Mentions",
             "hasPassingInputQuery": false,
             "rowsSearched": 63958245
-        },
-        {
-            "top10": [
-                {
-                    "label": "Go",
-                    "number": 5.388253404266648
-                },
-                {
-                    "label": "Objective-C",
-                    "number": 1.5749262567619684
-                },
-                {
-                    "label": "HTML",
-                    "number": 1.3192908210701806
-                },
-                {
-                    "label": "Java",
-                    "number": 1.2057899096414024
-                },
-                {
-                    "label": "CSS",
-                    "number": 1.002261160978466
-                },
-                {
-                    "label": "CoffeeScript",
-                    "number": 0.880547896468914
-                },
-                {
-                    "label": "JavaScript",
-                    "number": 0.8616159384093158
-                },
-                {
-                    "label": "C++",
-                    "number": 0.8212381402797673
-                },
-                {
-                    "label": "TypeScript",
-                    "number": 0.7767971623506069
-                },
-                {
-                    "label": "Python",
-                    "number": 0.7746727907039265
-                }
-            ],
-            "answer": "Go",
-            "answerValue": 5.388253404266648,
-            "question": "Which programming language mentions Google the most?",
-            "rowIndex": 42,
-            "approved": true,
-            "params": {
-                "regex": "(?i)\\b(google)\\b",
-                "per": 100,
-                "min_comments": 50000
-            },
-            "sql": "\nSELECT\n  repos.language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(google)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.language') language,\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.full_name') name\n  FROM\n    TABLE_QUERY([githubarchive:month], 'REGEXP_MATCH(table_id, \"201604|201603|201602\")')\n  WHERE\n    type = 'PullRequestEvent'\n  GROUP BY\n    language,\n    name\n  HAVING\n    language IS NOT NULL) repos\nON\n  repos.name = comments.repo_name\nGROUP BY\n  repos.language\nHAVING\n  total > 50000\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repos.language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(google)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.language') language,\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.full_name') name\n  FROM\n    TABLE_QUERY([githubarchive:month], 'REGEXP_MATCH(table_id, \"201604|201603|201602\")')\n  WHERE\n    type = 'PullRequestEvent'\n  GROUP BY\n    language,\n    name\n  HAVING\n    language = 'userInput') repos\nON\n  repos.name = comments.repo_name\nGROUP BY\n  repos.language\nORDER BY\n  per DESC IGNORE CASE\n",
-            "databases": "GitHub",
-            "units": "% of Comments",
-            "hasPassingInputQuery": false,
-            "rowsSearched": 1242016253
         },
         {
             "top10": [
@@ -6041,8 +5981,8 @@
                 "per": 100,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(fixed)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(fixed)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(fixed)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(fixed)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "% of Commits",
             "hasPassingInputQuery": false,
@@ -6101,8 +6041,8 @@
                 "per": 1000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(again)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(again)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(again)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(again)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 1,000",
             "hasPassingInputQuery": false,
@@ -6161,8 +6101,8 @@
                 "per": 1000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(hotfix)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(hotfix)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(hotfix)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(hotfix)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 1,000",
             "hasPassingInputQuery": false,
@@ -6221,8 +6161,8 @@
                 "per": 1000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(oops)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(oops)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(oops)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(oops)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 1,000",
             "hasPassingInputQuery": false,
@@ -6281,8 +6221,8 @@
                 "per": 10000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(don\\'?t know|dunno)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(don\\'?t know|dunno)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(don\\'?t know|dunno)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(don\\'?t know|dunno)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 10,000",
             "hasPassingInputQuery": false,
@@ -6341,8 +6281,8 @@
                 "per": 10000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(fix(ed)? conflict)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(fix(ed)? conflict)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(fix(ed)? conflict)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(fix(ed)? conflict)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 10,000",
             "hasPassingInputQuery": false,
@@ -6401,8 +6341,8 @@
                 "per": 1000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(\\+1)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(\\+1)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(\\+1)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(\\+1)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 1,000",
             "hasPassingInputQuery": false,
@@ -6461,8 +6401,8 @@
                 "per": 1000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(minor changes?)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(minor changes?)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(minor changes?)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(minor changes?)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 1,000",
             "hasPassingInputQuery": false,
@@ -6521,8 +6461,8 @@
                 "per": 100,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(update readme)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(update readme)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(update readme)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(update readme)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "% of Commits",
             "hasPassingInputQuery": false,
@@ -6581,8 +6521,8 @@
                 "per": 1000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(hack|hacks)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(hack|hacks)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(hack|hacks)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(hack|hacks)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 1,000",
             "hasPassingInputQuery": false,
@@ -6641,132 +6581,12 @@
                 "per": 100,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(bump.*version)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(bump.*version)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(bump.*version)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(bump.*version)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "% of Commits",
             "hasPassingInputQuery": false,
             "rowsSearched": 290264874
-        },
-        {
-            "top10": [
-                {
-                    "label": "CoffeeScript",
-                    "number": 2.545631665299426
-                },
-                {
-                    "label": "Ruby",
-                    "number": 0.09480590934099663
-                },
-                {
-                    "label": "JavaScript",
-                    "number": 0.08223396656193335
-                },
-                {
-                    "label": "DM",
-                    "number": 0.06323837994768461
-                },
-                {
-                    "label": "CSS",
-                    "number": 0.06032500094257814
-                },
-                {
-                    "label": "HTML",
-                    "number": 0.05432375014955199
-                },
-                {
-                    "label": "Emacs Lisp",
-                    "number": 0.053298590548383276
-                },
-                {
-                    "label": "TypeScript",
-                    "number": 0.042514195017336345
-                },
-                {
-                    "label": "Haskell",
-                    "number": 0.03875861687107223
-                },
-                {
-                    "label": "C",
-                    "number": 0.036590967480750816
-                }
-            ],
-            "answer": "CoffeeScript",
-            "answerValue": 2.545631665299426,
-            "question": "Developers of which programming language talk the most about coffee?",
-            "rowIndex": 192,
-            "approved": true,
-            "params": {
-                "regex": "(?i)\\b(coffee|latte|espresso)\\b",
-                "per": 100,
-                "min_comments": 25000
-            },
-            "sql": "\nSELECT\n  repos.language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(coffee|latte|espresso)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.language') language,\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.full_name') name\n  FROM\n    TABLE_QUERY([githubarchive:month], 'REGEXP_MATCH(table_id, \"201604|201603|201602\")')\n  WHERE\n    type = 'PullRequestEvent'\n  GROUP BY\n    language,\n    name\n  HAVING\n    language IS NOT NULL) repos\nON\n  repos.name = comments.repo_name\nGROUP BY\n  repos.language\nHAVING\n  total > 25000\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repos.language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(coffee|latte|espresso)\\b') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.language') language,\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.full_name') name\n  FROM\n    TABLE_QUERY([githubarchive:month], 'REGEXP_MATCH(table_id, \"201604|201603|201602\")')\n  WHERE\n    type = 'PullRequestEvent'\n  GROUP BY\n    language,\n    name\n  HAVING\n    language = 'userInput') repos\nON\n  repos.name = comments.repo_name\nGROUP BY\n  repos.language\nORDER BY\n  per DESC IGNORE CASE\n",
-            "databases": "GitHub",
-            "units": "% of Comments",
-            "hasPassingInputQuery": false,
-            "rowsSearched": 1222377998
-        },
-        {
-            "top10": [
-                {
-                    "label": "Shell",
-                    "number": 2.1789103269454944
-                },
-                {
-                    "label": "Objective-C",
-                    "number": 2.103646671505054
-                },
-                {
-                    "label": "TypeScript",
-                    "number": 1.889519778548282
-                },
-                {
-                    "label": "Java",
-                    "number": 1.3996745120543785
-                },
-                {
-                    "label": "Python",
-                    "number": 0.8356295737662451
-                },
-                {
-                    "label": "Scala",
-                    "number": 0.7196263699887019
-                },
-                {
-                    "label": "C",
-                    "number": 0.5190208153297988
-                },
-                {
-                    "label": "JavaScript",
-                    "number": 0.24976147778871177
-                },
-                {
-                    "label": "PHP",
-                    "number": 0.19257581709919194
-                },
-                {
-                    "label": "C++",
-                    "number": 0.17227211414061194
-                }
-            ],
-            "answer": "Shell",
-            "answerValue": 2.1789103269454944,
-            "question": "Developers of which programming language mention insomnia the most?",
-            "rowIndex": 191,
-            "approved": true,
-            "params": {
-                "regex": "(?i)\\b(insomniac?)\\b",
-                "per": 100000,
-                "min_comments": 50000
-            },
-            "sql": "\nSELECT\n  repos.language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(insomniac?)\\b') THEN 1 ELSE 0 END) * 100000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.language') language,\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.full_name') name\n  FROM\n    TABLE_QUERY([githubarchive:month], 'REGEXP_MATCH(table_id, \"201604|201603|201602\")')\n  WHERE\n    type = 'PullRequestEvent'\n  GROUP BY\n    language,\n    name\n  HAVING\n    language IS NOT NULL) repos\nON\n  repos.name = comments.repo_name\nGROUP BY\n  repos.language\nHAVING\n  total > 50000\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repos.language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(insomniac?)\\b') THEN 1 ELSE 0 END) * 100000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.language') language,\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.full_name') name\n  FROM\n    TABLE_QUERY([githubarchive:month], 'REGEXP_MATCH(table_id, \"201604|201603|201602\")')\n  WHERE\n    type = 'PullRequestEvent'\n  GROUP BY\n    language,\n    name\n  HAVING\n    language = 'userInput') repos\nON\n  repos.name = comments.repo_name\nGROUP BY\n  repos.language\nORDER BY\n  per DESC IGNORE CASE\n",
-            "databases": "GitHub",
-            "units": "Comments per 100,000",
-            "hasPassingInputQuery": false,
-            "rowsSearched": 1222377991
         },
         {
             "top10": [
@@ -6886,186 +6706,6 @@
             "units": "Mentions",
             "hasPassingInputQuery": false,
             "rowsSearched": 6592241573
-        },
-        {
-            "top10": [
-                {
-                    "label": "DM",
-                    "number": 5.763315990686712
-                },
-                {
-                    "label": "CSS",
-                    "number": 3.361862031695761
-                },
-                {
-                    "label": "Swift",
-                    "number": 3.3472663991073954
-                },
-                {
-                    "label": "JavaScript",
-                    "number": 3.085178654385062
-                },
-                {
-                    "label": "PHP",
-                    "number": 3.036920635654257
-                },
-                {
-                    "label": "Shell",
-                    "number": 2.832583425029143
-                },
-                {
-                    "label": "CoffeeScript",
-                    "number": 2.4353978671041836
-                },
-                {
-                    "label": "HTML",
-                    "number": 2.357262729703774
-                },
-                {
-                    "label": "C#",
-                    "number": 2.251885355079199
-                },
-                {
-                    "label": "C",
-                    "number": 2.161721695848612
-                }
-            ],
-            "answer": "DM",
-            "answerValue": 5.763315990686712,
-            "question": "Developers of which programming language LOL the most?",
-            "rowIndex": 220,
-            "approved": true,
-            "params": {
-                "regex": "(?i)\\b(ha(ha)+|he(he)+|lol|rofl|lmfao|lulz|lolz|rotfl|lawl|hilarious)\\b",
-                "per": 1000,
-                "min_comments": 50000
-            },
-            "sql": "\nSELECT\n  repos.language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(ha(ha)+|he(he)+|lol|rofl|lmfao|lulz|lolz|rotfl|lawl|hilarious)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.language') language,\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.full_name') name\n  FROM\n    TABLE_QUERY([githubarchive:month], 'REGEXP_MATCH(table_id, \"201604|201603|201602\")')\n  WHERE\n    type = 'PullRequestEvent'\n  GROUP BY\n    language,\n    name\n  HAVING\n    language IS NOT NULL) repos\nON\n  repos.name = comments.repo_name\nGROUP BY\n  repos.language\nHAVING\n  total > 50000\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repos.language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(ha(ha)+|he(he)+|lol|rofl|lmfao|lulz|lolz|rotfl|lawl|hilarious)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.language') language,\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.full_name') name\n  FROM\n    TABLE_QUERY([githubarchive:month], 'REGEXP_MATCH(table_id, \"201604|201603|201602\")')\n  WHERE\n    type = 'PullRequestEvent'\n  GROUP BY\n    language,\n    name\n  HAVING\n    language = 'userInput') repos\nON\n  repos.name = comments.repo_name\nGROUP BY\n  repos.language\nORDER BY\n  per DESC IGNORE CASE\n",
-            "databases": "GitHub",
-            "units": "Comments per 1,000",
-            "hasPassingInputQuery": false,
-            "rowsSearched": 1222377991
-        },
-        {
-            "top10": [
-                {
-                    "label": "CSS",
-                    "number": 2.2433359725521247
-                },
-                {
-                    "label": "HTML",
-                    "number": 2.0662426396168883
-                },
-                {
-                    "label": "Python",
-                    "number": 1.710951552286387
-                },
-                {
-                    "label": "C",
-                    "number": 1.666056817208654
-                },
-                {
-                    "label": "Shell",
-                    "number": 1.6178409177570297
-                },
-                {
-                    "label": "C++",
-                    "number": 1.571121680962381
-                },
-                {
-                    "label": "PHP",
-                    "number": 1.3923231576271577
-                },
-                {
-                    "label": "Ruby",
-                    "number": 1.3823019875138116
-                },
-                {
-                    "label": "JavaScript",
-                    "number": 1.3480875763645719
-                },
-                {
-                    "label": "Swift",
-                    "number": 1.2656330663291646
-                }
-            ],
-            "answer": "CSS",
-            "answerValue": 2.2433359725521247,
-            "question": "Developers of which programming language call out the most typos?",
-            "rowIndex": 237,
-            "approved": true,
-            "params": {
-                "regex": "(?i)\\b(typo|typos)\\b",
-                "per": 1000,
-                "min_comments": 50000
-            },
-            "sql": "\nSELECT\n  repos.language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(typo|typos)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.language') language,\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.full_name') name\n  FROM\n    TABLE_QUERY([githubarchive:month], 'REGEXP_MATCH(table_id, \"201604|201603|201602\")')\n  WHERE\n    type = 'PullRequestEvent'\n  GROUP BY\n    language,\n    name\n  HAVING\n    language IS NOT NULL) repos\nON\n  repos.name = comments.repo_name\nGROUP BY\n  repos.language\nHAVING\n  total > 50000\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repos.language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(typo|typos)\\b') THEN 1 ELSE 0 END) * 1000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.language') language,\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.full_name') name\n  FROM\n    TABLE_QUERY([githubarchive:month], 'REGEXP_MATCH(table_id, \"201604|201603|201602\")')\n  WHERE\n    type = 'PullRequestEvent'\n  GROUP BY\n    language,\n    name\n  HAVING\n    language = 'userInput') repos\nON\n  repos.name = comments.repo_name\nGROUP BY\n  repos.language\nORDER BY\n  per DESC IGNORE CASE\n",
-            "databases": "GitHub",
-            "units": "Comments per 1,000",
-            "hasPassingInputQuery": false,
-            "rowsSearched": 1222377991
-        },
-        {
-            "top10": [
-                {
-                    "label": "CoffeeScript",
-                    "number": 8.203445447087777
-                },
-                {
-                    "label": "Ruby",
-                    "number": 5.4109847537547235
-                },
-                {
-                    "label": "TypeScript",
-                    "number": 3.873515546023978
-                },
-                {
-                    "label": "C",
-                    "number": 3.2698311365777326
-                },
-                {
-                    "label": "Rust",
-                    "number": 3.1019042995090897
-                },
-                {
-                    "label": "Java",
-                    "number": 2.8884192203303996
-                },
-                {
-                    "label": "JavaScript",
-                    "number": 2.1479487089829212
-                },
-                {
-                    "label": "C++",
-                    "number": 1.7916299870623642
-                },
-                {
-                    "label": "Shell",
-                    "number": 1.4707644706882088
-                },
-                {
-                    "label": "Swift",
-                    "number": 1.332245332978068
-                }
-            ],
-            "answer": "CoffeeScript",
-            "answerValue": 8.203445447087777,
-            "question": "Developers of which programming language give the most 👍?",
-            "rowIndex": 241,
-            "approved": true,
-            "params": {
-                "regex": "(?i)\\b(👍|:+1:|:thumbsup:)\\b",
-                "per": 10000,
-                "min_comments": 50000
-            },
-            "sql": "\nSELECT\n  repos.language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(👍|:+1:|:thumbsup:)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.language') language,\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.full_name') name\n  FROM\n    TABLE_QUERY([githubarchive:month], 'REGEXP_MATCH(table_id, \"201604|201603|201602\")')\n  WHERE\n    type = 'PullRequestEvent'\n  GROUP BY\n    language,\n    name\n  HAVING\n    language IS NOT NULL) repos\nON\n  repos.name = comments.repo_name\nGROUP BY\n  repos.language\nHAVING\n  total > 50000\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repos.language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(👍|:+1:|:thumbsup:)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.language') language,\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.full_name') name\n  FROM\n    TABLE_QUERY([githubarchive:month], 'REGEXP_MATCH(table_id, \"201604|201603|201602\")')\n  WHERE\n    type = 'PullRequestEvent'\n  GROUP BY\n    language,\n    name\n  HAVING\n    language = 'userInput') repos\nON\n  repos.name = comments.repo_name\nGROUP BY\n  repos.language\nORDER BY\n  per DESC IGNORE CASE\n",
-            "databases": "GitHub",
-            "units": "Comments per 10,000",
-            "hasPassingInputQuery": false,
-            "rowsSearched": 1222377991
         },
         {
             "top10": [
@@ -7541,66 +7181,6 @@
             "units": "Events",
             "hasPassingInputQuery": false,
             "rowsSearched": 761318228
-        },
-        {
-            "top10": [
-                {
-                    "label": "Scala",
-                    "number": 2.230841746964976
-                },
-                {
-                    "label": "Java",
-                    "number": 2.0231658856058745
-                },
-                {
-                    "label": "C++",
-                    "number": 0.3273170168671627
-                },
-                {
-                    "label": "C#",
-                    "number": 0.2874747261803233
-                },
-                {
-                    "label": "TypeScript",
-                    "number": 0.2834279667822423
-                },
-                {
-                    "label": "C",
-                    "number": 0.23355936689840945
-                },
-                {
-                    "label": "HTML",
-                    "number": 0.22634895895646662
-                },
-                {
-                    "label": "Shell",
-                    "number": 0.1634182745209121
-                },
-                {
-                    "label": "DM",
-                    "number": 0.1437235907901923
-                },
-                {
-                    "label": "JavaScript",
-                    "number": 0.1186367019496381
-                }
-            ],
-            "answer": "Scala",
-            "answerValue": 2.230841746964976,
-            "question": "Developers of which programming language wink the most?",
-            "rowIndex": 250,
-            "approved": true,
-            "params": {
-                "regex": "(?i)\\b(😉|;\\)|:wink:)\\b",
-                "per": 10000,
-                "min_comments": 50000
-            },
-            "sql": "\nSELECT\n  repos.language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(😉|;\\)|:wink:)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.language') language,\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.full_name') name\n  FROM\n    TABLE_QUERY([githubarchive:month], 'REGEXP_MATCH(table_id, \"201604|201603|201602\")')\n  WHERE\n    type = 'PullRequestEvent'\n  GROUP BY\n    language,\n    name\n  HAVING\n    language IS NOT NULL) repos\nON\n  repos.name = comments.repo_name\nGROUP BY\n  repos.language\nHAVING\n  total > 50000\nORDER BY\n  per DESC\nLIMIT\n  10 IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repos.language,\n  SUM(CASE WHEN REGEXP_MATCH(JSON_EXTRACT(payload, '$.comment.body'), r'(?i)\\b(😉|;\\)|:wink:)\\b') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) AS total\nFROM (\n  SELECT\n    *\n  FROM\n    TABLE_QUERY([githubarchive:month], 'table_id like \"2016%\"')\n  WHERE\n    type = 'IssueCommentEvent') AS comments\nJOIN (\n  SELECT\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.language') language,\n    JSON_EXTRACT_SCALAR(payload, '$.pull_request.base.repo.full_name') name\n  FROM\n    TABLE_QUERY([githubarchive:month], 'REGEXP_MATCH(table_id, \"201604|201603|201602\")')\n  WHERE\n    type = 'PullRequestEvent'\n  GROUP BY\n    language,\n    name\n  HAVING\n    language = 'userInput') repos\nON\n  repos.name = comments.repo_name\nGROUP BY\n  repos.language\nORDER BY\n  per DESC IGNORE CASE\n",
-            "databases": "GitHub",
-            "units": "Comments per 10,000",
-            "hasPassingInputQuery": false,
-            "rowsSearched": 1222377991
         },
         {
             "top10": [
@@ -8132,8 +7712,8 @@
                 "per": 10000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'remove comment') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'remove comment') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'remove comment') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'remove comment') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 10,000",
             "hasPassingInputQuery": false,
@@ -8316,8 +7896,8 @@
                 "per": 100,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'refactor') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'refactor') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'refactor') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'refactor') THEN 1 ELSE 0 END) * 100 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "% of Commits",
             "hasPassingInputQuery": false,
@@ -8558,8 +8138,8 @@
                 "per": 10000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'fix broken') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'fix broken') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'fix broken') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'fix broken') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 10,000",
             "hasPassingInputQuery": false,
@@ -8680,8 +8260,8 @@
                 "per": 10000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'fix broken') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'fix broken') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'fix broken') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'fix broken') THEN 1 ELSE 0 END) * 10000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 10,000",
             "hasPassingInputQuery": false,
@@ -8799,8 +8379,8 @@
                 "per": 100000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'what the actual ') THEN 1 ELSE 0 END) * 100000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'what the actual ') THEN 1 ELSE 0 END) * 100000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'what the actual ') THEN 1 ELSE 0 END) * 100000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'what the actual ') THEN 1 ELSE 0 END) * 100000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 100,000",
             "hasPassingInputQuery": false,
@@ -8859,8 +8439,8 @@
                 "per": 100000,
                 "min_commits": 50000
             },
-            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(remove credentials)\\b') THEN 1 ELSE 0 END) * 100000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
-            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(remove credentials)\\b') THEN 1 ELSE 0 END) * 100000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [githubarchive:github.timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "sql": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(remove credentials)\\b') THEN 1 ELSE 0 END) * 100000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
+            "inputSQL": "\nSELECT\n  repository_language,\n  SUM(CASE WHEN REGEXP_MATCH(payload_commit_msg, r'(?i)\\b(remove credentials)\\b') THEN 1 ELSE 0 END) * 100000 / COUNT(*) AS per,\n  COUNT(*) as total\nFROM\n  [bigquery-public-data:samples.github_timeline]\nWHERE\n  type = 'PushEvent'\n  AND repository_language IS NOT NULL\n  AND repository_language = 'userInput'\nGROUP BY\n  repository_language\nHAVING\n  total > 50000\nORDER BY\n  per DESC IGNORE CASE\n",
             "databases": "GitHub",
             "units": "Commits per 100,000",
             "hasPassingInputQuery": false,
