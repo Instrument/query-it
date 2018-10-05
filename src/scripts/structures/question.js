@@ -239,7 +239,7 @@ export default class Question extends Panel {
 
     return this.parse`
     <div class="">
-      ${ Header.bind(null, {heading: headingText, color: "white", null })}
+      ${ Header.bind(null, {heading: headingText, color: "white"})}
       ${ Timer.bind(null, timerParams) }
 
       <div class="question-subsection">
