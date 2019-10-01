@@ -97,3 +97,7 @@ Optionally, you can get the Pis to autostart the `client.js`:
 
 
 Follow these steps for Player 2 Pi, only use `ssh pi@172.20.2.151` and `--id=2`.
+
+
+
+It's not working propely 
