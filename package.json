@@ -50,7 +50,7 @@
     "file-loader": "^0.8.5",
     "firebase": "^2.4.0",
     "highlight.js": "^9.1.0",
-    "jquery": "^2.2.0",
+    "jquery": "^3.5.0",
     "paramalama": "^0.2.0",
     "slackbots": "^0.5.1"
   },
